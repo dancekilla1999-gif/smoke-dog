@@ -112,7 +112,7 @@ export function Menu() {
               alt="Детали подачи Smoke Dog"
               fill
               sizes="(max-width: 1024px) 100vw, 1400px"
-              className="object-cover transition-transform duration-[1600ms] ease-out hover:scale-105"
+              className="object-cover transition-transform duration-1000 ease-out hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-noir/80 via-noir/20 to-transparent" />
             <p className="absolute bottom-7 left-7 max-w-md text-pretty font-serif text-xl text-bone sm:text-2xl lg:bottom-10 lg:left-10">

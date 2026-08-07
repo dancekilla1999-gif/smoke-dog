@@ -50,7 +50,7 @@ export function Gallery() {
               aria-label={`Открыть фото: ${item.alt}`}
               className={cn(
                 "group relative overflow-hidden rounded-sm bg-noir",
-                spanClass[item.span] ?? "aspect-square"
+                spanClass[item.span ?? "square"] ?? "aspect-square"
               )}
             >
               <Image
@@ -58,7 +58,7 @@ export function Gallery() {
                 alt={item.alt}
                 fill
                 sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                className="object-cover object-[center_30%] transition-transform duration-[1200ms] ease-out group-hover:scale-105"
+                className="object-cover object-[center_30%] transition-transform duration-1000 ease-out group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-noir/25 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               <span className="absolute right-4 top-4 flex h-10 w-10 translate-y-2 items-center justify-center rounded-full border border-gold/50 bg-noir/50 text-gold opacity-0 backdrop-blur-sm transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
