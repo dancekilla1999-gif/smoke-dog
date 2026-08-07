@@ -10,9 +10,6 @@ interface Props {
   className?: string;
 }
 
-/**
- * Единый блок заголовка секции: бровка + пословный reveal + подводка.
- */
 export function SectionHeading({
   eyebrow,
   title,
@@ -28,17 +25,27 @@ export function SectionHeading({
         className
       )}
     >
-      {eyebrow && <Eyebrow align={align}>{eyebrow}</Eyebrow>}
+      {eyebrow && (
+        <div
+          className={cn(
+            "mb-4 flex items-center gap-3",
+            align === "center" && "justify-center"
+          )}
+        >
+          <span className="h-px w-8 bg-gold/60" />
+          <Eyebrow align={align}>{eyebrow}</Eyebrow>
+        </div>
+      )}
       <TextReveal
         as="h2"
         text={title}
-        className="mt-4 text-balance text-[2rem] leading-[1.08] text-bone sm:mt-5 sm:text-5xl lg:text-[3.25rem]"
+        className="text-balance font-serif text-[2rem] leading-[1.08] tracking-tight text-bone sm:text-5xl lg:text-[3.1rem]"
       />
       {intro && (
         <p
           className={cn(
-            "mt-5 text-pretty text-[15px] leading-[1.7] text-ash sm:text-base sm:leading-relaxed lg:text-lg",
-            align === "center" && "mx-auto max-w-xl"
+            "mt-5 max-w-lg text-pretty text-[14px] leading-[1.75] text-ash sm:text-[15px]",
+            align === "center" && "mx-auto"
           )}
         >
           {intro}

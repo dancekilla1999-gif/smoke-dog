@@ -4,21 +4,23 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "relative inline-flex items-center justify-center gap-2 overflow-hidden whitespace-nowrap font-sans text-[12px] font-medium uppercase tracking-wide2 transition-all duration-400 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold/70 disabled:pointer-events-none disabled:opacity-45 active:scale-[0.98]",
+  "relative inline-flex items-center justify-center gap-2 overflow-hidden whitespace-nowrap font-sans text-[11px] font-semibold uppercase tracking-[0.2em] transition-all duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold/60 disabled:pointer-events-none disabled:opacity-45 active:translate-y-[1px]",
   {
     variants: {
       variant: {
         gold:
-          "bg-gold text-noir shadow-[0_16px_40px_-18px_rgba(166,124,82,0.85)] hover:bg-gold-soft hover:shadow-[0_20px_48px_-16px_rgba(166,124,82,0.95)]",
+          "rounded-none bg-gold text-noir hover:bg-gold-soft border border-gold",
         outline:
-          "border border-white/20 bg-transparent text-bone hover:border-gold/70 hover:bg-gold/5 hover:text-gold",
-        ghost: "text-bone/85 hover:text-gold",
-        link: "text-gold underline-offset-4 hover:underline",
+          "rounded-none border border-white/25 bg-transparent text-bone hover:border-gold hover:bg-white/[0.04] hover:text-gold-soft",
+        ghost: "rounded-none text-bone/80 hover:text-gold",
+        link: "rounded-none text-gold underline-offset-4 hover:underline tracking-wide2",
+        glass:
+          "rounded-none border border-white/15 bg-white/[0.06] text-bone backdrop-blur-md hover:bg-white/[0.1] hover:border-gold/40",
       },
       size: {
-        default: "h-12 px-8",
-        lg: "h-[3.25rem] px-10 text-[13px]",
-        sm: "h-10 px-5 text-[11px]",
+        default: "h-12 px-7",
+        lg: "h-14 px-9 text-[12px]",
+        sm: "h-10 px-5 text-[10px]",
         icon: "h-11 w-11",
       },
     },
