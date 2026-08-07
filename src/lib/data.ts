@@ -62,6 +62,35 @@ export interface MenuItem {
   image?: string;
 }
 
+export interface EventItem {
+  title: string;
+  subtitle: string;
+  date: string;
+  weekday: string;
+  time: string;
+  poster: string;
+  lineup: string[];
+  featured: boolean;
+}
+
+export interface FaqItem {
+  q: string;
+  a: string;
+}
+
+export interface GalleryItem {
+  src: string;
+  alt: string;
+  category?: string;
+  span?: string;
+}
+
+export interface TestimonialItem {
+  quote: string;
+  author: string;
+  role: string;
+}
+
 export const menuCategories: MenuCategory[] = [
   "Кальян",
   "Закуски",
@@ -71,11 +100,7 @@ export const menuCategories: MenuCategory[] = [
 ];
 
 export const menu = content.menu as MenuItem[];
-
-export const events = content.events;
-
-export const testimonials = content.testimonials;
-
-export const faq = content.faq;
-
-export const gallery = content.gallery;
+export const events = content.events as EventItem[];
+export const testimonials = content.testimonials as TestimonialItem[];
+export const faq = content.faq as FaqItem[];
+export const gallery = content.gallery as GalleryItem[];
