@@ -44,7 +44,7 @@ export function Faq() {
           <Reveal delay={0.1}>
             <Accordion type="single" collapsible className="border-t border-white/[0.07]">
               {faq.map((item, i) => (
-                <AccordionItem key={item.q} value={`item-${i}`}>
+                <AccordionItem key={item.q || String(i)} value={`item-${i}`}>
                   <AccordionTrigger>{item.q}</AccordionTrigger>
                   <AccordionContent>{item.a}</AccordionContent>
                 </AccordionItem>

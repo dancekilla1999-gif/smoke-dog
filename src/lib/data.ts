@@ -102,5 +102,8 @@ export const menuCategories: MenuCategory[] = [
 export const menu = content.menu as MenuItem[];
 export const events = content.events as EventItem[];
 export const testimonials = content.testimonials as TestimonialItem[];
-export const faq = content.faq as FaqItem[];
+export const faq: FaqItem[] = (content.faq as Array<Record<string, string>>).map((item) => ({
+  q: item.q ?? item.question ?? "",
+  a: item.a ?? item.answer ?? "",
+}));
 export const gallery = content.gallery as GalleryItem[];
