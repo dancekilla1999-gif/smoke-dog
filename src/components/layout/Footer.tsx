@@ -18,12 +18,11 @@ export function Footer() {
         <div className="grid gap-10 sm:gap-12 lg:grid-cols-[1.4fr_1fr_1fr]">
           <div>
             <Image
-              src="/images/logo.svg"
-              unoptimized
+              src="/images/logo.png"
               alt={site.name}
               width={140}
               height={50}
-              className="h-11 w-auto object-contain object-left"
+              className="h-9 w-auto object-contain object-left sm:h-10"
               style={{ background: "transparent" }}
             />
             <p className="mt-5 max-w-sm text-pretty text-sm leading-relaxed text-ash">
