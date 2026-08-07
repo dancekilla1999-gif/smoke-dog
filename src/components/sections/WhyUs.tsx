@@ -29,8 +29,8 @@ export function WhyUs() {
       <div className="container-wide">
         <SectionHeading
           eyebrow="Почему Smoke Dog"
-          title="Причины возвращаться снова"
-          intro="Мы собрали вечер из деталей, каждая из которых работает на одно — ваше впечатление."
+          title="Что внутри"
+          intro="Площадь, звук, кухня и кальян — без лишней поэзии. Только то, за чем приходят."
           align="center"
           className="mb-16 lg:mb-20"
         />
