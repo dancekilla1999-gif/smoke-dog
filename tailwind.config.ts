@@ -11,22 +11,34 @@ const config: Config = {
     },
     extend: {
       colors: {
-        noir: "#060505",
-        graphite: "#0e0c0a",
-        espresso: "#171208",
-        gold: {
-          DEFAULT: "#b08b5a",
-          soft: "#d6b789",
-          deep: "#8a6c43",
+        // Smoke Dog palette: charcoal gray + warm brown + glass
+        noir: "#0B0B0D",
+        graphite: "#141416",
+        espresso: "#1C1916",
+        stone: {
+          DEFAULT: "#2A2724",
+          soft: "#3D3833",
+          muted: "#5C554C",
         },
-        bone: "#f5f2ec",
-        ash: "#b5aca0",
-        moss: "#232a20",
+        gold: {
+          DEFAULT: "#A67C52",
+          soft: "#C4A574",
+          deep: "#7A5A38",
+          glow: "rgba(166,124,82,0.25)",
+        },
+        bone: "#EDE6DC",
+        ash: "#9A9288",
+        glass: {
+          DEFAULT: "rgba(255,255,255,0.06)",
+          border: "rgba(255,255,255,0.12)",
+          brown: "rgba(166,124,82,0.08)",
+        },
+        moss: "#1E1C18",
         emerald: {
-          DEFAULT: "#0d5c4d",
-          soft: "#1a8a72",
-          deep: "#064036",
-          glow: "rgba(26,138,114,0.35)",
+          DEFAULT: "#5C554C",
+          soft: "#8A8178",
+          deep: "#2A2724",
+          glow: "rgba(166,124,82,0.2)",
         },
       },
       fontFamily: {
@@ -34,20 +46,23 @@ const config: Config = {
         sans: ["var(--font-montserrat)", "Montserrat", "system-ui", "sans-serif"],
       },
       letterSpacing: {
-        eyebrow: "0.32em",
-        wide2: "0.14em",
+        eyebrow: "0.28em",
+        wide2: "0.12em",
       },
       maxWidth: { content: "1400px" },
       boxShadow: {
-        gold: "0 0 0 1px rgba(176,139,90,0.35), 0 20px 60px -20px rgba(176,139,90,0.25)",
-        soft: "0 30px 80px -40px rgba(0,0,0,0.9)",
+        gold: "0 0 0 1px rgba(166,124,82,0.3), 0 20px 60px -20px rgba(166,124,82,0.2)",
+        soft: "0 30px 80px -40px rgba(0,0,0,0.85)",
+        glass: "0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06)",
       },
       backgroundImage: {
-        "gold-line": "linear-gradient(90deg, transparent, rgba(176,139,90,0.7), transparent)",
+        "gold-line": "linear-gradient(90deg, transparent, rgba(166,124,82,0.65), transparent)",
         "gold-sheen":
-          "linear-gradient(110deg, #8a6c43 0%, #d6b789 42%, #f0dcb8 50%, #d6b789 58%, #8a6c43 100%)",
-        "fade-top": "linear-gradient(to bottom, rgba(6,5,5,0), rgba(6,5,5,1))",
-        "fade-bottom": "linear-gradient(to top, rgba(6,5,5,0), rgba(6,5,5,1))",
+          "linear-gradient(110deg, #7A5A38 0%, #C4A574 42%, #E8D5B5 50%, #C4A574 58%, #7A5A38 100%)",
+        "fade-top": "linear-gradient(to bottom, rgba(11,11,13,0), rgba(11,11,13,1))",
+        "fade-bottom": "linear-gradient(to top, rgba(11,11,13,0), rgba(11,11,13,1))",
+        "glass-panel":
+          "linear-gradient(165deg, rgba(255,255,255,0.08) 0%, rgba(166,124,82,0.04) 50%, rgba(255,255,255,0.02) 100%)",
       },
       keyframes: {
         "accordion-down": {

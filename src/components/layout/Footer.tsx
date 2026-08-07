@@ -13,17 +13,17 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative border-t border-white/[0.07] bg-graphite/70">
+    <footer className="relative border-t border-white/[0.07] bg-graphite/80 backdrop-blur-sm">
       <div className="container-wide py-14 sm:py-16 lg:py-20">
         <div className="grid gap-10 sm:gap-12 lg:grid-cols-[1.4fr_1fr_1fr]">
           <div>
             <Image
-              src="/images/logo.png"
-              placeholder="empty"
+              src="/images/logo.svg"
+              unoptimized
               alt={site.name}
               width={140}
               height={50}
-              className="h-9 w-auto bg-transparent"
+              className="h-11 w-auto object-contain object-left"
               style={{ background: "transparent" }}
             />
             <p className="mt-5 max-w-sm text-pretty text-sm leading-relaxed text-ash">

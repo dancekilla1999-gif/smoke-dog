@@ -36,37 +36,36 @@ export function Navbar() {
 
   return (
     <>
-      {/* Шапка: всегда прозрачная. При скролле — только лёгкий blur, без тёмной плашки. */}
       <header
         className={cn(
           "fixed inset-x-0 top-0 z-[60] transition-all duration-500",
-          // всегда прозрачная — текст страницы читается под шапкой
-          "bg-transparent border-none shadow-none",
-          scrolled && !open ? "backdrop-blur-[2px]" : ""
+          scrolled && !open
+            ? "border-b border-white/[0.06] bg-[#0B0B0D]/70 backdrop-blur-xl shadow-glass"
+            : "bg-transparent border-none shadow-none"
         )}
       >
-        <div className="container-wide relative flex h-16 items-center justify-between sm:h-20 lg:h-24">
-          {/* Логотип — всегда чёткий, поверх всего */}
+        <div className="container-wide relative flex h-16 items-center justify-between sm:h-20 lg:h-[5.5rem]">
+          {/* Logo — left, large, no padding/boxes */}
           <Link
             href="/"
             aria-label={`${site.name} — на главную`}
-            className="absolute left-1/2 top-1/2 z-[70] -translate-x-1/2 -translate-y-1/2 drop-shadow-[0_2px_16px_rgba(0,0,0,0.55)]"
+            className="relative z-[70] flex shrink-0 items-center"
             onClick={() => setOpen(false)}
           >
             <Image
-              src="/images/logo.png"
-              placeholder="empty"
+              src="/images/logo.svg"
+              unoptimized
               alt={site.name}
-              width={220}
-              height={64}
+              width={200}
+              height={52}
               priority
-              className="h-9 w-auto bg-transparent sm:h-11 lg:h-12"
-              style={{ background: "transparent" }}
+              className="h-10 w-auto object-contain object-left sm:h-12 lg:h-14"
+              style={{ background: "transparent", padding: 0, margin: 0 }}
             />
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden flex-1 items-center gap-7 lg:flex">
+          <nav className="hidden flex-1 items-center justify-center gap-8 lg:flex">
             {nav.map((item) => {
               const active = pathname === item.href;
               return (
