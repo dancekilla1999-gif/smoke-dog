@@ -40,7 +40,7 @@ export const advantages = [
     text: "Премиальный табак, авторские миксы и профессиональные мастера.",
   },
   {
-    icon: "Gamepad2",
+    icon: "Leaf",
     title: "VIP с PS5 и караоке",
     text: "Приватные зоны с современной караоке-системой и PlayStation 5.",
   },

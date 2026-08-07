@@ -198,22 +198,42 @@
   ],
   "events": [
     {
-      "title": "DJ-сеты по выходным",
-      "date": "Каждую пятницу и субботу",
-      "description": "Топовые диджеи столицы создают атмосферу незабываемых вечеринок на втором этаже.",
-      "image": "https://static.tildacdn.com/tild3730-3533-4563-b430-623835393764/XXXL_7.jpg"
+      "title": "DJ Night",
+      "subtitle": "Топовые диджеи столицы",
+      "date": "Пт–Сб",
+      "weekday": "Каждую неделю",
+      "time": "23:00",
+      "poster": "https://static.tildacdn.com/tild3730-3533-4563-b430-623835393764/XXXL_7.jpg",
+      "lineup": [
+        "Resident DJ",
+        "Guest artists"
+      ],
+      "featured": true
     },
     {
       "title": "Живой вокал",
-      "date": "По будням",
-      "description": "Спокойные вечера с живым вокалом в релакс-зонах первого этажа.",
-      "image": "https://static.tildacdn.com/tild3635-3237-4339-b034-313831396337/XXXL.jpg"
+      "subtitle": "Спокойные вечера на 1 этаже",
+      "date": "Пн–Чт",
+      "weekday": "По будням",
+      "time": "20:00",
+      "poster": "https://static.tildacdn.com/tild3635-3237-4339-b034-313831396337/XXXL.jpg",
+      "lineup": [
+        "Live vocal"
+      ],
+      "featured": false
     },
     {
-      "title": "Банкеты и корпоративы",
+      "title": "Банкеты",
+      "subtitle": "Корпоративы и праздники",
       "date": "По запросу",
-      "description": "Организация мероприятий любого масштаба. Вместимость до 270 человек.",
-      "image": "https://static.tildacdn.com/tild6236-3537-4361-a335-393963383836/bg_2.jpg"
+      "weekday": "Любой день",
+      "time": "по договорённости",
+      "poster": "https://static.tildacdn.com/tild6236-3537-4361-a335-393963383836/bg_2.jpg",
+      "lineup": [
+        "До 270 гостей",
+        "Полное сопровождение"
+      ],
+      "featured": false
     }
   ],
   "faq": [
