@@ -71,7 +71,7 @@ export function Hero() {
               videoReady ? "opacity-100" : "opacity-0"
             }`}
             src="/videos/hero-ambient.mp4"
-            poster="/images/hero.jpg"
+            poster="/images/hero-poster.jpg"
             muted
             loop
             playsInline
