@@ -30,7 +30,7 @@ export function Gallery() {
         <SectionHeading
           eyebrow="Галерея"
           title="Загляните внутрь"
-          intro="Интерьеры, атмосфера и гости Smoke Dog — 2 этажа абсолютного комфорта."
+          intro="Интерьер, атмосфера и гости Smoke Dog."
           align="center"
           className="mb-16 lg:mb-20"
         />

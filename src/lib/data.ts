@@ -21,8 +21,8 @@ export const conceptStates = content.conceptStates;
 export const advantages = [
   {
     icon: "Sparkles",
-    title: "1400 м² · 2 этажа",
-    text: "Один из самых больших lounge в стране. Можно прийти компанией и не тесниться.",
+    title: "Lounge & Bar",
+    text: "Кальян, кухня и бар в одной атмосфере — без лишней суеты.",
   },
   {
     icon: "Music4",
@@ -37,7 +37,7 @@ export const advantages = [
   {
     icon: "Wine",
     title: "Кальян",
-    text: "Премиальный табак, свои миксы, мастера на этаже.",
+    text: "Премиальный табак, свои миксы, мастера зала.",
   },
   {
     icon: "Leaf",

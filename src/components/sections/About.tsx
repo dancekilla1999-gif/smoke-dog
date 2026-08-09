@@ -8,9 +8,9 @@ import { Reveal } from "@/components/shared/Reveal";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 
 const stats = [
-  { value: "2025", label: "Год открытия" },
-  { value: "10", label: "Часов до рассвета" },
-  { value: "∞", label: "Живых эмоций" },
+  { value: "10–05", label: "ежедневно" },
+  { value: "VIP", label: "караоке · PS5" },
+  { value: "DJ", label: "пт · сб" },
 ];
 
 export function About() {
@@ -30,8 +30,8 @@ export function About() {
             <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
               <motion.div style={{ y }} className="absolute inset-[-6%]">
                 <Image
-                  src="/images/interior-hall.jpg"
-                  alt="Зал Smoke Dog — хрусталь, зелень и тёплый свет"
+                  src="/images/lounge-mood.jpg"
+                  alt="Атмосфера Smoke Dog Lounge"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover object-[center_40%]"
@@ -45,15 +45,13 @@ export function About() {
           <div className="order-1 lg:order-2">
             <SectionHeading
               eyebrow="О пространстве"
-              title="Пространство, где вечер меняет свой ритм"
-              intro="Smoke Dog — самый большой lounge бар в России. 2 этажа и более 1400 м²: от спокойных релакс-зон с живым вокалом до вечеринок с топовыми DJ. VIP-зоны с караоке, PlayStation 5 и настольными играми."
+              title="Lounge & Bar"
+              intro="Кальян, кухня, бар и музыка до утра. VIP с караоке и PS5."
             />
 
             <Reveal delay={0.12}>
               <p className="mt-6 text-pretty text-[15px] leading-[1.75] text-ash sm:text-base">
-                На первом этаже — спокойная обстановка для встреч и ужина. VIP-зоны
-                с караоке и PlayStation 5. На втором этаже — большое пространство
-                для ярких вечеринок с концертной площадкой и диджеями.
+                Спокойные вечера и громкие выходные — в одном месте. Без пафоса, с характером.
               </p>
             </Reveal>
 

@@ -121,7 +121,7 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* Right: stats / zones — industrial cards */}
+          {/* Right: vibe cards */}
           <motion.div
             initial={{ opacity: 0, x: 24 }}
             animate={{ opacity: 1, x: 0 }}
@@ -130,10 +130,10 @@ export function Hero() {
           >
             <div className="grid grid-cols-2 gap-px overflow-hidden border border-white/10 bg-white/10 sm:grid-cols-2">
               {[
-                { k: "2", v: "этажа" },
-                { k: "1400", v: "м²" },
                 { k: "10–05", v: "каждый день" },
                 { k: "VIP", v: "PS5 · караоке" },
+                { k: "DJ", v: "пт · сб" },
+                { k: "HOOKAH", v: "премиум" },
               ].map((item) => (
                 <div
                   key={item.v}
