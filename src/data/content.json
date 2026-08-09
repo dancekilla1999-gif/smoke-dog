@@ -3,9 +3,9 @@
     "name": "Smoke Dog",
     "nameRu": "SMOKE DOG",
     "legalName": "Smoke Dog Lounge & Bar",
-    "tagline": "Lounge · Бар · Кальян",
-    "concept": "До 05:00 · каждый день",
-    "descriptionShort": "Smoke Dog — lounge & bar в Москве. Кальян, кухня, бар, VIP с PS5 и караоке. Холодильный пер., 3, стр. 2.",
+    "tagline": "Lounge & Bar",
+    "concept": "Кальян · Кухня · Музыка",
+    "descriptionShort": "Smoke Dog — lounge & bar в Москве. Кальян, кухня, бар, VIP. До 05:00 ежедневно.",
     "phone": "+7 (994) 222-77-77",
     "phoneHref": "+79942227777",
     "email": "info@sdlounge.com",
@@ -57,15 +57,15 @@
   "conceptStates": [
     {
       "title": "Релакс",
-      "text": "Мягкий свет, диваны, спокойный вечер с кальяном и кухней."
+      "text": "Диваны, кальян, спокойный разговор."
     },
     {
       "title": "Вечеринка",
-      "text": "DJ по пятницам и субботам, живой вокал, движение до утра."
+      "text": "DJ по выходным, живой вокал, до утра."
     },
     {
       "title": "VIP",
-      "text": "Караоке, PlayStation 5 и приватные зоны для своей компании."
+      "text": "Караоке, PS5, своя компания."
     }
   ],
   "menu": [

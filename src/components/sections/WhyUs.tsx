@@ -1,67 +1,47 @@
 "use client";
 
-import { motion } from "framer-motion";
-import {
-  Crown,
-  Leaf,
-  Music4,
-  Sparkles,
-  UtensilsCrossed,
-  Wine,
-  type LucideIcon,
-} from "lucide-react";
 import { advantages } from "@/lib/data";
+import { Reveal } from "@/components/shared/Reveal";
 import { SectionHeading } from "@/components/shared/SectionHeading";
-import { staggerContainer, staggerItem } from "@/components/shared/Reveal";
+import { Sparkles, Music4, UtensilsCrossed, Wine, Crown, Gamepad2, type LucideIcon } from "lucide-react";
 
 const icons: Record<string, LucideIcon> = {
   Sparkles,
   Music4,
   UtensilsCrossed,
   Wine,
-  Leaf,
   Crown,
+  Leaf: Sparkles,
+  Gamepad2,
 };
 
 export function WhyUs() {
   return (
-    <section className="relative overflow-hidden py-20 sm:py-24 lg:py-36">
+    <section className="relative py-24 sm:py-28 lg:py-32">
       <div className="container-wide">
         <SectionHeading
-          eyebrow="Почему Smoke Dog"
+          eyebrow="Smoke Dog"
           title="Что внутри"
-          intro="Площадь, звук, кухня и кальян — без лишней поэзии. Только то, за чем приходят."
+          intro="Только то, за чем приходят."
           align="center"
-          className="mb-16 lg:mb-20"
         />
 
-        <motion.ul
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-10% 0px" }}
-          className="grid gap-px overflow-hidden rounded-sm border border-white/[0.07] bg-white/[0.06] sm:grid-cols-2 lg:grid-cols-3"
-        >
-          {advantages.map((item) => {
-            const Icon = icons[item.icon] ?? Sparkles;
+        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {advantages.map((item, i) => {
+            const Icon = icons[item.icon] || Sparkles;
             return (
-              <motion.li
-                key={item.title}
-                variants={staggerItem}
-                className="group relative bg-noir p-9 transition-colors duration-500 hover:bg-graphite lg:p-11"
-              >
-                <span className="inline-flex h-14 w-14 items-center justify-center rounded-full border border-gold/25 text-gold transition-all duration-500 group-hover:border-gold/60 group-hover:bg-gold/5">
-                  <Icon className="h-5 w-5" strokeWidth={1.25} />
-                </span>
-
-                <h3 className="mt-7 font-serif text-2xl text-bone">{item.title}</h3>
-                <p className="mt-3 text-pretty text-sm leading-relaxed text-ash">
-                  {item.text}
-                </p>
-              </motion.li>
+              <Reveal key={item.title} delay={0.06 * i}>
+                <div className="group rounded-sm border border-white/[0.06] bg-white/[0.02] p-8 transition-all duration-500 hover:border-[#C4A574]/25 hover:bg-white/[0.04]">
+                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-[#C4A574]/25 text-[#C4A574] transition-colors group-hover:border-[#C4A574]/50">
+                    <Icon className="h-5 w-5" strokeWidth={1.4} />
+                  </span>
+                  <h3 className="mt-6 font-serif text-xl text-[#F3EEE6]">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-[#8A8076]">{item.text}</p>
+                </div>
+              </Reveal>
             );
           })}
-        </motion.ul>
+        </div>
       </div>
     </section>
   );

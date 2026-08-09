@@ -1,78 +1,49 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { Reveal } from "@/components/shared/Reveal";
 import { Eyebrow } from "@/components/shared/Eyebrow";
 import { TextReveal } from "@/components/shared/TextReveal";
-import { Reveal } from "@/components/shared/Reveal";
 
 export function Atmosphere() {
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], ["-12%", "12%"]);
-  const overlay = useTransform(scrollYProgress, [0, 0.5, 1], [0.85, 0.55, 0.85]);
-
   return (
-    <section
-      ref={ref}
-      id="atmosphere"
-      className="relative flex min-h-[92svh] items-center overflow-hidden"
-    >
-      <motion.div style={{ y }} className="absolute inset-[-12%] z-0">
+    <section className="relative min-h-[70vh] overflow-hidden">
+      <div className="absolute inset-0">
         <Image
           src="/images/lounge-mood.jpg"
-          alt="Интерьер Smoke Dog Lounge"
+          alt=""
           fill
           sizes="100vw"
-          className="object-cover object-[center_30%]"
+          className="object-cover object-center opacity-50"
         />
-      </motion.div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#070708] via-[#070708]/75 to-[#070708]/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#070708] via-transparent to-[#070708]/40" />
+      </div>
 
-      <motion.div
-        style={{ opacity: overlay }}
-        className="absolute inset-0 z-[1] bg-noir"
-      />
-      <div className="absolute inset-0 z-[2] bg-gradient-to-r from-noir via-noir/55 to-transparent" />
-      <div className="absolute inset-x-0 top-0 z-[2] h-40 bg-fade-bottom" />
-      <div className="absolute inset-x-0 bottom-0 z-[2] h-40 bg-fade-top" />
-
-      <div className="container-wide relative z-10 py-20 sm:py-24 lg:py-36">
+      <div className="container-wide relative z-10 flex min-h-[70vh] items-center py-24">
         <div className="max-w-xl">
-          <div className="mb-4 flex items-center gap-3">
-            <span className="h-px w-8 bg-gold/60" />
-            <Eyebrow>Пространство</Eyebrow>
+          <div className="mb-5 flex items-center gap-3">
+            <span className="h-px w-10 bg-[#C4A574]/50" />
+            <Eyebrow>Атмосфера</Eyebrow>
           </div>
 
           <TextReveal
             as="h2"
             text="Дым. Свет. Ритм."
-            className="mt-2 text-balance font-serif text-4xl leading-[1.05] text-bone sm:text-5xl lg:text-[3.6rem]"
+            className="mt-2 text-balance font-serif text-4xl leading-[1.05] text-[#F3EEE6] sm:text-5xl lg:text-[3.5rem]"
           />
 
           <Reveal delay={0.2}>
-            <p className="mt-8 text-pretty text-[16px] leading-relaxed text-bone/75 sm:text-lg">
-              Кальян, бар и кухня. Мягкий свет, диваны и музыка до утра.
+            <p className="mt-8 max-w-md text-pretty text-[16px] leading-relaxed text-[#B8AFA3]">
+              Приглушённый свет, кальян, барная стойка.
+              Музыка, которая не мешает говорить — пока не приходит ночь.
             </p>
           </Reveal>
 
-          <Reveal delay={0.32}>
-            <div className="mt-10 grid grid-cols-3 gap-4 border-t border-white/10 pt-8">
-              {[
-                { n: "10–05", l: "ежедневно" },
-                { n: "VIP", l: "зоны" },
-                { n: "05:00", l: "закрытие" },
-              ].map((s) => (
-                <div key={s.l}>
-                  <div className="font-serif text-2xl text-gold-soft sm:text-3xl">{s.n}</div>
-                  <div className="mt-1 text-[10px] uppercase tracking-[0.2em] text-ash">{s.l}</div>
-                </div>
-              ))}
-            </div>
+          <Reveal delay={0.35}>
+            <p className="mt-10 font-serif text-xl italic text-[#C4A574]/90 sm:text-2xl">
+              До 05:00 · каждый день
+            </p>
           </Reveal>
         </div>
       </div>
