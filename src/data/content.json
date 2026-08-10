@@ -24,7 +24,7 @@
       }
     ],
     "social": {
-      "instagram": "https://instagram.com/",
+      "instagram": "https://instagram.com/smokedog_moscow",
       "telegram": "https://t.me/",
       "whatsapp": "https://wa.me/79942227777"
     },
@@ -136,64 +136,34 @@
   ],
   "gallery": [
     {
-      "src": "https://static.tildacdn.com/tild6236-3537-4361-a335-393963383836/bg_2.jpg",
-      "alt": "Smoke Dog Lounge — общий вид",
+      "src": "/images/gallery-01.jpg",
+      "alt": "Smoke Dog — общий вид зала",
       "category": "Интерьер"
     },
     {
-      "src": "https://static.tildacdn.com/tild3635-3237-4339-b034-313831396337/XXXL.jpg",
-      "alt": "Атмосфера зала",
-      "category": "Атмосфера"
-    },
-    {
-      "src": "https://static.tildacdn.com/tild3034-3265-4631-b635-663238333735/XXXL_1.jpg",
-      "alt": "Lounge зона",
-      "category": "Интерьер"
-    },
-    {
-      "src": "https://static.tildacdn.com/tild3961-3737-4361-b262-346236373736/XXXL_2.jpg",
-      "alt": "Барная стойка",
+      "src": "/images/gallery-02.jpg",
+      "alt": "Барная стойка Smoke Dog",
       "category": "Бар"
     },
     {
-      "src": "https://static.tildacdn.com/tild6134-3934-4265-a132-356165643231/XXXL_3.jpg",
-      "alt": "VIP зона",
-      "category": "VIP"
-    },
-    {
-      "src": "https://static.tildacdn.com/tild3830-3661-4333-b963-383865396666/XXXL_5.jpg",
-      "alt": "Второй этаж",
-      "category": "Интерьер"
-    },
-    {
-      "src": "https://static.tildacdn.com/tild3730-3533-4563-b430-623835393764/XXXL_7.jpg",
-      "alt": "Вечеринка",
-      "category": "Атмосфера"
-    },
-    {
-      "src": "https://static.tildacdn.com/tild3466-6437-4366-b665-373365343165/XXXL_8.jpg",
-      "alt": "Кальянная зона",
-      "category": "Кальян"
-    },
-    {
-      "src": "https://static.tildacdn.com/tild3737-3038-4262-a166-346434646262/XXXL_9.jpg",
-      "alt": "Детали интерьера",
+      "src": "/images/gallery-03.jpg",
+      "alt": "Статуя бульдога в зале",
       "category": "Детали"
     },
     {
-      "src": "https://static.tildacdn.com/tild6237-3263-4438-b835-646665653765/_DT13564.jpg",
-      "alt": "Зал Smoke Dog",
+      "src": "/images/gallery-04.jpg",
+      "alt": "Зелёные диваны и овальные зеркала",
       "category": "Интерьер"
     },
     {
-      "src": "https://static.tildacdn.com/tild3537-3133-4430-b666-383535346365/_DT13573.jpg",
-      "alt": "Освещение и атмосфера",
+      "src": "/images/gallery-05.jpg",
+      "alt": "Основной зал с растениями",
       "category": "Атмосфера"
     },
     {
-      "src": "https://static.tildacdn.com/tild3432-3033-4166-b561-343235643831/_DT13583.jpg",
-      "alt": "Гости в зале",
-      "category": "Атмосфера"
+      "src": "/images/gallery-06.jpg",
+      "alt": "Lounge зона с длинным столом",
+      "category": "Интерьер"
     }
   ],
   "events": [
@@ -203,7 +173,7 @@
       "date": "Пт–Сб",
       "weekday": "Каждую неделю",
       "time": "23:00",
-      "poster": "https://static.tildacdn.com/tild3730-3533-4563-b430-623835393764/XXXL_7.jpg",
+      "poster": "/images/gallery-05.jpg",
       "lineup": [
         "Resident DJ",
         "Guest artists"
@@ -216,7 +186,7 @@
       "date": "Пн–Чт",
       "weekday": "По будням",
       "time": "20:00",
-      "poster": "https://static.tildacdn.com/tild3635-3237-4339-b034-313831396337/XXXL.jpg",
+      "poster": "/images/gallery-04.jpg",
       "lineup": [
         "Live vocal"
       ],
@@ -228,7 +198,7 @@
       "date": "По запросу",
       "weekday": "Любой день",
       "time": "по договорённости",
-      "poster": "https://static.tildacdn.com/tild6236-3537-4361-a335-393963383836/bg_2.jpg",
+      "poster": "/images/gallery-01.jpg",
       "lineup": [
         "До 270 гостей",
         "Полное сопровождение"
