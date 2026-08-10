@@ -24,7 +24,7 @@ type Content = {
   testimonials: any[];
 };
 
-const CATEGORIES = ["Закуски", "Основное", "Из огня", "Десерты", "Коктейли"];
+const CATEGORIES = ["Кальян", "Закуски", "Салаты", "Горячее", "Бар"];
 const TAGS = ["", "Сигниче", "Выбор шефа", "Веган", "Хит"];
 
 export default function AdminDashboard() {
@@ -74,7 +74,6 @@ export default function AdminDashboard() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Ошибка сохранения");
       setMessage("Сохранено! Сайт обновится через 1–2 минуты.");
-      // reload sha
       const fresh = await fetch("/api/admin/content").then((r) => r.json());
       if (fresh.sha) setSha(fresh.sha);
       if (fresh.content) setContent(fresh.content);
@@ -119,7 +118,7 @@ export default function AdminDashboard() {
     <div className="min-h-screen bg-neutral-950 text-white">
       <header className="border-b border-white/10 px-4 py-3 flex items-center justify-between sticky top-0 bg-neutral-950/95 z-50 backdrop-blur">
         <div className="flex items-center gap-3">
-          <span className="text-lg tracking-[0.2em] font-light">SOUL</span>
+          <span className="text-lg tracking-[0.2em] font-light">SMOKE DOG</span>
           <span className="text-white/40 text-xs hidden sm:inline">Админ</span>
         </div>
         <div className="flex items-center gap-3 text-sm">
@@ -215,7 +214,6 @@ export default function AdminDashboard() {
   );
 }
 
-/* ========== MENU ========== */
 function MenuSection({
   menu,
   onChange,
@@ -232,13 +230,13 @@ function MenuSection({
     name: "",
     description: "",
     price: "",
-    category: "Закуски",
+    category: "Кальян",
     tag: "",
   });
 
   function startAdd() {
     setEditIdx(-1);
-    setForm({ name: "", description: "", price: "", category: "Закуски", tag: "" });
+    setForm({ name: "", description: "", price: "", category: "Кальян", tag: "" });
   }
 
   function startEdit(i: number) {
@@ -273,55 +271,34 @@ function MenuSection({
     <div className="space-y-5">
       <div className="flex items-center justify-between">
         <h2 className="text-xl font-light">Меню</h2>
-        <button
-          onClick={startAdd}
-          className="bg-white text-black text-sm px-4 py-2 rounded-lg font-medium"
-        >
+        <button onClick={startAdd} className="bg-white text-black text-sm px-4 py-2 rounded-lg font-medium">
           + Добавить блюдо
         </button>
       </div>
 
       {editIdx !== null && (
         <div className="bg-white/5 border border-white/15 rounded-xl p-4 space-y-3">
-          <h3 className="text-sm text-white/60">
-            {editIdx === -1 ? "Новое блюдо" : "Редактирование"}
-          </h3>
+          <h3 className="text-sm text-white/60">{editIdx === -1 ? "Новое блюдо" : "Редактирование"}</h3>
           <Input label="Название" value={form.name} onChange={(v) => setForm({ ...form, name: v })} />
           <TextArea label="Описание" value={form.description} onChange={(v) => setForm({ ...form, description: v })} />
           <div className="grid grid-cols-2 gap-3">
             <Input label="Цена" value={form.price} onChange={(v) => setForm({ ...form, price: v })} placeholder="1 290 ₽" />
             <div>
               <label className="block text-white/50 text-xs mb-1">Категория</label>
-              <select
-                value={form.category}
-                onChange={(e) => setForm({ ...form, category: e.target.value })}
-                className="w-full bg-black/50 border border-white/15 rounded-lg px-3 py-2.5 text-white"
-              >
-                {CATEGORIES.map((c) => (
-                  <option key={c} value={c}>{c}</option>
-                ))}
+              <select value={form.category} onChange={(e) => setForm({ ...form, category: e.target.value })} className="w-full bg-black/50 border border-white/15 rounded-lg px-3 py-2.5 text-white">
+                {CATEGORIES.map((c) => (<option key={c} value={c}>{c}</option>))}
               </select>
             </div>
           </div>
           <div>
             <label className="block text-white/50 text-xs mb-1">Тег</label>
-            <select
-              value={form.tag || ""}
-              onChange={(e) => setForm({ ...form, tag: e.target.value })}
-              className="w-full bg-black/50 border border-white/15 rounded-lg px-3 py-2.5 text-white"
-            >
-              {TAGS.map((t) => (
-                <option key={t || "none"} value={t}>{t || "— нет —"}</option>
-              ))}
+            <select value={form.tag || ""} onChange={(e) => setForm({ ...form, tag: e.target.value })} className="w-full bg-black/50 border border-white/15 rounded-lg px-3 py-2.5 text-white">
+              {TAGS.map((t) => (<option key={t || "none"} value={t}>{t || "— нет —"}</option>))}
             </select>
           </div>
           <div className="flex gap-2 pt-1">
-            <button onClick={saveItem} className="bg-white text-black px-4 py-2 rounded-lg text-sm font-medium">
-              Готово
-            </button>
-            <button onClick={() => setEditIdx(null)} className="text-white/50 px-4 py-2 text-sm">
-              Отмена
-            </button>
+            <button onClick={saveItem} className="bg-white text-black px-4 py-2 rounded-lg text-sm font-medium">Готово</button>
+            <button onClick={() => setEditIdx(null)} className="text-white/50 px-4 py-2 text-sm">Отмена</button>
           </div>
         </div>
       )}
@@ -332,27 +309,18 @@ function MenuSection({
             <h3 className="text-sm text-white/40 uppercase tracking-wider mb-2">{cat}</h3>
             <div className="space-y-2">
               {items.map((item) => (
-                <div
-                  key={item._i}
-                  className="bg-white/5 border border-white/10 rounded-lg p-3 flex justify-between gap-3"
-                >
+                <div key={item._i} className="bg-white/5 border border-white/10 rounded-lg p-3 flex justify-between gap-3">
                   <div className="min-w-0">
                     <div className="font-medium text-sm truncate">
                       {item.name}
-                      {item.tag && (
-                        <span className="ml-2 text-xs text-amber-400/80">{item.tag}</span>
-                      )}
+                      {item.tag && <span className="ml-2 text-xs text-amber-400/80">{item.tag}</span>}
                     </div>
                     <div className="text-white/40 text-xs truncate">{item.description}</div>
                     <div className="text-white/60 text-sm mt-0.5">{item.price}</div>
                   </div>
                   <div className="flex flex-col gap-1 shrink-0">
-                    <button onClick={() => startEdit(item._i)} className="text-xs text-white/50 hover:text-white px-2 py-1">
-                      Изменить
-                    </button>
-                    <button onClick={() => remove(item._i)} className="text-xs text-red-400/70 hover:text-red-400 px-2 py-1">
-                      Удалить
-                    </button>
+                    <button onClick={() => startEdit(item._i)} className="text-xs text-white/50 hover:text-white px-2 py-1">Изменить</button>
+                    <button onClick={() => remove(item._i)} className="text-xs text-red-400/70 hover:text-red-400 px-2 py-1">Удалить</button>
                   </div>
                 </div>
               ))}
@@ -366,37 +334,18 @@ function MenuSection({
   );
 }
 
-/* ========== CONTACTS ========== */
-function ContactsSection({
-  site,
-  onChange,
-  onSave,
-  saving,
-}: {
-  site: Record<string, any>;
-  onChange: (s: Record<string, any>) => void;
-  onSave: () => void;
-  saving: boolean;
-}) {
+function ContactsSection({ site, onChange, onSave, saving }: { site: Record<string, any>; onChange: (s: Record<string, any>) => void; onSave: () => void; saving: boolean }) {
   function set(path: string, value: string) {
     const next = { ...site };
-    if (path.startsWith("address.")) {
-      next.address = { ...next.address, [path.split(".")[1]]: value };
-    } else if (path.startsWith("social.")) {
-      next.social = { ...next.social, [path.split(".")[1]]: value };
-    } else if (path === "hours0") {
-      next.hours = [{ ...next.hours[0], time: value }, next.hours[1]];
-    } else if (path === "hours1") {
-      next.hours = [next.hours[0], { ...next.hours[1], time: value }];
-    } else {
+    if (path.startsWith("address.")) next.address = { ...next.address, [path.split(".")[1]]: value };
+    else if (path.startsWith("social.")) next.social = { ...next.social, [path.split(".")[1]]: value };
+    else if (path === "hours0") next.hours = [{ ...next.hours[0], time: value }];
+    else {
       next[path] = value;
-      if (path === "phone") {
-        next.phoneHref = value.replace(/\s/g, "");
-      }
+      if (path === "phone") next.phoneHref = value.replace(/\s/g, "");
     }
     onChange(next);
   }
-
   return (
     <div className="space-y-4">
       <h2 className="text-xl font-light">Контакты</h2>
@@ -407,60 +356,24 @@ function ContactsSection({
       <Input label="Instagram" value={site.social?.instagram || ""} onChange={(v) => set("social.instagram", v)} />
       <Input label="Telegram" value={site.social?.telegram || ""} onChange={(v) => set("social.telegram", v)} />
       <Input label="WhatsApp" value={site.social?.whatsapp || ""} onChange={(v) => set("social.whatsapp", v)} />
-      <Input label="Часы Пт–Сб" value={site.hours?.[0]?.time || ""} onChange={(v) => set("hours0", v)} />
-      <Input label="Часы остальные дни" value={site.hours?.[1]?.time || ""} onChange={(v) => set("hours1", v)} />
+      <Input label="Часы" value={site.hours?.[0]?.time || ""} onChange={(v) => set("hours0", v)} />
       <SaveButton onClick={onSave} saving={saving} />
     </div>
   );
 }
 
-/* ========== TEXTS ========== */
-function TextsSection({
-  site,
-  conceptStates,
-  onChangeSite,
-  onChangeStates,
-  onSave,
-  saving,
-}: {
-  site: Record<string, any>;
-  conceptStates: { title: string; text: string }[];
-  onChangeSite: (s: Record<string, any>) => void;
-  onChangeStates: (s: { title: string; text: string }[]) => void;
-  onSave: () => void;
-  saving: boolean;
-}) {
+function TextsSection({ site, conceptStates, onChangeSite, onChangeStates, onSave, saving }: any) {
   return (
     <div className="space-y-4">
       <h2 className="text-xl font-light">Тексты / О нас</h2>
-      <Input label="Слоган" value={site.tagline || ""} onChange={(v) => onChangeSite({ ...site, tagline: v })} />
-      <Input label="Концепция" value={site.concept || ""} onChange={(v) => onChangeSite({ ...site, concept: v })} />
-      <TextArea
-        label="Короткое описание"
-        value={site.descriptionShort || ""}
-        onChange={(v) => onChangeSite({ ...site, descriptionShort: v })}
-      />
+      <Input label="Слоган" value={site.tagline || ""} onChange={(v: string) => onChangeSite({ ...site, tagline: v })} />
+      <Input label="Концепция" value={site.concept || ""} onChange={(v: string) => onChangeSite({ ...site, concept: v })} />
+      <TextArea label="Короткое описание" value={site.descriptionShort || ""} onChange={(v: string) => onChangeSite({ ...site, descriptionShort: v })} />
       <h3 className="text-sm text-white/40 pt-2">Состояния / настроения</h3>
-      {conceptStates.map((s, i) => (
+      {conceptStates.map((s: any, i: number) => (
         <div key={i} className="bg-white/5 border border-white/10 rounded-lg p-3 space-y-2">
-          <Input
-            label="Заголовок"
-            value={s.title}
-            onChange={(v) => {
-              const next = [...conceptStates];
-              next[i] = { ...next[i], title: v };
-              onChangeStates(next);
-            }}
-          />
-          <TextArea
-            label="Текст"
-            value={s.text}
-            onChange={(v) => {
-              const next = [...conceptStates];
-              next[i] = { ...next[i], text: v };
-              onChangeStates(next);
-            }}
-          />
+          <Input label="Заголовок" value={s.title} onChange={(v: string) => { const next = [...conceptStates]; next[i] = { ...next[i], title: v }; onChangeStates(next); }} />
+          <TextArea label="Текст" value={s.text} onChange={(v: string) => { const next = [...conceptStates]; next[i] = { ...next[i], text: v }; onChangeStates(next); }} />
         </div>
       ))}
       <SaveButton onClick={onSave} saving={saving} />
@@ -468,76 +381,37 @@ function TextsSection({
   );
 }
 
-/* ========== EVENTS ========== */
-function EventsSection({
-  events,
-  onChange,
-  onSave,
-  saving,
-}: {
-  events: any[];
-  onChange: (e: any[]) => void;
-  onSave: () => void;
-  saving: boolean;
-}) {
+function EventsSection({ events, onChange, onSave, saving }: any) {
   function update(i: number, key: string, value: string) {
-    const next = [...events];
-    next[i] = { ...next[i], [key]: value };
-    onChange(next);
+    const next = [...events]; next[i] = { ...next[i], [key]: value }; onChange(next);
   }
-
   function add() {
-    onChange([
-      ...events,
-      {
-        date: "",
-        weekday: "",
-        title: "",
-        subtitle: "",
-        time: "",
-        lineup: [],
-        poster: "/images/poster-1.jpg",
-        featured: false,
-      },
-    ]);
+    onChange([...events, { date: "", weekday: "", title: "", subtitle: "", time: "", lineup: [], poster: "/images/gallery-01.jpg", featured: false }]);
   }
-
   function remove(i: number) {
     if (!confirm("Удалить событие?")) return;
-    onChange(events.filter((_, idx) => idx !== i));
+    onChange(events.filter((_: any, idx: number) => idx !== i));
   }
-
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h2 className="text-xl font-light">Афиша</h2>
-        <button onClick={add} className="bg-white text-black text-sm px-4 py-2 rounded-lg font-medium">
-          + Событие
-        </button>
+        <button onClick={add} className="bg-white text-black text-sm px-4 py-2 rounded-lg font-medium">+ Событие</button>
       </div>
-      {events.map((ev, i) => (
+      {events.map((ev: any, i: number) => (
         <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-4 space-y-2">
           <div className="flex justify-between">
             <span className="text-white/40 text-xs">Событие {i + 1}</span>
             <button onClick={() => remove(i)} className="text-red-400/70 text-xs">Удалить</button>
           </div>
           <div className="grid grid-cols-2 gap-2">
-            <Input label="Дата" value={ev.date || ""} onChange={(v) => update(i, "date", v)} placeholder="25.07" />
-            <Input label="День" value={ev.weekday || ""} onChange={(v) => update(i, "weekday", v)} placeholder="Пятница" />
+            <Input label="Дата" value={ev.date || ""} onChange={(v: string) => update(i, "date", v)} placeholder="25.07" />
+            <Input label="День" value={ev.weekday || ""} onChange={(v: string) => update(i, "weekday", v)} placeholder="Пятница" />
           </div>
-          <Input label="Название" value={ev.title || ""} onChange={(v) => update(i, "title", v)} />
-          <Input label="Подзаголовок" value={ev.subtitle || ""} onChange={(v) => update(i, "subtitle", v)} />
-          <Input label="Время" value={ev.time || ""} onChange={(v) => update(i, "time", v)} placeholder="21:00" />
-          <Input label="Постер (путь)" value={ev.poster || ""} onChange={(v) => update(i, "poster", v)} />
-          <Input
-            label="Lineup (через | )"
-            value={(ev.lineup || []).join(" | ")}
-            onChange={(v) => {
-              const next = [...events];
-              next[i] = { ...next[i], lineup: v.split("|").map((s: string) => s.trim()).filter(Boolean) };
-              onChange(next);
-            }}
-          />
+          <Input label="Название" value={ev.title || ""} onChange={(v: string) => update(i, "title", v)} />
+          <Input label="Подзаголовок" value={ev.subtitle || ""} onChange={(v: string) => update(i, "subtitle", v)} />
+          <Input label="Время" value={ev.time || ""} onChange={(v: string) => update(i, "time", v)} placeholder="21:00" />
+          <Input label="Постер (путь)" value={ev.poster || ""} onChange={(v: string) => update(i, "poster", v)} />
         </div>
       ))}
       <SaveButton onClick={onSave} saving={saving} />
@@ -545,50 +419,28 @@ function EventsSection({
   );
 }
 
-/* ========== GALLERY ========== */
-function GallerySection({
-  gallery,
-  onChange,
-  onSave,
-  saving,
-}: {
-  gallery: { src: string; alt: string; span?: string }[];
-  onChange: (g: { src: string; alt: string; span?: string }[]) => void;
-  onSave: () => void;
-  saving: boolean;
-}) {
+function GallerySection({ gallery, onChange, onSave, saving }: any) {
   function update(i: number, key: string, value: string) {
-    const next = [...gallery];
-    next[i] = { ...next[i], [key]: value };
-    onChange(next);
+    const next = [...gallery]; next[i] = { ...next[i], [key]: value }; onChange(next);
   }
-
-  function add() {
-    onChange([...gallery, { src: "/images/", alt: "", span: "square" }]);
-  }
-
+  function add() { onChange([...gallery, { src: "/images/", alt: "" }]); }
   function remove(i: number) {
     if (!confirm("Удалить фото?")) return;
-    onChange(gallery.filter((_, idx) => idx !== i));
+    onChange(gallery.filter((_: any, idx: number) => idx !== i));
   }
-
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h2 className="text-xl font-light">Галерея</h2>
-        <button onClick={add} className="bg-white text-black text-sm px-4 py-2 rounded-lg font-medium">
-          + Фото
-        </button>
+        <button onClick={add} className="bg-white text-black text-sm px-4 py-2 rounded-lg font-medium">+ Фото</button>
       </div>
-      <p className="text-white/40 text-xs">
-        Сначала загрузите файл в папку public/images/ через GitHub, затем укажите путь вида /images/имя.jpg
-      </p>
-      {gallery.map((g, i) => (
+      <p className="text-white/40 text-xs">Загрузите файл в public/images/ через GitHub, затем укажите путь /images/имя.jpg</p>
+      {gallery.map((g: any, i: number) => (
         <div key={i} className="bg-white/5 border border-white/10 rounded-lg p-3 space-y-2">
           <div className="flex justify-between items-start gap-2">
             <div className="flex-1 space-y-2">
-              <Input label="Путь к файлу" value={g.src} onChange={(v) => update(i, "src", v)} />
-              <Input label="Описание (alt)" value={g.alt} onChange={(v) => update(i, "alt", v)} />
+              <Input label="Путь к файлу" value={g.src} onChange={(v: string) => update(i, "src", v)} />
+              <Input label="Описание (alt)" value={g.alt} onChange={(v: string) => update(i, "alt", v)} />
             </div>
             <button onClick={() => remove(i)} className="text-red-400/70 text-xs mt-6">Удалить</button>
           </div>
@@ -599,49 +451,29 @@ function GallerySection({
   );
 }
 
-/* ========== FAQ ========== */
-function FaqSection({
-  faq,
-  onChange,
-  onSave,
-  saving,
-}: {
-  faq: { q: string; a: string }[];
-  onChange: (f: { q: string; a: string }[]) => void;
-  onSave: () => void;
-  saving: boolean;
-}) {
+function FaqSection({ faq, onChange, onSave, saving }: any) {
   function update(i: number, key: "q" | "a", value: string) {
-    const next = [...faq];
-    next[i] = { ...next[i], [key]: value };
-    onChange(next);
+    const next = [...faq]; next[i] = { ...next[i], [key]: value }; onChange(next);
   }
-
-  function add() {
-    onChange([...faq, { q: "", a: "" }]);
-  }
-
+  function add() { onChange([...faq, { q: "", a: "" }]); }
   function remove(i: number) {
     if (!confirm("Удалить вопрос?")) return;
-    onChange(faq.filter((_, idx) => idx !== i));
+    onChange(faq.filter((_: any, idx: number) => idx !== i));
   }
-
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h2 className="text-xl font-light">FAQ</h2>
-        <button onClick={add} className="bg-white text-black text-sm px-4 py-2 rounded-lg font-medium">
-          + Вопрос
-        </button>
+        <button onClick={add} className="bg-white text-black text-sm px-4 py-2 rounded-lg font-medium">+ Вопрос</button>
       </div>
-      {faq.map((item, i) => (
+      {faq.map((item: any, i: number) => (
         <div key={i} className="bg-white/5 border border-white/10 rounded-lg p-3 space-y-2">
           <div className="flex justify-between">
             <span className="text-white/40 text-xs">Вопрос {i + 1}</span>
             <button onClick={() => remove(i)} className="text-red-400/70 text-xs">Удалить</button>
           </div>
-          <Input label="Вопрос" value={item.q} onChange={(v) => update(i, "q", v)} />
-          <TextArea label="Ответ" value={item.a} onChange={(v) => update(i, "a", v)} />
+          <Input label="Вопрос" value={item.q} onChange={(v: string) => update(i, "q", v)} />
+          <TextArea label="Ответ" value={item.a} onChange={(v: string) => update(i, "a", v)} />
         </div>
       ))}
       <SaveButton onClick={onSave} saving={saving} />
@@ -649,61 +481,27 @@ function FaqSection({
   );
 }
 
-/* ========== UI helpers ========== */
-function Input({
-  label,
-  value,
-  onChange,
-  placeholder,
-}: {
-  label: string;
-  value: string;
-  onChange: (v: string) => void;
-  placeholder?: string;
-}) {
+function Input({ label, value, onChange, placeholder }: { label: string; value: string; onChange: (v: string) => void; placeholder?: string }) {
   return (
     <div>
       <label className="block text-white/50 text-xs mb-1">{label}</label>
-      <input
-        type="text"
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        placeholder={placeholder}
-        className="w-full bg-black/50 border border-white/15 rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-white/40"
-      />
+      <input type="text" value={value} onChange={(e) => onChange(e.target.value)} placeholder={placeholder} className="w-full bg-black/50 border border-white/15 rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-white/40" />
     </div>
   );
 }
 
-function TextArea({
-  label,
-  value,
-  onChange,
-}: {
-  label: string;
-  value: string;
-  onChange: (v: string) => void;
-}) {
+function TextArea({ label, value, onChange }: { label: string; value: string; onChange: (v: string) => void }) {
   return (
     <div>
       <label className="block text-white/50 text-xs mb-1">{label}</label>
-      <textarea
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        rows={3}
-        className="w-full bg-black/50 border border-white/15 rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-white/40"
-      />
+      <textarea value={value} onChange={(e) => onChange(e.target.value)} rows={3} className="w-full bg-black/50 border border-white/15 rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none focus:border-white/40" />
     </div>
   );
 }
 
 function SaveButton({ onClick, saving }: { onClick: () => void; saving: boolean }) {
   return (
-    <button
-      onClick={onClick}
-      disabled={saving}
-      className="w-full bg-white text-black font-medium py-3 rounded-lg hover:bg-white/90 transition disabled:opacity-50 mt-4"
-    >
+    <button onClick={onClick} disabled={saving} className="w-full bg-white text-black font-medium py-3 rounded-lg hover:bg-white/90 transition disabled:opacity-50 mt-4">
       {saving ? "Сохранение..." : "Сохранить изменения"}
     </button>
   );
