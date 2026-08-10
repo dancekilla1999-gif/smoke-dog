@@ -1,4 +1,3 @@
-import { VineGuide } from "@/components/shared/VineGuide";
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Montserrat } from "next/font/google";
 import "./globals.css";
@@ -127,7 +126,6 @@ export default function RootLayout({
         <SmoothScroll>
           <main id="main" className="ar-depth-root">
             <PageTransition>{children}</PageTransition>
-            <VineGuide />
           </main>
           <Footer />
         </SmoothScroll>
