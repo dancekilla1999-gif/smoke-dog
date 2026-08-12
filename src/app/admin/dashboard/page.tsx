@@ -362,7 +362,21 @@ function ContactsSection({ site, onChange, onSave, saving }: { site: Record<stri
   );
 }
 
-function TextsSection({ site, conceptStates, onChangeSite, onChangeStates, onSave, saving }: any) {
+function TextsSection({
+  site,
+  conceptStates,
+  onChangeSite,
+  onChangeStates,
+  onSave,
+  saving,
+}: {
+  site: Record<string, any>;
+  conceptStates: { title: string; text: string }[];
+  onChangeSite: (s: Record<string, any>) => void;
+  onChangeStates: (c: { title: string; text: string }[]) => void;
+  onSave: () => void;
+  saving: boolean;
+}) {
   return (
     <div className="space-y-4">
       <h2 className="text-xl font-light">Тексты / О нас</h2>
@@ -381,7 +395,17 @@ function TextsSection({ site, conceptStates, onChangeSite, onChangeStates, onSav
   );
 }
 
-function EventsSection({ events, onChange, onSave, saving }: any) {
+function EventsSection({
+  events,
+  onChange,
+  onSave,
+  saving,
+}: {
+  events: any[];
+  onChange: (e: any[]) => void;
+  onSave: () => void;
+  saving: boolean;
+}) {
   function update(i: number, key: string, value: string) {
     const next = [...events]; next[i] = { ...next[i], [key]: value }; onChange(next);
   }
@@ -419,7 +443,17 @@ function EventsSection({ events, onChange, onSave, saving }: any) {
   );
 }
 
-function GallerySection({ gallery, onChange, onSave, saving }: any) {
+function GallerySection({
+  gallery,
+  onChange,
+  onSave,
+  saving,
+}: {
+  gallery: { src: string; alt: string; span?: string }[];
+  onChange: (g: { src: string; alt: string; span?: string }[]) => void;
+  onSave: () => void;
+  saving: boolean;
+}) {
   function update(i: number, key: string, value: string) {
     const next = [...gallery]; next[i] = { ...next[i], [key]: value }; onChange(next);
   }
@@ -451,7 +485,17 @@ function GallerySection({ gallery, onChange, onSave, saving }: any) {
   );
 }
 
-function FaqSection({ faq, onChange, onSave, saving }: any) {
+function FaqSection({
+  faq,
+  onChange,
+  onSave,
+  saving,
+}: {
+  faq: { q: string; a: string }[];
+  onChange: (f: { q: string; a: string }[]) => void;
+  onSave: () => void;
+  saving: boolean;
+}) {
   function update(i: number, key: "q" | "a", value: string) {
     const next = [...faq]; next[i] = { ...next[i], [key]: value }; onChange(next);
   }

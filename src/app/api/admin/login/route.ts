@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import {
   validateCredentials,
+  createSessionToken,
   ADMIN_SESSION_COOKIE,
-  ADMIN_SESSION_VALUE,
+  ADMIN_SESSION_MAX_AGE_SEC,
 } from "@/lib/admin/auth";
 
 export async function POST(req: NextRequest) {
@@ -25,12 +26,12 @@ export async function POST(req: NextRequest) {
 
     const response = NextResponse.json({ success: true });
 
-    response.cookies.set(ADMIN_SESSION_COOKIE, ADMIN_SESSION_VALUE, {
+    response.cookies.set(ADMIN_SESSION_COOKIE, createSessionToken(), {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "lax",
       path: "/",
-      maxAge: 60 * 60 * 24 * 7, // 7 дней
+      maxAge: ADMIN_SESSION_MAX_AGE_SEC,
     });
 
     return response;

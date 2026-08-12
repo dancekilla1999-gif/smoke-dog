@@ -137,8 +137,8 @@
   "gallery": [
     {
       "src": "/images/gallery-01.jpg",
-      "alt": "Smoke Dog — общий вид зала",
-      "category": "Интерьер"
+      "alt": "Smoke Dog — основной зал с зеленью и длинным столом",
+      "category": "Атмосфера"
     },
     {
       "src": "/images/gallery-02.jpg",
@@ -152,17 +152,12 @@
     },
     {
       "src": "/images/gallery-04.jpg",
-      "alt": "Зелёные диваны и овальные зеркала",
+      "alt": "Зелёные диваны и овальные подсвеченные зеркала",
       "category": "Интерьер"
     },
     {
       "src": "/images/gallery-05.jpg",
-      "alt": "Основной зал с растениями",
-      "category": "Атмосфера"
-    },
-    {
-      "src": "/images/gallery-06.jpg",
-      "alt": "Lounge зона с длинным столом",
+      "alt": "Lounge-зона у окна",
       "category": "Интерьер"
     }
   ],
