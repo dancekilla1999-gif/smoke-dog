@@ -51,7 +51,7 @@ export function Hero() {
             className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${
               videoReady ? "opacity-100" : "opacity-0"
             }`}
-            src="/videos/hero-smoke-dog.mp4"
+            src="/videos/hero-ambient.mp4"
             poster="/images/dog-poster.jpg"
             muted
             loop

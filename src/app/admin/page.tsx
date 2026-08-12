@@ -74,7 +74,7 @@ export default function AdminLoginPage() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 className="w-full bg-black/40 border border-white/15 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-white/40 transition"
-                placeholder="Soul-rest@yandex.ru"
+                placeholder="admin@sdlounge.com"
               />
             </div>
 

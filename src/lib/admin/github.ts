@@ -2,7 +2,7 @@
  * GitHub API helpers — чтение и запись content.json
  */
 
-const REPO = process.env.GITHUB_REPO || "dancekilla1999-gif/Soul-website";
+const REPO = process.env.GITHUB_REPO || "dancekilla1999-gif/smoke-dog";
 const TOKEN = process.env.GITHUB_TOKEN || "";
 const FILE_PATH = "src/data/content.json";
 
