@@ -94,7 +94,7 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.18 }}
             className="mt-5 max-w-md text-[15px] font-light leading-relaxed text-[#B8AFA3] sm:text-base"
           >
-            Lounge & bar. Кальян, кухня, музыка до утра.
+            Лаундж-бар и кальянная. Кухня, бар, музыка до утра.
           </motion.p>
 
           <motion.div

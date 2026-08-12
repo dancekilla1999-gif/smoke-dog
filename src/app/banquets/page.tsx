@@ -5,7 +5,7 @@ import { PageHero } from "@/components/shared/PageHero";
 
 export const metadata: Metadata = {
   title: "Банкеты и мероприятия",
-  description: `Банкеты, корпоративы и частные вечеринки в ${site.name}. Приватные зоны, индивидуальное меню, полное сопровождение.`,
+  description: `Банкеты, корпоративы и частные вечеринки в лаундж-баре и кальянной ${site.name}. Приватные зоны, индивидуальное меню, полное сопровождение.`,
   alternates: { canonical: "/banquets" },
 };
 

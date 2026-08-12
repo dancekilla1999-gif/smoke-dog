@@ -8,7 +8,7 @@ import { PageHero } from "@/components/shared/PageHero";
 
 export const metadata: Metadata = {
   title: "О нас",
-  description: `О пространстве ${site.name}: самый большой lounge бар в России. Концепция, атмосфера и философия вечера.`,
+  description: `${site.name} — лаундж-бар и кальянная в Москве, самый большой lounge бар в России. Концепция, атмосфера и философия вечера.`,
   alternates: { canonical: "/about" },
 };
 
@@ -18,7 +18,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow="О пространстве"
         title="Где вечер меняет свой ритм"
-        subtitle="Smoke Dog — это самый большой lounge бар в России. Сочетание сдержанной роскоши и современных технологий создают атмосферу, в которой время идёт иначе."
+        subtitle="Smoke Dog — это самый большой лаундж-бар и кальянная в России. Сочетание сдержанной роскоши и современных технологий создают атмосферу, в которой время идёт иначе."
       />
       <About />
       <ConceptStates />

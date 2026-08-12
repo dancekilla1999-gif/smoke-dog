@@ -6,7 +6,7 @@ import { PageHero } from "@/components/shared/PageHero";
 
 export const metadata: Metadata = {
   title: "Меню",
-  description: `Авторская кухня и коктейльная карта ${site.name}. Сезонные блюда, сигнатурные коктейли и глубокая винная карта.`,
+  description: `Меню кальянной и лаундж-бара ${site.name}: авторская кухня, коктейльная карта и кальянная карта. Сезонные блюда, сигнатурные коктейли, премиальный табак.`,
   alternates: { canonical: "/menu" },
 };
 

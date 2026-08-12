@@ -35,7 +35,7 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || site.url),
   title: {
-    default: `${site.name} · ${site.nameRu} — самый большой lounge бар в России`,
+    default: `${site.name} · ${site.nameRu} — лаундж-бар и кальянная, самый большой в России`,
     template: `%s · ${site.name}`,
   },
   description: site.descriptionShort,
@@ -43,6 +43,14 @@ export const metadata: Metadata = {
     "Smoke Dog",
     "Smoke Dog Lounge",
     "SD Lounge",
+    "лаундж бар",
+    "лаундж-бар Москва",
+    "кальянная",
+    "кальянная Москва",
+    "кальян бар",
+    "кальян-бар Москва",
+    "кальянная рядом",
+    "лаундж бар с кальяном",
     "lounge бар Москва",
     "кальян Москва",
     "ночной клуб Тульская",

@@ -7,7 +7,7 @@ import { PageHero } from "@/components/shared/PageHero";
 
 export const metadata: Metadata = {
   title: "Контакты и бронирование",
-  description: `Забронировать столик в ${site.name}. Адрес, телефон, часы работы и форма заявки.`,
+  description: `Забронировать столик в лаундж-баре и кальянной ${site.name}. Адрес, телефон, часы работы и форма заявки.`,
   alternates: { canonical: "/contacts" },
 };
 

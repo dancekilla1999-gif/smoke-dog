@@ -72,6 +72,8 @@ export function restaurantSchema() {
       },
     },
     amenityFeature: [
+      { "@type": "LocationFeatureSpecification", name: "Кальянная зона", value: true },
+      { "@type": "LocationFeatureSpecification", name: "Лаундж-зона", value: true },
       { "@type": "LocationFeatureSpecification", name: "Живая музыка", value: true },
       { "@type": "LocationFeatureSpecification", name: "DJ-сеты", value: true },
       { "@type": "LocationFeatureSpecification", name: "VIP-зоны", value: true },
