@@ -5,8 +5,8 @@
   "redirects": [
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "www.soul.msk.ru" }],
-      "destination": "https://soul.msk.ru/:path*",
+      "has": [{ "type": "host", "value": "www.sd.msk.ru" }],
+      "destination": "https://sd.msk.ru/:path*",
       "permanent": true
     }
   ],

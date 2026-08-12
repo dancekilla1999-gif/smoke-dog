@@ -61,7 +61,7 @@ export function formatReservationMessage(r: {
   if (r.guests) lines.push(`👥 Гостей: <b>${escapeHtml(String(r.guests))}</b>`);
   lines.push(`📅 ${escapeHtml(r.date)} · 🕐 ${escapeHtml(r.time)}`);
   if (r.message) lines.push(``, `💬 ${escapeHtml(r.message)}`);
-  lines.push(``, `🌐 sdlounge.com`);
+  lines.push(``, `🌐 sd.msk.ru`);
   if (r.at) lines.push(`⏱ ${escapeHtml(r.at)}`);
   return lines.join("\n");
 }
@@ -93,7 +93,7 @@ export function formatBanquetMessage(r: {
   if (r.time) lines.push(`🕐 Время: ${escapeHtml(r.time)}`);
   if (r.budget) lines.push(`💰 Бюджет: ${escapeHtml(r.budget)}`);
   if (r.message) lines.push(``, `💬 ${escapeHtml(r.message)}`);
-  lines.push(``, `🌐 sdlounge.com/banquets`);
+  lines.push(``, `🌐 sd.msk.ru/banquets`);
   if (r.at) lines.push(`⏱ ${escapeHtml(r.at)}`);
   return lines.join("\n");
 }

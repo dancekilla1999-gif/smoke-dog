@@ -72,11 +72,11 @@ async function probe(url: string): Promise<{ ok: boolean; ms: number; status?: n
 }
 
 async function siteHealth(): Promise<string> {
-  const primary = process.env.NEXT_PUBLIC_SITE_URL || "https://sdlounge.com";
+  const primary = process.env.NEXT_PUBLIC_SITE_URL || "https://sd.msk.ru";
   const fallbacks = [
     primary,
-    "https://sdlounge.com",
-    "https://www.sdlounge.com",
+    "https://sd.msk.ru",
+    "https://www.sd.msk.ru",
   ].filter((v, i, a) => a.indexOf(v) === i);
 
   const results: string[] = [];
@@ -134,7 +134,7 @@ export async function GET(request: Request) {
     `• Обновить афишу на сайте`,
     `• Фото/меню на картах (Яндекс, 2ГИС)`,
     ``,
-    `🌐 https://sdlounge.com`,
+    `🌐 https://sd.msk.ru`,
   ].join("\n");
 
   const tg = await sendTelegramMessage(text);

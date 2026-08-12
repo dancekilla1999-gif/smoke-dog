@@ -6,7 +6,7 @@ import { createHmac, timingSafeEqual } from "crypto";
  * Локальные дефолты — только для разработки; на проде переменные ОБЯЗАТЕЛЬНЫ.
  */
 
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL || "admin@sdlounge.com";
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL || "admin@sd.msk.ru";
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "";
 const SESSION_SECRET =
   process.env.ADMIN_SESSION_SECRET || "dev-only-insecure-secret-change-me";
