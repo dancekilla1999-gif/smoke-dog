@@ -4,6 +4,7 @@ import { Clock, Instagram, Mail, MapPin, MessageCircle, Phone, Send } from "luci
 import { site } from "@/lib/data";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { Reveal } from "@/components/shared/Reveal";
+import { ReviewQr } from "@/components/shared/ReviewQr";
 
 const mapQuery = encodeURIComponent(`${site.address.city}, ${site.address.street}`);
 const mapEmbed = `https://yandex.ru/map-widget/v1/?text=${mapQuery}&z=16`;
@@ -107,6 +108,10 @@ export function Contacts() {
                 ))}
               </div>
             </Reveal>
+
+            <div className="mt-10">
+              <ReviewQr />
+            </div>
           </div>
 
           <Reveal delay={0.12} className="h-full">

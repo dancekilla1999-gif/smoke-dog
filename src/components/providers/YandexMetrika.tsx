@@ -2,17 +2,23 @@
 
 import Script from "next/script";
 
-/** Счётчик SOUL — можно переопределить через NEXT_PUBLIC_YANDEX_METRIKA_ID */
-const DEFAULT_COUNTER_ID = "111369375";
-
+/**
+ * Задаётся ТОЛЬКО через env NEXT_PUBLIC_YANDEX_METRIKA_ID (Vercel → Project
+ * Settings → Environment Variables), отдельно для sd.msk.ru.
+ *
+ * Важно: раньше здесь был захардкожен счётчик SOUL (111369375) как fallback —
+ * это заставляло sd.msk.ru молча слать всю статистику посещений в чужой
+ * счётчик, если переменная окружения не задана. Убрано намеренно: без
+ * NEXT_PUBLIC_YANDEX_METRIKA_ID счётчик просто не подключается — лучше
+ * отсутствие аналитики, чем данные в чужом счётчике.
+ */
 function getCounterId(): string {
-  const fromEnv = process.env.NEXT_PUBLIC_YANDEX_METRIKA_ID?.replace(/\D/g, "");
-  return fromEnv || DEFAULT_COUNTER_ID;
+  return process.env.NEXT_PUBLIC_YANDEX_METRIKA_ID?.replace(/\D/g, "") || "";
 }
 
 /**
- * Яндекс.Метрика для soul.msk.ru
- * Цели: reservation (бронь), banquet (банкет)
+ * Яндекс.Метрика для sd.msk.ru
+ * Цели: reservation (бронь), banquet (банкет), review_five_stars, review_yandex_redirect
  */
 export function YandexMetrika() {
   const counterId = getCounterId();
