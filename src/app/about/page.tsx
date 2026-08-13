@@ -8,7 +8,7 @@ import { PageHero } from "@/components/shared/PageHero";
 
 export const metadata: Metadata = {
   title: "О нас",
-  description: `${site.name} — лаундж-бар и кальянная в Москве, самый большой lounge бар в России. Концепция, атмосфера и философия вечера.`,
+  description: `${site.name} — лаундж-бар и кальянная у метро Тульская в Москве, самый большой lounge бар в России. Концепция, атмосфера и философия вечера.`,
   alternates: { canonical: "/about" },
 };
 

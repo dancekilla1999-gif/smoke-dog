@@ -39,7 +39,7 @@ export function Contacts() {
                     <p className="eyebrow">Адрес</p>
                     <p className="mt-2 text-lg text-bone">{site.address.street}</p>
                     <p className="mt-1 text-sm text-ash">
-                      {site.address.city}, {site.address.postal}
+                      {site.address.city}, {site.address.postal} · м. {site.address.metro}
                     </p>
                     <a
                       href={mapLink}

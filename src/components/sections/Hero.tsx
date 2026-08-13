@@ -76,7 +76,7 @@ export function Hero() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="mb-6 text-[10px] uppercase tracking-[0.42em] text-[#C4A574]/90"
           >
-            {site.address.city} · {site.address.street}
+            {site.address.city} · м. {site.address.metro} · {site.address.street}
           </motion.p>
 
           <motion.h1
