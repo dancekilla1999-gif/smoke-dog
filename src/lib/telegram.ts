@@ -98,6 +98,38 @@ export function formatBanquetMessage(r: {
   return lines.join("\n");
 }
 
+/** Отзыв гостя, оставленный через /review (QR на столах) */
+export function formatReviewMessage(r: {
+  rating: number;
+  name?: string;
+  phone?: string;
+  text?: string;
+  canPublish: boolean;
+  at?: string;
+}): string {
+  const stars = "⭐".repeat(Math.max(1, Math.min(5, r.rating)));
+  const lines = [
+    r.rating === 5 ? `🌟 <b>НОВЫЙ ОТЗЫВ — 5 ЗВЁЗД!</b>` : `💬 <b>Новый отзыв — Smoke Dog</b>`,
+    `━━━━━━━━━━━━━━━━`,
+    ``,
+    `${stars} <b>(${r.rating}/5)</b>`,
+  ];
+  if (r.name) lines.push(`👤 ${escapeHtml(r.name)}`);
+  if (r.phone) lines.push(`📞 <code>${escapeHtml(r.phone)}</code>`);
+  if (r.text) lines.push(``, `💬 «${escapeHtml(r.text)}»`);
+  lines.push(``);
+  if (r.rating === 5) {
+    lines.push(
+      r.canPublish
+        ? `✅ Гость согласен опубликовать отзыв на сайте — можно добавить в раздел «Отзывы» через /admin.`
+        : `🔒 Гость НЕ разрешил публиковать отзыв на сайте — используйте только для внутренней статистики.`
+    );
+  }
+  lines.push(``, `🌐 sd.msk.ru/review`);
+  if (r.at) lines.push(`⏱ ${escapeHtml(r.at)}`);
+  return lines.join("\n");
+}
+
 function escapeHtml(s: string): string {
   return s
     .replace(/&/g, "&amp;")
