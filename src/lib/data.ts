@@ -78,8 +78,12 @@ export interface EventItem {
   weekday: string;
   time: string;
   poster: string;
+  /** Необязательное видео вместо статичной картинки (poster — fallback/постер видео) */
+  video?: string;
   lineup: string[];
   featured: boolean;
+  /** Ссылка для брони — если событие у партнёра (например SOUL), ведёт на его сайт */
+  reserveUrl?: string;
 }
 
 export interface FaqItem {

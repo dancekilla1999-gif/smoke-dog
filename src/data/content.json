@@ -163,6 +163,22 @@
   ],
   "events": [
     {
+      "title": "SOUL: Saturday",
+      "subtitle": "DJ Set: Greylee · Percussion show — у партнёров по двору",
+      "date": "15.08",
+      "weekday": "Суббота",
+      "time": "21:00",
+      "poster": "/images/soul-saturday-poster.jpg",
+      "video": "/videos/soul-saturday.mp4",
+      "lineup": [
+        "DJ Set — Greylee",
+        "Percussion show",
+        "SOUL, тот же двор — Холодильный пер., 3"
+      ],
+      "featured": true,
+      "reserveUrl": "https://soul.msk.ru/contacts#reserve"
+    },
+    {
       "title": "DJ Night",
       "subtitle": "Топовые диджеи столицы",
       "date": "Пт–Сб",
@@ -173,7 +189,7 @@
         "Resident DJ",
         "Guest artists"
       ],
-      "featured": true
+      "featured": false
     },
     {
       "title": "Живой вокал",
