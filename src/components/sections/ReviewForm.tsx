@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent, type ChangeEvent } from "react";
 import { toast } from "sonner";
-import { Loader2, Star, CheckCircle2 } from "lucide-react";
+import { Loader2, Star, CheckCircle2, ExternalLink } from "lucide-react";
 import { Reveal } from "@/components/shared/Reveal";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -10,6 +10,8 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Magnetic } from "@/components/shared/MagneticButton";
 import { cn } from "@/lib/utils";
+import { yandexReviewUrl } from "@/lib/data";
+import { reachGoal } from "@/components/providers/YandexMetrika";
 
 const fieldClass =
   "mt-2 w-full appearance-none border-0 border-b border-white/15 bg-transparent px-1 py-2 text-[15px] text-bone transition-colors focus:border-gold focus:outline-none [color-scheme:dark]";
@@ -77,6 +79,7 @@ export function ReviewForm() {
         return;
       }
       setSent(true);
+      if (isFive) reachGoal("review_five_stars");
     } catch {
       toast.error("Ошибка сети. Попробуйте ещё раз.");
     } finally {
@@ -94,6 +97,28 @@ export function ReviewForm() {
             <p className="mt-3 text-[15px] leading-relaxed text-ash">
               Мы обязательно его прочитаем. Ждём вас снова в Smoke Dog.
             </p>
+
+            {isFive && (
+              <Reveal delay={0.15} className="mt-10 border-t border-white/[0.07] pt-8">
+                <p className="text-[15px] text-bone">
+                  Вы поставили нам высшую оценку — было бы здорово, если вы продублируете
+                  этот же отзыв на Яндекс Картах. Это займёт минуту и очень нам поможет.
+                </p>
+                <Magnetic className="mt-5 inline-flex">
+                  <Button
+                    asChild
+                    size="lg"
+                    variant="gold"
+                    onClick={() => reachGoal("review_yandex_redirect")}
+                  >
+                    <a href={yandexReviewUrl} target="_blank" rel="noopener noreferrer">
+                      Оставить отзыв на Яндекс Картах
+                      <ExternalLink className="h-4 w-4" />
+                    </a>
+                  </Button>
+                </Magnetic>
+              </Reveal>
+            )}
           </Reveal>
         </div>
       </section>
