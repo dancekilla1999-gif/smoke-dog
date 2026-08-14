@@ -113,6 +113,10 @@ export function PromoPopup() {
               aria-label={`${event.title} — ${event.subtitle}`}
             />
 
+            {/* Плашка исходного видео (водяной знак соцсети) — перекрываем сплошной
+                затемнённой полосой сверху, чтобы не светился чужой юзернейм. */}
+            <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-noir from-0% via-noir via-60% to-transparent" />
+
             {/* тонкая полоска сверху — как индикатор «истории» */}
             <div className="absolute inset-x-3 top-3 h-[2px] overflow-hidden rounded-full bg-white/25">
               <div
