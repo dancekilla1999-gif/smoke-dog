@@ -137,27 +137,27 @@
   ],
   "gallery": [
     {
-      "src": "/images/gallery-01.jpg",
+      "src": "/images/gallery/lounge-hall.jpg",
       "alt": "Smoke Dog — основной зал с зеленью и длинным столом",
       "category": "Атмосфера"
     },
     {
-      "src": "/images/gallery-02.jpg",
+      "src": "/images/gallery/bar-counter.jpg",
       "alt": "Барная стойка Smoke Dog",
       "category": "Бар"
     },
     {
-      "src": "/images/gallery-03.jpg",
+      "src": "/images/gallery/dog-statue.jpg",
       "alt": "Статуя бульдога в зале",
       "category": "Детали"
     },
     {
-      "src": "/images/gallery-04.jpg",
+      "src": "/images/gallery/mirror-wall.jpg",
       "alt": "Зелёные диваны и овальные подсвеченные зеркала",
       "category": "Интерьер"
     },
     {
-      "src": "/images/gallery-05.jpg",
+      "src": "/images/gallery/lounge-green.jpg",
       "alt": "Lounge-зона у окна",
       "category": "Интерьер"
     }
@@ -169,7 +169,7 @@
       "date": "15.08",
       "weekday": "Суббота",
       "time": "21:00",
-      "poster": "/images/soul-saturday-poster.jpg",
+      "poster": "/images/events/soul-saturday-poster.jpg",
       "video": "/videos/soul-saturday.mp4",
       "lineup": [
         "DJ Set — Greylee",
@@ -185,7 +185,7 @@
       "date": "Пт–Сб",
       "weekday": "Каждую неделю",
       "time": "23:00",
-      "poster": "/images/gallery-05.jpg",
+      "poster": "/images/gallery/mirror-wall.jpg",
       "lineup": [
         "Resident DJ",
         "Guest artists"
@@ -198,7 +198,7 @@
       "date": "Пн–Чт",
       "weekday": "По будням",
       "time": "20:00",
-      "poster": "/images/gallery-04.jpg",
+      "poster": "/images/gallery/lounge-hall.jpg",
       "lineup": [
         "Live vocal"
       ],
@@ -210,7 +210,7 @@
       "date": "По запросу",
       "weekday": "Любой день",
       "time": "по договорённости",
-      "poster": "/images/gallery-01.jpg",
+      "poster": "/images/gallery/lounge-green.jpg",
       "lineup": [
         "До 270 гостей",
         "Полное сопровождение"

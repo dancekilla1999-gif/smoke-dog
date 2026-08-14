@@ -37,7 +37,7 @@ export function Hero() {
       <motion.div style={{ y }} className="absolute inset-0 z-0">
         <div className="absolute inset-0">
           <Image
-            src="/images/dog-poster.jpg"
+            src="/images/hero/hero-main.jpg"
             alt=""
             fill
             priority
@@ -52,7 +52,7 @@ export function Hero() {
               videoReady ? "opacity-100" : "opacity-0"
             }`}
             src="/videos/hero-ambient.mp4"
-            poster="/images/dog-poster.jpg"
+            poster="/images/hero/hero-main.jpg"
             muted
             loop
             playsInline

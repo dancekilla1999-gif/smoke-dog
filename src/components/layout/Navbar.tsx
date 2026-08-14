@@ -52,7 +52,7 @@ export function Navbar() {
             onClick={() => setOpen(false)}
           >
             <Image
-              src="/images/logo.png"
+              src="/images/brand/logo.png"
               alt={site.name}
               width={200}
               height={48}

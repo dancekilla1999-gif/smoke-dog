@@ -13,7 +13,7 @@ export function ReviewQr() {
       <div className="flex flex-col items-center gap-5 border border-white/[0.07] bg-graphite/40 p-8 text-center sm:flex-row sm:items-center sm:text-left">
         <div className="shrink-0 rounded-sm border border-gold/30 bg-bone p-2">
           <Image
-            src="/images/review-qr.png"
+            src="/images/brand/review-qr.png"
             alt="QR-код: оставить отзыв о Smoke Dog"
             width={104}
             height={104}

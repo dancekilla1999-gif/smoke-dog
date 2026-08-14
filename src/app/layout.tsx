@@ -478,7 +478,7 @@ export const metadata: Metadata = {
     description: site.descriptionShort,
     images: [
       {
-        url: "/images/og.jpg",
+        url: "/images/brand/og.jpg",
         width: 1200,
         height: 630,
         alt: `${site.name} — ${site.concept}`,
@@ -489,7 +489,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${site.name} · ${site.nameRu}`,
     description: site.descriptionShort,
-    images: ["/images/og.jpg"],
+    images: ["/images/brand/og.jpg"],
   },
   robots: {
     index: true,

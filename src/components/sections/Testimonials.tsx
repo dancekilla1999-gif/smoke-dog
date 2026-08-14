@@ -36,7 +36,7 @@ export function Testimonials() {
     <section className="relative isolate overflow-hidden py-20 sm:py-24 lg:py-36">
       <JungleAmbience />
       <Image
-        src="/images/ambient-dark.jpg"
+        src="/images/gallery/dog-statue.jpg"
         alt=""
         aria-hidden
         fill

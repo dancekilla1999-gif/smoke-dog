@@ -410,7 +410,7 @@ function EventsSection({
     const next = [...events]; next[i] = { ...next[i], [key]: value }; onChange(next);
   }
   function add() {
-    onChange([...events, { date: "", weekday: "", title: "", subtitle: "", time: "", lineup: [], poster: "/images/gallery-01.jpg", featured: false }]);
+    onChange([...events, { date: "", weekday: "", title: "", subtitle: "", time: "", lineup: [], poster: "/images/gallery/lounge-hall.jpg", featured: false }]);
   }
   function remove(i: number) {
     if (!confirm("Удалить событие?")) return;
@@ -457,7 +457,7 @@ function GallerySection({
   function update(i: number, key: string, value: string) {
     const next = [...gallery]; next[i] = { ...next[i], [key]: value }; onChange(next);
   }
-  function add() { onChange([...gallery, { src: "/images/", alt: "" }]); }
+  function add() { onChange([...gallery, { src: "/images/gallery/", alt: "" }]); }
   function remove(i: number) {
     if (!confirm("Удалить фото?")) return;
     onChange(gallery.filter((_: any, idx: number) => idx !== i));
@@ -468,7 +468,7 @@ function GallerySection({
         <h2 className="text-xl font-light">Галерея</h2>
         <button onClick={add} className="bg-white text-black text-sm px-4 py-2 rounded-lg font-medium">+ Фото</button>
       </div>
-      <p className="text-white/40 text-xs">Загрузите файл в public/images/ через GitHub, затем укажите путь /images/имя.jpg</p>
+      <p className="text-white/40 text-xs">Загрузите файл в public/images/gallery/ через GitHub, затем укажите путь /images/gallery/имя.jpg</p>
       {gallery.map((g: any, i: number) => (
         <div key={i} className="bg-white/5 border border-white/10 rounded-lg p-3 space-y-2">
           <div className="flex justify-between items-start gap-2">

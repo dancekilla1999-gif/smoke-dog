@@ -61,7 +61,7 @@ export function Bar() {
             <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
               <motion.div style={{ y }} className="absolute inset-[-7%]">
                 <Image
-                  src="/images/bar.jpg"
+                  src="/images/gallery/bar-counter.jpg"
                   alt="Бар Smoke Dog — приготовление авторских коктейлей"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
