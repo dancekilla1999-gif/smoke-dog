@@ -5,7 +5,6 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Expand } from "lucide-react";
 import { gallery } from "@/lib/data";
-import { SectionHeading } from "@/components/shared/SectionHeading";
 import { Lightbox } from "@/components/shared/Lightbox";
 import { staggerContainer, staggerItem } from "@/components/shared/Reveal";
 import { cn } from "@/lib/utils";
@@ -24,14 +23,6 @@ export function Gallery() {
   return (
     <section id="gallery" className="relative border-t border-white/[0.07] bg-graphite/40 py-20 sm:py-24 lg:py-36">
       <div className="container-wide">
-        <SectionHeading
-          eyebrow="Галерея"
-          title="Загляните внутрь"
-          intro="Интерьер, атмосфера и гости Smoke Dog."
-          align="center"
-          className="mb-16 lg:mb-20"
-        />
-
         <motion.div
           variants={staggerContainer}
           initial="hidden"
