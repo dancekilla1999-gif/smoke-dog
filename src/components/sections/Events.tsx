@@ -60,7 +60,7 @@ export function Events() {
                     className="object-cover object-[center_20%] transition-transform duration-1000 ease-out group-hover:scale-[1.04]"
                   />
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-noir via-noir/35 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-noir from-0% via-noir/85 via-55% to-transparent" />
 
                 {event.featured && (
                   <span className="absolute left-5 top-5 border border-gold/50 bg-noir/60 px-3 py-1 text-[10px] uppercase tracking-eyebrow text-gold backdrop-blur-sm">
