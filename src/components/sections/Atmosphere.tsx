@@ -10,7 +10,7 @@ export function Atmosphere() {
     <section className="relative min-h-[70vh] overflow-hidden">
       <div className="absolute inset-0">
         <Image
-          src="/images/gallery/bar-counter.jpg"
+          src="/images/gallery/bulldog-statue-hookah.jpg"
           alt=""
           fill
           sizes="100vw"

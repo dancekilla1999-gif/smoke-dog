@@ -108,7 +108,7 @@ export function Menu() {
         <Reveal delay={0.15}>
           <div className="relative mt-20 aspect-[21/9] overflow-hidden rounded-sm lg:aspect-[3/1]">
             <Image
-              src="/images/gallery/mirror-wall.jpg"
+              src="/images/gallery/bar-candles.jpg"
               alt="Детали подачи Smoke Dog"
               fill
               sizes="(max-width: 1024px) 100vw, 1400px"

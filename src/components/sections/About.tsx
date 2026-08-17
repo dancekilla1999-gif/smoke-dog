@@ -28,7 +28,7 @@ export function About() {
             <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
               <motion.div style={{ y }} className="absolute inset-[-8%]">
                 <Image
-                  src="/images/gallery/lounge-green.jpg"
+                  src="/images/gallery/lounge-bright.jpg"
                   alt="Атмосфера Smoke Dog"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"

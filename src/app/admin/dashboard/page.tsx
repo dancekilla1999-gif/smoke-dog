@@ -410,7 +410,7 @@ function EventsSection({
     const next = [...events]; next[i] = { ...next[i], [key]: value }; onChange(next);
   }
   function add() {
-    onChange([...events, { date: "", weekday: "", title: "", subtitle: "", time: "", lineup: [], poster: "/images/gallery/lounge-hall.jpg", featured: false }]);
+    onChange([...events, { date: "", weekday: "", title: "", subtitle: "", time: "", lineup: [], poster: "/images/gallery/lounge-bright.jpg", featured: false }]);
   }
   function remove(i: number) {
     if (!confirm("Удалить событие?")) return;

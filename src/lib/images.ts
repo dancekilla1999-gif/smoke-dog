@@ -18,11 +18,11 @@ export const images = {
     main: "/images/hero/hero-main.jpg",
   },
   gallery: {
-    loungeHall: "/images/gallery/lounge-hall.jpg",
-    barCounter: "/images/gallery/bar-counter.jpg",
-    dogStatue: "/images/gallery/dog-statue.jpg",
-    mirrorWall: "/images/gallery/mirror-wall.jpg",
-    loungeGreen: "/images/gallery/lounge-green.jpg",
+    loungeBright: "/images/gallery/lounge-bright.jpg",
+    bulldogStatueHookah: "/images/gallery/bulldog-statue-hookah.jpg",
+    barCandles: "/images/gallery/bar-candles.jpg",
+    mirrorArches: "/images/gallery/mirror-arches.jpg",
+    bulldogStatueMain: "/images/gallery/bulldog-statue-main.jpg",
   },
   events: {
     soulSaturdayPoster: "/images/events/soul-saturday-poster.jpg",
