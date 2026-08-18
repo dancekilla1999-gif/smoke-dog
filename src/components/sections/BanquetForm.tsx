@@ -115,7 +115,7 @@ export function BanquetForm() {
         <SectionHeading
           eyebrow="Банкеты"
           title="Организуем ваш праздник"
-          intro="Дни рождения, корпоративы, свадьбы и частные вечеринки. Приватные зоны, персональное меню и полное сопровождение."
+          intro="Приватные зоны, персональное меню и полное сопровождение — от дня рождения до свадьбы."
           className="mb-12 lg:mb-16"
         />
 
@@ -123,8 +123,8 @@ export function BanquetForm() {
           <Reveal className="lg:col-span-4">
             <div className="space-y-6 text-bone/75">
               <p className="text-[15px] leading-relaxed">
-                Оставьте заявку — менеджер перезвонит, уточнит формат, количество
-                гостей и предложит зону и меню под ваш бюджет.
+                Оставьте заявку — мы с вами свяжемся и расскажем все подробности
+                и условия.
               </p>
               <div className="space-y-3 border-t border-white/10 pt-6">
                 <p className="text-[11px] uppercase tracking-eyebrow text-gold-soft">
@@ -144,6 +144,16 @@ export function BanquetForm() {
                 <li>· Индивидуальное меню и бар</li>
                 <li>· Декор, музыка, ведущий — по запросу</li>
               </ul>
+              <div className="space-y-3 border-t border-white/10 pt-6">
+                <p className="text-[11px] uppercase tracking-eyebrow text-gold-soft">
+                  Для больших событий — второй этаж SOUL
+                </p>
+                <ul className="space-y-2 text-sm text-bone/60">
+                  <li>· Банкетная рассадка — до 100 человек</li>
+                  <li>· Фуршет — до 200 человек</li>
+                  <li>· Отдельный бар, звук, свет и отдельный вход</li>
+                </ul>
+              </div>
             </div>
           </Reveal>
 

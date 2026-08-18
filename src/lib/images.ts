@@ -10,8 +10,10 @@
  * Folder map — see /public/images/README.md for the full guide:
  *   images/hero/    — homepage hero visual (1 photo, most important asset)
  *   images/gallery/ — venue photography reused across sections + the /gallery page
- *   images/events/  — event/afisha posters and videos
  *   images/brand/   — logo marks, OG share image, review QR code
+ *
+ * Event posters live directly in src/data/content.json's `events` array
+ * (each entry has its own `poster` field pointing into images/gallery/).
  */
 export const images = {
   hero: {
@@ -23,9 +25,6 @@ export const images = {
     barCandles: "/images/gallery/bar-candles.jpg",
     mirrorArches: "/images/gallery/mirror-arches.jpg",
     bulldogStatueMain: "/images/gallery/bulldog-statue-main.jpg",
-  },
-  events: {
-    soulSaturdayPoster: "/images/events/soul-saturday-poster.jpg",
   },
   brand: {
     logo: "/images/brand/logo.png",

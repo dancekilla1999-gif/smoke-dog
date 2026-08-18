@@ -57,16 +57,19 @@
   },
   "conceptStates": [
     {
-      "title": "Релакс",
-      "text": "Диваны, кальян, спокойный разговор."
+      "title": "Спокойный вечер",
+      "text": "Мягкие диваны, кальян, кухня и разговоры без спешки.",
+      "image": "/images/gallery/mirror-arches.jpg"
     },
     {
-      "title": "Вечеринка",
-      "text": "DJ по выходным, живой вокал, до утра."
+      "title": "Вечер в движении",
+      "text": "Музыка, DJ по выходным, кухня, бар и ночь до самого утра.",
+      "image": "/images/gallery/bar-candles.jpg"
     },
     {
       "title": "VIP",
-      "text": "Караоке, PS5, своя компания."
+      "text": "Отдельное пространство, караоке, PS5 и кальян для своей компании.",
+      "image": "/images/gallery/bulldog-statue-main.jpg"
     }
   ],
   "menu": [
@@ -163,22 +166,6 @@
     }
   ],
   "events": [
-    {
-      "title": "SOUL: Saturday",
-      "subtitle": "DJ Set: Greylee · Percussion show — у партнёров по двору",
-      "date": "15.08",
-      "weekday": "Суббота",
-      "time": "21:00",
-      "poster": "/images/events/soul-saturday-poster.jpg",
-      "video": "/videos/soul-saturday.mp4",
-      "lineup": [
-        "DJ Set — Greylee",
-        "Percussion show",
-        "SOUL, тот же двор — Холодильный пер., 3"
-      ],
-      "featured": true,
-      "reserveUrl": "https://soul.msk.ru/contacts#reserve"
-    },
     {
       "title": "DJ Night",
       "subtitle": "Топовые диджеи столицы",

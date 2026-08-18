@@ -2,13 +2,12 @@ import type { Metadata } from "next";
 import { About } from "@/components/sections/About";
 import { ConceptStates } from "@/components/sections/ConceptStates";
 import { Atmosphere } from "@/components/sections/Atmosphere";
-import { WhyUs } from "@/components/sections/WhyUs";
 import { site } from "@/lib/data";
 import { PageHero } from "@/components/shared/PageHero";
 
 export const metadata: Metadata = {
   title: "О нас",
-  description: `${site.name} — лаундж-бар и кальянная у метро Тульская в Москве, самый большой lounge бар в России. Концепция, атмосфера и философия вечера.`,
+  description: `${site.name} — ресторан, бар и кальянное пространство у метро Тульская в Москве. Авторская кухня, премиальные кальяны, музыка и атмосфера, в которой хочется задержаться.`,
   alternates: { canonical: "/about" },
 };
 
@@ -17,13 +16,12 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="О пространстве"
-        title="Где вечер меняет свой ритм"
-        subtitle="Smoke Dog — это самый большой лаундж-бар и кальянная в России. Сочетание сдержанной роскоши и современных технологий создают атмосферу, в которой время идёт иначе."
+        title="Место для вечеров со своим характером"
+        subtitle="Smoke Dog — это ресторан, бар и кальянное пространство в одном ритме. Авторская кухня, премиальные кальяны, музыка и атмосфера, в которой хочется задержаться. Тихий ужин, встреча с друзьями, вечер в VIP или ночь под DJ — здесь каждый вечер может быть особенным."
       />
       <About />
       <ConceptStates />
       <Atmosphere />
-      <WhyUs />
     </>
   );
 }
