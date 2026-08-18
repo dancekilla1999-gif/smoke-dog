@@ -4,19 +4,24 @@ import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { Expand } from "lucide-react";
 import { menu, menuCategories, type MenuCategory } from "@/lib/data";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { Reveal } from "@/components/shared/Reveal";
 import { Button } from "@/components/ui/button";
 import { Magnetic } from "@/components/shared/MagneticButton";
+import { Lightbox } from "@/components/shared/Lightbox";
 import { cn } from "@/lib/utils";
 
 type Filter = "Все" | MenuCategory;
 
 const filters: Filter[] = ["Все", ...menuCategories];
 
+const detailSlide = { src: "/images/gallery/bar-candles.jpg", alt: "Детали подачи Smoke Dog" };
+
 export function Menu() {
   const [active, setActive] = useState<Filter>("Все");
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   const items = useMemo(
     () => (active === "Все" ? menu : menu.filter((i) => i.category === active)),
@@ -106,21 +111,36 @@ export function Menu() {
         </motion.ul>
 
         <Reveal delay={0.15}>
-          <div className="relative mt-20 aspect-[21/9] overflow-hidden rounded-sm lg:aspect-[3/1]">
+          <button
+            type="button"
+            onClick={() => setLightboxOpen(true)}
+            aria-label="Открыть фото на весь экран"
+            className="group relative mt-20 block aspect-[21/9] w-full overflow-hidden rounded-sm lg:aspect-[3/1]"
+          >
             <Image
-              src="/images/gallery/mirror-wall.jpg"
-              alt="Детали подачи Smoke Dog"
+              src={detailSlide.src}
+              alt={detailSlide.alt}
               fill
               sizes="(max-width: 1024px) 100vw, 1400px"
-              className="object-cover transition-transform duration-1000 ease-out hover:scale-105"
+              className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-noir/80 via-noir/20 to-transparent" />
             <p className="absolute bottom-7 left-7 max-w-md text-pretty font-serif text-xl text-bone sm:text-2xl lg:bottom-10 lg:left-10">
               Каждая деталь — часть впечатления
             </p>
-          </div>
+            <span className="absolute right-4 top-4 flex h-10 w-10 translate-y-2 items-center justify-center rounded-full border border-gold/50 bg-noir/50 text-gold opacity-0 backdrop-blur-sm transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+              <Expand className="h-4 w-4" />
+            </span>
+          </button>
         </Reveal>
       </div>
+
+      <Lightbox
+        slides={[detailSlide]}
+        index={lightboxOpen ? 0 : null}
+        onClose={() => setLightboxOpen(false)}
+        onNavigate={() => {}}
+      />
     </section>
   );
 }

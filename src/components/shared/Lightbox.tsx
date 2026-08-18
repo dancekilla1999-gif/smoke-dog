@@ -66,27 +66,31 @@ export function Lightbox({ slides, index, onClose, onNavigate }: LightboxProps) 
             <X className="h-5 w-5" />
           </button>
 
-          <button
-            aria-label="Предыдущее"
-            onClick={(e) => {
-              e.stopPropagation();
-              prev();
-            }}
-            className="absolute left-3 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-bone transition hover:border-gold hover:text-gold sm:left-6"
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </button>
+          {slides.length > 1 && (
+            <>
+              <button
+                aria-label="Предыдущее"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  prev();
+                }}
+                className="absolute left-3 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-bone transition hover:border-gold hover:text-gold sm:left-6"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
 
-          <button
-            aria-label="Следующее"
-            onClick={(e) => {
-              e.stopPropagation();
-              next();
-            }}
-            className="absolute right-3 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-bone transition hover:border-gold hover:text-gold sm:right-6"
-          >
-            <ChevronRight className="h-5 w-5" />
-          </button>
+              <button
+                aria-label="Следующее"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  next();
+                }}
+                className="absolute right-3 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-bone transition hover:border-gold hover:text-gold sm:right-6"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
+            </>
+          )}
 
           <motion.div
             key={index}
@@ -107,9 +111,11 @@ export function Lightbox({ slides, index, onClose, onNavigate }: LightboxProps) 
             />
           </motion.div>
 
-          <p className="absolute bottom-6 left-1/2 -translate-x-1/2 text-xs tracking-wide2 text-ash">
-            {index + 1} / {slides.length}
-          </p>
+          {slides.length > 1 && (
+            <p className="absolute bottom-6 left-1/2 -translate-x-1/2 text-xs tracking-wide2 text-ash">
+              {index + 1} / {slides.length}
+            </p>
+          )}
         </motion.div>
       )}
     </AnimatePresence>

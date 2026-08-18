@@ -57,7 +57,7 @@ export function Events() {
                     alt={`${event.title} — ${event.subtitle}`}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover object-[center_20%] transition-transform duration-1000 ease-out group-hover:scale-[1.04]"
+                    className="object-cover object-[center_40%] transition-transform duration-1000 ease-out group-hover:scale-[1.04]"
                   />
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-noir from-0% via-noir/85 via-55% to-transparent" />

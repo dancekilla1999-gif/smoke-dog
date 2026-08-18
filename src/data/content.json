@@ -57,16 +57,19 @@
   },
   "conceptStates": [
     {
-      "title": "Релакс",
-      "text": "Диваны, кальян, спокойный разговор."
+      "title": "Спокойный вечер",
+      "text": "Мягкие диваны, кальян, кухня и разговоры без спешки.",
+      "image": "/images/gallery/mirror-arches.jpg"
     },
     {
-      "title": "Вечеринка",
-      "text": "DJ по выходным, живой вокал, до утра."
+      "title": "Вечер в движении",
+      "text": "Музыка, DJ по выходным, кухня, бар и ночь до самого утра.",
+      "image": "/images/gallery/bar-candles.jpg"
     },
     {
       "title": "VIP",
-      "text": "Караоке, PS5, своя компания."
+      "text": "Отдельное пространство, караоке, PS5 и кальян для своей компании.",
+      "image": "/images/gallery/bulldog-statue-main.jpg"
     }
   ],
   "menu": [
@@ -137,55 +140,39 @@
   ],
   "gallery": [
     {
-      "src": "/images/gallery/lounge-hall.jpg",
-      "alt": "Smoke Dog — основной зал с зеленью и длинным столом",
-      "category": "Атмосфера"
-    },
-    {
-      "src": "/images/gallery/bar-counter.jpg",
-      "alt": "Барная стойка Smoke Dog",
-      "category": "Бар"
-    },
-    {
-      "src": "/images/gallery/dog-statue.jpg",
-      "alt": "Статуя бульдога в зале",
+      "src": "/images/gallery/lounge-bright.jpg",
+      "alt": "Статуя бульдога — символ Smoke Dog — в основном зале",
       "category": "Детали"
     },
     {
-      "src": "/images/gallery/mirror-wall.jpg",
-      "alt": "Зелёные диваны и овальные подсвеченные зеркала",
+      "src": "/images/gallery/bulldog-statue-hookah.jpg",
+      "alt": "Зал Smoke Dog со свечами и подсвеченными арками",
+      "category": "Атмосфера"
+    },
+    {
+      "src": "/images/gallery/bar-candles.jpg",
+      "alt": "Статуя бульдога у барной стойки",
+      "category": "Детали"
+    },
+    {
+      "src": "/images/gallery/mirror-arches.jpg",
+      "alt": "Овальные подсвеченные зеркала и зелень",
       "category": "Интерьер"
     },
     {
-      "src": "/images/gallery/lounge-green.jpg",
-      "alt": "Lounge-зона у окна",
+      "src": "/images/gallery/bulldog-statue-main.jpg",
+      "alt": "Овальные зеркала и книжные полки в зале",
       "category": "Интерьер"
     }
   ],
   "events": [
-    {
-      "title": "SOUL: Saturday",
-      "subtitle": "DJ Set: Greylee · Percussion show — у партнёров по двору",
-      "date": "15.08",
-      "weekday": "Суббота",
-      "time": "21:00",
-      "poster": "/images/events/soul-saturday-poster.jpg",
-      "video": "/videos/soul-saturday.mp4",
-      "lineup": [
-        "DJ Set — Greylee",
-        "Percussion show",
-        "SOUL, тот же двор — Холодильный пер., 3"
-      ],
-      "featured": true,
-      "reserveUrl": "https://soul.msk.ru/contacts#reserve"
-    },
     {
       "title": "DJ Night",
       "subtitle": "Топовые диджеи столицы",
       "date": "Пт–Сб",
       "weekday": "Каждую неделю",
       "time": "23:00",
-      "poster": "/images/gallery/mirror-wall.jpg",
+      "poster": "/images/gallery/mirror-arches.jpg",
       "lineup": [
         "Resident DJ",
         "Guest artists"
@@ -198,7 +185,7 @@
       "date": "Пн–Чт",
       "weekday": "По будням",
       "time": "20:00",
-      "poster": "/images/gallery/lounge-hall.jpg",
+      "poster": "/images/gallery/bar-candles.jpg",
       "lineup": [
         "Live vocal"
       ],
@@ -210,7 +197,7 @@
       "date": "По запросу",
       "weekday": "Любой день",
       "time": "по договорённости",
-      "poster": "/images/gallery/lounge-green.jpg",
+      "poster": "/images/gallery/bulldog-statue-main.jpg",
       "lineup": [
         "До 270 гостей",
         "Полное сопровождение"

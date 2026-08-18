@@ -1,10 +1,8 @@
 "use client";
 
-import Image from "next/image";
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
 import { Reveal } from "@/components/shared/Reveal";
 import { SectionHeading } from "@/components/shared/SectionHeading";
+import { Carousel } from "@/components/shared/Carousel";
 
 const stats = [
   { value: "10–05", label: "ежедневно" },
@@ -12,31 +10,21 @@ const stats = [
   { value: "DJ", label: "пт · сб" },
 ];
 
-export function About() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-  const y = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
+// Плейсхолдер-набор для карусели — замените на новые фото, когда пришлёте:
+// просто поменяйте src на файлы в public/images/gallery/ (см. README там же).
+const aboutSlides = [
+  { src: "/images/gallery/lounge-bright.jpg", alt: "Статуя бульдога в основном зале Smoke Dog" },
+  { src: "/images/gallery/mirror-arches.jpg", alt: "Овальные подсвеченные зеркала и зелень" },
+  { src: "/images/gallery/bulldog-statue-main.jpg", alt: "Овальные зеркала и книжные полки в зале" },
+];
 
+export function About() {
   return (
     <section id="about" className="relative overflow-hidden py-24 sm:py-28 lg:py-36">
       <div className="container-wide relative z-10">
         <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
-          <div ref={ref} className="relative order-2 lg:order-1">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
-              <motion.div style={{ y }} className="absolute inset-[-8%]">
-                <Image
-                  src="/images/gallery/lounge-green.jpg"
-                  alt="Атмосфера Smoke Dog"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
-                />
-              </motion.div>
-              <div className="absolute inset-0 bg-gradient-to-t from-[#070708]/70 via-transparent to-transparent" />
-            </div>
+          <div className="relative order-2 lg:order-1">
+            <Carousel slides={aboutSlides} />
             <div className="pointer-events-none absolute -bottom-3 -right-3 -z-0 hidden h-full w-full border border-[#C4A574]/20 lg:block" />
           </div>
 
@@ -44,13 +32,13 @@ export function About() {
             <SectionHeading
               eyebrow="О пространстве"
               title="Характер без шума"
-              intro="Lounge & bar с кальяном, кухней и музыкой. Без пафоса — с настроением."
+              intro="Ресторан · бар · кальяны · музыка"
             />
 
             <Reveal delay={0.12}>
               <p className="mt-6 max-w-lg text-pretty text-[15px] leading-[1.75] text-[#9A9188] sm:text-base">
-                Свой вечер: тихий ужин, компания в VIP или ночь под DJ.
-                Бульдог на логотипе — не шутка. Характер такой же.
+                Пространство для тихого ужина, долгих разговоров и вечеров,
+                которые не хочется заканчивать.
               </p>
             </Reveal>
 

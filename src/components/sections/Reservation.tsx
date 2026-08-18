@@ -124,7 +124,7 @@ export function Reservation() {
       className="relative isolate overflow-hidden border-t border-white/[0.07] py-20 sm:py-24 lg:py-36"
     >
       <Image
-        src="/images/gallery/lounge-hall.jpg"
+        src="/images/gallery/bulldog-statue-main.jpg"
         alt=""
         aria-hidden
         fill

@@ -42,7 +42,7 @@ export function restaurantSchema() {
     url: baseUrl,
     telephone: site.phone,
     email: site.email,
-    image: [`${baseUrl}/images/brand/og.jpg`, `${baseUrl}/images/gallery/lounge-hall.jpg`],
+    image: [`${baseUrl}/images/brand/og.jpg`, `${baseUrl}/images/gallery/lounge-bright.jpg`],
     logo: `${baseUrl}/images/brand/logo.png`,
     priceRange: site.priceRange,
     servesCuisine: [...site.cuisine],
