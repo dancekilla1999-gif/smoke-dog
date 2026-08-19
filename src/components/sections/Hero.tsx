@@ -124,14 +124,14 @@ export function Hero() {
             className="mt-14 flex flex-wrap gap-x-10 gap-y-3 border-t border-white/[0.08] pt-8 text-[10px] uppercase tracking-[0.24em] text-[#8A8076]"
           >
             <span>Ежедневно 10:00–05:00</span>
-            <span>VIP · PS5 · Караоке</span>
-            <span>DJ · Пт–Сб</span>
+            <span>ВИП · PS5 · Караоке</span>
+            <span>Диджей · Пт–Сб</span>
           </motion.div>
         </div>
       </motion.div>
 
       <div className="absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 sm:flex">
-        <span className="text-[9px] uppercase tracking-[0.3em] text-white/30">scroll</span>
+        <span className="text-[9px] uppercase tracking-[0.3em] text-white/30">вниз</span>
         <span className="h-8 w-px overflow-hidden bg-white/15">
           <span className="block h-2 w-px animate-scroll-dot bg-[#C4A574]" />
         </span>

@@ -25,7 +25,7 @@ const perks = [
   },
   {
     title: "Персональный менеджер",
-    text: "Для VIP-уровня — отдельный контакт и помощь с организацией любых визитов.",
+    text: "Для ВИП-уровня — отдельный контакт и помощь с организацией любых визитов.",
   },
 ];
 
@@ -34,7 +34,7 @@ export default function LoyaltyPage() {
     <>
       <PageHero
         eyebrow="Лояльность"
-        title="Карта Smoke Dog"
+        title="Карта Смоук Дог"
         subtitle="Привилегии для тех, кто возвращается. Бонусы, приоритет и особые вечера."
       />
 
@@ -42,7 +42,7 @@ export default function LoyaltyPage() {
         <div className="container-wide">
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-[15px] leading-relaxed text-bone/75 sm:text-base">
-              Карта лояльности Smoke Dog открывается после первого визита. Условия
+              Карта лояльности Смоук Дог открывается после первого визита. Условия
               и уровень участия менеджер подскажет при бронировании или по
               телефону — всё просто и без лишней бюрократии.
             </p>
