@@ -12,6 +12,11 @@ const nextConfig = {
       { protocol: 'https', hostname: 'neo.tildacdn.com' },
     ],
   },
+  async rewrites() {
+    return [
+      { source: '/soul', destination: '/soul/index.html' },
+    ];
+  },
   async headers() {
     return [
       {

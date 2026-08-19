@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Soul — событийная площадка в центре Москвы</title>
+<meta name="description" content="Soul — зелёный «оазис» в центре столицы. Площадка для мероприятий 550 кв.м: свадьбы, банкеты, корпоративы, концерты, фуршеты и гала-ужины." />
+<meta name="color-scheme" content="dark" />
+<meta name="theme-color" content="#070b09" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#070b09;
+    --bg-2:#0a120d;
+    --panel: rgba(255,255,255,0.05);
+    --panel-strong: linear-gradient(165deg, rgba(24,38,29,0.82) 0%, rgba(10,16,12,0.92) 100%);
+    --border: rgba(255,255,255,0.10);
+    --emerald:#3E8464;
+    --emerald-soft:#8FC1A3;
+    --emerald-deep:#173425;
+    --emerald-glow: rgba(96,168,128,0.22);
+    --gold:#C9A227;
+    --gold-soft:#E4CE8F;
+    --bone:#EDEAE0;
+    --ash:#9AA79C;
+    --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --font-sans: 'Montserrat', system-ui, -apple-system, sans-serif;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--bone);
+    font-family:var(--font-sans);
+    font-weight:300;
+    line-height:1.5;
+    overflow-x:hidden;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(143,193,163,0.10), transparent 60%),
+      radial-gradient(ellipse 60% 45% at 100% 100%, rgba(201,162,39,0.06), transparent),
+      radial-gradient(ellipse 45% 35% at 0% 75%, rgba(96,168,128,0.07), transparent);
+  }
+  ::selection{ background: rgba(143,193,163,0.35); color:#f6faf5; }
+  img,svg{display:block; max-width:100%;}
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+
+  h1,h2,h3{ font-family:var(--font-serif); font-weight:400; letter-spacing:-0.01em; }
+
+  .eyebrow{
+    font-size:11px; text-transform:uppercase; letter-spacing:.32em;
+    color:var(--gold-soft); font-weight:500;
+  }
+
+  .grain::after{
+    content:"";
+    position:fixed; inset:0; z-index:50; pointer-events:none; opacity:.035; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ---------- layout / slides ---------- */
+  .slides{
+    height:100vh; height:100svh;
+    overflow-y:auto;
+    scroll-snap-type:y proximity;
+    scrollbar-width:thin; scrollbar-color: var(--emerald) transparent;
+  }
+  .slides::-webkit-scrollbar{ width:6px; }
+  .slides::-webkit-scrollbar-thumb{ background:var(--emerald-deep); border-radius:99px; }
+
+  .slide{
+    position:relative;
+    min-height:100vh; min-height:100svh;
+    scroll-snap-align:start;
+    display:flex; flex-direction:column; justify-content:center;
+    padding:clamp(88px,10vh,140px) 0 clamp(56px,7vh,88px);
+    border-bottom:1px solid rgba(255,255,255,0.06);
+  }
+
+  .wrap{
+    width:100%; max-width:1280px; margin:0 auto;
+    padding:0 clamp(20px,5vw,64px);
+  }
+
+  .slide-index{
+    position:absolute; top:28px; right:clamp(20px,5vw,64px);
+    font-family:var(--font-sans); font-size:11px; letter-spacing:.28em; color:var(--ash);
+  }
+
+  /* ---------- fixed chrome ---------- */
+  .brand{
+    position:fixed; top:26px; left:clamp(20px,5vw,64px); z-index:70;
+    font-family:var(--font-serif); font-size:22px; letter-spacing:.14em;
+    display:flex; align-items:baseline; gap:8px;
+  }
+  .brand b{ color:var(--gold-soft); font-weight:500; }
+  .brand span{ font-size:9px; letter-spacing:.3em; color:var(--ash); font-family:var(--font-sans); text-transform:uppercase; }
+
+  .dots{
+    position:fixed; right:28px; top:50%; transform:translateY(-50%); z-index:70;
+    display:flex; flex-direction:column; gap:16px;
+  }
+  .dots a{
+    width:9px; height:9px; border-radius:50%;
+    border:1px solid rgba(237,234,224,0.4);
+    transition:all .35s ease;
+  }
+  .dots a.active{ background:var(--gold-soft); border-color:var(--gold-soft); box-shadow:0 0 12px rgba(228,206,143,.6); transform:scale(1.25); }
+  @media (max-width:900px){ .dots{ display:none; } }
+
+  /* ---------- reveal animation ---------- */
+  .reveal{ opacity:0; transform:translateY(22px); transition:opacity .9s ease, transform .9s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+  .reveal.d1{ transition-delay:.08s; } .reveal.d2{ transition-delay:.16s; } .reveal.d3{ transition-delay:.24s; } .reveal.d4{ transition-delay:.32s; }
+
+  /* ---------- hairline / eyebrow row ---------- */
+  .kicker{ display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+  .kicker .line{ width:40px; height:1px; background:linear-gradient(90deg, var(--gold), transparent); }
+
+  /* ================= SLIDE 1 — HERO ================= */
+  #s1{ padding-top:0; border-bottom:none; }
+  .hero-bg{
+    position:absolute; inset:0; z-index:0; overflow:hidden;
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 8%, rgba(143,193,163,0.16), transparent 60%),
+      radial-gradient(ellipse 90% 70% at 50% 110%, rgba(23,52,37,0.9), transparent 60%),
+      linear-gradient(180deg,#050807 0%, #081310 45%, #050807 100%);
+  }
+  .hero-bg .vine{
+    position:absolute; opacity:.5;
+  }
+  .hero-bg .vine.left{ left:-40px; bottom:-20px; width:340px; }
+  .hero-bg .vine.right{ right:-40px; top:-30px; width:340px; transform:rotate(180deg); }
+  .chandelier{ position:absolute; left:50%; top:6%; transform:translateX(-50%); width:min(560px,70vw); opacity:.85; }
+  .hero-content{ position:relative; z-index:2; text-align:center; }
+  .hero-content h1{
+    font-size:clamp(34px,6vw,72px); line-height:1.08; margin:22px auto 18px; max-width:16em;
+    color:var(--bone);
+  }
+  .hero-content h1 em{ font-style:italic; color:var(--gold-soft); }
+  .hero-sub{ font-size:clamp(14px,1.6vw,19px); letter-spacing:.06em; color:var(--emerald-soft); font-weight:400; }
+  .hero-scroll{
+    position:absolute; bottom:34px; left:50%; transform:translateX(-50%); z-index:2;
+    display:flex; flex-direction:column; align-items:center; gap:10px; font-size:10px; letter-spacing:.3em; color:var(--ash); text-transform:uppercase;
+  }
+  .hero-scroll .stick{ width:1px; height:34px; background:linear-gradient(180deg, var(--gold-soft), transparent); position:relative; overflow:hidden; }
+  .hero-scroll .stick::after{ content:""; position:absolute; left:-1px; top:-34px; width:3px; height:14px; background:var(--gold-soft); filter: blur(.5px); animation: dropfall 1.8s ease-in-out infinite; }
+  @keyframes dropfall{ 0%{ transform:translateY(0); opacity:0;} 35%{opacity:1;} 100%{ transform:translateY(60px); opacity:0;} }
+
+  /* ================= SLIDE 2 — О МЕСТЕ ================= */
+  .about-grid{ display:grid; grid-template-columns: 1.05fr .95fr; gap:clamp(32px,5vw,72px); align-items:center; }
+  @media (max-width:900px){ .about-grid{ grid-template-columns:1fr; } }
+  .about-grid h2{ font-size:clamp(30px,4vw,48px); margin-bottom:22px; }
+  .about-grid p{ color:var(--ash); font-size:clamp(15px,1.5vw,18px); line-height:1.75; margin-bottom:18px; max-width:46ch; }
+  .about-grid p strong{ color:var(--bone); font-weight:500; }
+
+  .photo-pair{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .frame{
+    position:relative; aspect-ratio: 3/4; border-radius:2px; overflow:hidden;
+    border:1px solid var(--border);
+    box-shadow:0 30px 70px -35px rgba(0,0,0,.8);
+  }
+  .frame.wide{ aspect-ratio:16/11; }
+  .frame .art{ position:absolute; inset:0; }
+  .frame .cap{
+    position:absolute; left:14px; bottom:12px; z-index:2;
+    font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:rgba(237,234,224,.75);
+  }
+  .frame::before{ content:""; position:absolute; inset:0; z-index:1; background:linear-gradient(180deg, transparent 55%, rgba(0,0,0,.55) 100%); }
+
+  /* generated "photo" art variants */
+  .art-hall{ background:
+    radial-gradient(circle at 30% 20%, rgba(228,206,143,.35), transparent 40%),
+    radial-gradient(circle at 70% 15%, rgba(228,206,143,.22), transparent 35%),
+    linear-gradient(160deg, #16241b 0%, #0a130e 65%, #060a08 100%); }
+  .art-green{ background:
+    radial-gradient(circle at 20% 80%, rgba(143,193,163,.32), transparent 45%),
+    radial-gradient(circle at 80% 30%, rgba(62,132,100,.35), transparent 45%),
+    linear-gradient(160deg, #0c1c13 0%, #071008 70%); }
+  .art-bar{ background:
+    radial-gradient(ellipse at 50% 100%, rgba(201,162,39,.25), transparent 55%),
+    linear-gradient(160deg, #171410 0%, #0a0806 70%); }
+  .art-stage{ background:
+    radial-gradient(ellipse at 50% 0%, rgba(228,206,143,.3), transparent 55%),
+    linear-gradient(180deg, #0b0f0c 0%, #050706 100%); }
+  .art-hookah{ background:
+    radial-gradient(circle at 40% 40%, rgba(143,193,163,.3), transparent 45%),
+    radial-gradient(circle at 75% 70%, rgba(201,162,39,.22), transparent 45%),
+    linear-gradient(160deg, #10201a 0%, #070d0a 100%); }
+  .art-cocktail{ background:
+    radial-gradient(circle at 65% 30%, rgba(228,206,143,.3), transparent 45%),
+    radial-gradient(circle at 25% 75%, rgba(96,168,128,.25), transparent 45%),
+    linear-gradient(160deg, #131c15 0%, #070a08 100%); }
+  .art-food{ background:
+    radial-gradient(circle at 50% 50%, rgba(228,206,143,.28), transparent 50%),
+    linear-gradient(160deg, #171310 0%, #0a0806 100%); }
+
+  .leafmark{ position:absolute; inset:0; opacity:.5; }
+
+  /* ================= SLIDE 3 — ХАРАКТЕРИСТИКИ ================= */
+  .char-grid{ display:grid; grid-template-columns: .85fr 1.15fr; gap:clamp(32px,5vw,64px); align-items:start; }
+  @media (max-width:900px){ .char-grid{ grid-template-columns:1fr; } }
+  .spec-list{ display:grid; gap:14px; margin:18px 0 30px; }
+  .spec-item{ display:flex; gap:12px; align-items:flex-start; font-size:15px; color:var(--bone); }
+  .spec-item svg{ flex:0 0 auto; width:20px; height:20px; margin-top:2px; color:var(--emerald-soft); }
+  .spec-item b{ font-weight:500; }
+  .spec-item .muted{ color:var(--ash); }
+
+  .stat-row{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:26px; }
+  .stat-card{
+    background:var(--panel); border:1px solid var(--border); border-radius:4px; padding:18px 18px;
+  }
+  .stat-card .num{ font-family:var(--font-serif); font-size:clamp(26px,3vw,34px); color:var(--gold-soft); line-height:1; }
+  .stat-card .lbl{ font-size:12px; letter-spacing:.08em; color:var(--ash); margin-top:6px; }
+
+  .price-table{ width:100%; border-collapse:collapse; margin-bottom:28px; }
+  .price-table th{ text-align:left; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--ash); font-weight:500; padding-bottom:10px; border-bottom:1px solid var(--border); }
+  .price-table td{ padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.06); font-size:15px; }
+  .price-table td:last-child{ text-align:right; font-family:var(--font-serif); font-size:19px; color:var(--gold-soft); }
+
+  .tags{ display:flex; flex-wrap:wrap; gap:10px; }
+  .tag{
+    font-size:12.5px; letter-spacing:.03em; padding:8px 16px; border-radius:99px;
+    border:1px solid var(--border); background:rgba(255,255,255,0.03); color:var(--bone);
+  }
+
+  h3.sub{ font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--emerald-soft); margin:0 0 14px; font-family:var(--font-sans); font-weight:500; }
+
+  /* ================= SLIDE 4 — ВКЛЮЧЕНО / ТЕХ ================= */
+  .incl-grid{ display:grid; grid-template-columns: .8fr 1.2fr; gap:clamp(32px,5vw,64px); align-items:start; }
+  @media (max-width:900px){ .incl-grid{ grid-template-columns:1fr; } }
+  .check-list{ display:grid; gap:16px; margin-bottom:30px; }
+  .check-item{ display:flex; gap:12px; }
+  .check-item .ico{ flex:0 0 auto; width:22px; height:22px; border-radius:50%; border:1px solid var(--gold); display:flex; align-items:center; justify-content:center; }
+  .check-item .ico svg{ width:11px; height:11px; color:var(--gold-soft); }
+  .check-item div{ font-size:14.5px; color:var(--bone); line-height:1.5; }
+  .check-item span{ display:block; font-size:12px; color:var(--ash); margin-top:2px; }
+
+  .stage-box{
+    background:var(--panel-strong); border:1px solid var(--border); border-radius:4px; padding:20px 22px; margin-bottom:26px;
+    font-size:14.5px; color:var(--bone);
+  }
+  .stage-box b{ color:var(--gold-soft); font-weight:500; }
+
+  .tech-cards{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  @media (max-width:640px){ .tech-cards{ grid-template-columns:1fr; } }
+  .tech-card{ background:var(--panel); border:1px solid var(--border); border-radius:4px; padding:20px 20px 22px; }
+  .tech-card h4{ font-family:var(--font-serif); font-weight:500; font-size:19px; color:var(--gold-soft); margin-bottom:14px; }
+  .tech-card ul{ display:grid; gap:9px; }
+  .tech-card li{ font-size:13.5px; color:var(--ash); line-height:1.55; padding-left:14px; position:relative; }
+  .tech-card li::before{ content:"·"; position:absolute; left:0; color:var(--emerald-soft); }
+  .tech-card li b{ color:var(--bone); font-weight:500; }
+
+  /* ================= SLIDE 5 — ДОП ОПЦИИ ================= */
+  .opt-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  @media (max-width:900px){ .opt-grid{ grid-template-columns:1fr; } }
+  .opt-card{ border:1px solid var(--border); border-radius:4px; overflow:hidden; background:var(--panel); }
+  .opt-card .frame{ aspect-ratio:4/3; border:none; border-radius:0; }
+  .opt-card .body{ padding:20px 20px 24px; }
+  .opt-card h4{ font-family:var(--font-serif); font-size:22px; font-weight:500; margin-bottom:8px; }
+  .opt-card p{ font-size:13.5px; color:var(--ash); line-height:1.6; }
+
+  /* ================= SLIDE 6 — КОНТАКТЫ ================= */
+  #s6 .wrap{ text-align:center; }
+  .contact-wrap{ max-width:720px; margin:0 auto; }
+  .contact-wrap h2{ font-size:clamp(30px,4.5vw,52px); margin-bottom:16px; }
+  .contact-wrap > p{ color:var(--ash); font-size:15.5px; max-width:48ch; margin:0 auto 40px; }
+  .contact-fields{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-bottom:34px; text-align:left; }
+  @media (max-width:640px){ .contact-fields{ grid-template-columns:1fr; } }
+  .field{
+    border:1px dashed rgba(237,234,224,.28); border-radius:4px; padding:14px 16px;
+    background:rgba(255,255,255,0.02);
+  }
+  .field .k{ font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-soft); margin-bottom:6px; }
+  .field .v{ font-size:14.5px; color:var(--ash); font-style:italic; }
+  .cta{
+    display:inline-flex; align-items:center; gap:10px; padding:16px 38px; border-radius:99px;
+    background:linear-gradient(160deg,#a8c9b3 0%, #6fa98a 45%, #3e8464 100%);
+    color:#07130d; font-weight:500; font-size:14px; letter-spacing:.03em;
+    border:1px solid rgba(228,206,143,.4);
+    box-shadow:0 10px 34px -10px rgba(96,168,128,.55);
+  }
+  .foot-note{ margin-top:40px; font-size:11.5px; letter-spacing:.12em; color:var(--ash); text-transform:uppercase; }
+
+  @media (max-width:640px){
+    .slide{ padding-top:100px; }
+    .about-grid{ gap:26px; }
+  }
+</style>
+</head>
+<body class="grain">
+
+<div class="brand"><b>Soul</b><span>Event Space</span></div>
+
+<nav class="dots" aria-label="Навигация по слайдам">
+  <a href="#s1" class="active" data-i="1" aria-label="Слайд 1"></a>
+  <a href="#s2" data-i="2" aria-label="Слайд 2"></a>
+  <a href="#s3" data-i="3" aria-label="Слайд 3"></a>
+  <a href="#s4" data-i="4" aria-label="Слайд 4"></a>
+  <a href="#s5" data-i="5" aria-label="Слайд 5"></a>
+  <a href="#s6" data-i="6" aria-label="Слайд 6"></a>
+</nav>
+
+<div class="slides">
+
+  <!-- ============ SLIDE 1 — HERO ============ -->
+  <section class="slide" id="s1">
+    <div class="hero-bg" aria-hidden="true">
+      <!-- decorative chandelier line-art over an empty green hall -->
+      <svg class="chandelier" viewBox="0 0 400 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="200" y1="0" x2="200" y2="46" stroke="#E4CE8F" stroke-width="1" opacity=".55"/>
+        <ellipse cx="200" cy="52" rx="10" ry="6" stroke="#E4CE8F" stroke-width="1" opacity=".6"/>
+        <path d="M60 60 C60 140 140 150 200 150 C260 150 340 140 340 60" stroke="#8FC1A3" stroke-width="1" opacity=".45"/>
+        <path d="M95 60 C95 120 150 130 200 130 C250 130 305 120 305 60" stroke="#E4CE8F" stroke-width="1" opacity=".5"/>
+        <g opacity=".8">
+          <g><line x1="60" y1="60" x2="60" y2="92" stroke="#E4CE8F" stroke-width="1"/><circle cx="60" cy="98" r="5" fill="#E4CE8F" opacity=".55"/></g>
+          <g><line x1="130" y1="45" x2="130" y2="80" stroke="#E4CE8F" stroke-width="1"/><circle cx="130" cy="86" r="5" fill="#E4CE8F" opacity=".7"/></g>
+          <g><line x1="200" y1="52" x2="200" y2="96" stroke="#E4CE8F" stroke-width="1.2"/><circle cx="200" cy="103" r="6.5" fill="#E4CE8F" opacity=".85"/></g>
+          <g><line x1="270" y1="45" x2="270" y2="80" stroke="#E4CE8F" stroke-width="1"/><circle cx="270" cy="86" r="5" fill="#E4CE8F" opacity=".7"/></g>
+          <g><line x1="340" y1="60" x2="340" y2="92" stroke="#E4CE8F" stroke-width="1"/><circle cx="340" cy="98" r="5" fill="#E4CE8F" opacity=".55"/></g>
+        </g>
+        <ellipse cx="200" cy="230" rx="180" ry="18" fill="url(#glow)" opacity=".5"/>
+        <defs>
+          <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0%" stop-color="#E4CE8F" stop-opacity="0.35"/>
+            <stop offset="100%" stop-color="#E4CE8F" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+      </svg>
+      <svg class="vine left" viewBox="0 0 200 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 320 C40 260 10 220 40 170 C65 130 30 90 55 40" stroke="#3E8464" stroke-width="2" opacity=".6"/>
+        <ellipse cx="40" cy="170" rx="14" ry="8" fill="#3E8464" opacity=".4" transform="rotate(30 40 170)"/>
+        <ellipse cx="55" cy="90" rx="12" ry="7" fill="#8FC1A3" opacity=".4" transform="rotate(-20 55 90)"/>
+        <ellipse cx="20" cy="240" rx="12" ry="7" fill="#8FC1A3" opacity=".35" transform="rotate(50 20 240)"/>
+      </svg>
+      <svg class="vine right" viewBox="0 0 200 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 320 C40 260 10 220 40 170 C65 130 30 90 55 40" stroke="#3E8464" stroke-width="2" opacity=".6"/>
+        <ellipse cx="40" cy="170" rx="14" ry="8" fill="#3E8464" opacity=".4" transform="rotate(30 40 170)"/>
+        <ellipse cx="55" cy="90" rx="12" ry="7" fill="#8FC1A3" opacity=".4" transform="rotate(-20 55 90)"/>
+      </svg>
+    </div>
+
+    <div class="wrap hero-content reveal in">
+      <p class="eyebrow" style="justify-content:center; display:flex;">Событийная площадка</p>
+      <h1>Soul — <em>зелёный «оазис»</em><br>в центре столицы</h1>
+      <p class="hero-sub">Площадка для мероприятий</p>
+    </div>
+
+    <div class="hero-scroll"><span>Листайте</span><span class="stick"></span></div>
+  </section>
+
+  <!-- ============ SLIDE 2 — О МЕСТЕ ============ -->
+  <section class="slide" id="s2">
+    <span class="slide-index">02 / 06</span>
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="reveal">
+          <div class="kicker"><span class="line"></span><span class="eyebrow">О площадке</span></div>
+          <h2>Место с характером</h2>
+          <p>Место с характером, зелёный «оазис», где каждая деталь дышит стилем и уютом для воплощения самых смелых идей.</p>
+          <p><strong>Наши 550 кв.м.</strong> — идеальный холст для свадеб, шикарных банкетов, дней рождений, квартирников, деловых корпоративов, изысканных фуршетов, гала-ужинов, концертов и вечеринок до утра.</p>
+          <p>Авторская кухня придаст гастрономический тон, а зелень вокруг создаст ощущение свободы даже в центре столицы.</p>
+        </div>
+        <div class="photo-pair reveal d2">
+          <div class="frame">
+            <div class="art art-hall" role="img" aria-label="Фото: зал Soul"></div>
+            <span class="cap">Зал Soul</span>
+          </div>
+          <div class="frame" style="margin-top:34px;">
+            <div class="art art-green" role="img" aria-label="Фото: зелёная зона Soul"></div>
+            <span class="cap">Зелёная зона</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 3 — ХАРАКТЕРИСТИКИ ============ -->
+  <section class="slide" id="s3">
+    <span class="slide-index">03 / 06</span>
+    <div class="wrap">
+      <div class="char-grid">
+        <div class="reveal">
+          <div class="frame wide" style="margin-bottom:26px;">
+            <div class="art art-stage" role="img" aria-label="Фото: сцена и зал Soul"></div>
+            <span class="cap">Сцена и зал</span>
+          </div>
+          <h3 class="sub">Форматы мероприятий</h3>
+          <div class="tags">
+            <span class="tag">Корпоративы</span>
+            <span class="tag">Частные праздники</span>
+            <span class="tag">Квартирники</span>
+            <span class="tag">Концерты</span>
+            <span class="tag">Фуршеты</span>
+            <span class="tag">Свадьбы</span>
+            <span class="tag">Гала-ужины</span>
+            <span class="tag">Деловые мероприятия</span>
+          </div>
+        </div>
+
+        <div class="reveal d2">
+          <div class="kicker"><span class="line"></span><span class="eyebrow">Параметры</span></div>
+          <h2 style="font-size:clamp(28px,3.6vw,42px); margin-bottom:20px;">Характеристики</h2>
+
+          <div class="spec-list">
+            <div class="spec-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="1"/></svg><div><b>Общая площадь</b> — 550 кв.м</div></div>
+            <div class="spec-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 3h9a2 2 0 0 1 2 2v16H6z"/><circle cx="14" cy="12" r="1"/></svg><div><b>Отдельный вход</b></div></div>
+            <div class="spec-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="7" width="18" height="12" rx="1"/><path d="M7 7V5h10v2"/></svg><div><b>Парковка</b> на территории</div></div>
+            <div class="spec-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 10h18"/></svg><div><b>Площадь зала</b> — 435 кв.м</div></div>
+            <div class="spec-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 20V10a8 8 0 0 1 16 0v10"/></svg><div><b>Барная стойка</b>, 3 гримёрные комнаты</div></div>
+            <div class="spec-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="14" width="20" height="6" rx="1"/><path d="M6 14V7a6 6 0 0 1 12 0v7"/></svg><div><b>Сцена, экран</b>, профессиональный свет и звук</div></div>
+          </div>
+
+          <h3 class="sub">Вместимость</h3>
+          <div class="stat-row">
+            <div class="stat-card"><div class="num">150</div><div class="lbl">гостей — банкет</div></div>
+            <div class="stat-card"><div class="num">300</div><div class="lbl">гостей — фуршет</div></div>
+          </div>
+
+          <h3 class="sub">Стоимость на человека</h3>
+          <table class="price-table">
+            <tr><th>Формат</th><th style="text-align:right;">Цена</th></tr>
+            <tr><td>Кофе-брейк</td><td>от 1 500 ₽</td></tr>
+            <tr><td>Фуршет</td><td>от 6 000 ₽</td></tr>
+            <tr><td>Банкет</td><td>от 8 000 ₽</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 4 — ЧТО ВХОДИТ / ТЕХ ============ -->
+  <section class="slide" id="s4">
+    <span class="slide-index">04 / 06</span>
+    <div class="wrap">
+      <div class="incl-grid">
+        <div class="reveal">
+          <div class="kicker"><span class="line"></span><span class="eyebrow">Условия</span></div>
+          <h2 style="font-size:clamp(28px,3.6vw,42px); margin-bottom:24px;">Что входит<br>в стоимость</h2>
+          <div class="check-list">
+            <div class="check-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 12l5 5L20 6"/></svg></span><div>Аренда с 06:00 до 00:00<span>без ограничений по шуму</span></div></div>
+            <div class="check-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 12l5 5L20 6"/></svg></span><div>Координатор площадки</div></div>
+            <div class="check-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 12l5 5L20 6"/></svg></span><div>Клининг<span>до, во время и после мероприятия</span></div></div>
+            <div class="check-item"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 12l5 5L20 6"/></svg></span><div>Технический специалист и оборудование<span>подробности справа →</span></div></div>
+          </div>
+          <div class="stage-box">
+            <h3 class="sub" style="margin-bottom:8px;">Параметры сцены и экрана</h3>
+            Сцена <b>42×220×390 см</b>, экран <b>390×240 см</b> (16:9 FullHD).
+          </div>
+        </div>
+
+        <div class="reveal d2">
+          <div class="tech-cards">
+            <div class="tech-card">
+              <h4>Звук</h4>
+              <ul>
+                <li><b>Основная система:</b> линейный массив MXLAB Lira — 12 подвесных элементов (2 стороны по 6)</li>
+                <li><b>Сабвуферы:</b> MXLAB Blast 218 — 6 шт. (по 3 на сторону, без кардиоиды)</li>
+                <li><b>Напольные мониторы:</b> MX LAB JL12 — 4 шт.</li>
+                <li><b>Задержки (delay):</b> MX LAB JL10 — 4 шт. по залу</li>
+                <li><b>Пульт:</b> Behringer X32 + stage box S16</li>
+                <li><b>Радиомикрофоны:</b> Direct Power DP-220 Vocal — 2 шт.</li>
+                <li><b>Стойки:</b> 3 «журавля», 1 прямая хром (без автозахвата)</li>
+              </ul>
+            </div>
+            <div class="tech-card">
+              <h4>Свет</h4>
+              <ul>
+                <li><b>Wash Aura</b> — 4 шт.</li>
+                <li><b>Wash</b> — 2 шт.</li>
+                <li><b>Beam</b> — 8 шт.</li>
+                <li><b>Sunstrip</b> — 8 шт.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 5 — ДОП. ОПЦИИ ============ -->
+  <section class="slide" id="s5">
+    <span class="slide-index">05 / 06</span>
+    <div class="wrap">
+      <div class="kicker reveal"><span class="line"></span><span class="eyebrow">Дополнительно</span></div>
+      <h2 class="reveal" style="font-size:clamp(28px,3.8vw,44px); margin-bottom:30px;">Дополнительные опции</h2>
+      <div class="opt-grid">
+        <div class="opt-card reveal">
+          <div class="frame"><div class="art art-hookah" role="img" aria-label="Фото: кальяны"></div></div>
+          <div class="body"><h4>Кальяны</h4><p>Авторские кальянные миксы для гостей — атмосферный акцент к любому формату мероприятия.</p></div>
+        </div>
+        <div class="opt-card reveal d1">
+          <div class="frame"><div class="art art-cocktail" role="img" aria-label="Фото: коктейльный бар"></div></div>
+          <div class="body"><h4>Коктейльный бар</h4><p>Барная программа и коктейль-шоу под ваше мероприятие — от классики до авторских рецептов.</p></div>
+        </div>
+        <div class="opt-card reveal d2">
+          <div class="frame"><div class="art art-food" role="img" aria-label="Фото: блюда и кальяны"></div></div>
+          <div class="body"><h4>Фотозона блюд и кальянов</h4><p>Стильная подача и предметная съёмка блюд и кальянов для афиши и соцсетей.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 6 — КОНТАКТЫ ============ -->
+  <section class="slide" id="s6" style="border-bottom:none;">
+    <span class="slide-index">06 / 06</span>
+    <div class="wrap">
+      <div class="contact-wrap reveal">
+        <div class="kicker" style="justify-content:center;"><span class="line"></span><span class="eyebrow">Контакты</span></div>
+        <h2>Soul — зелёный «оазис»<br>в центре столицы</h2>
+        <p>Оставьте заявку — рассчитаем площадку под формат вашего мероприятия и подберём удобную дату.</p>
+
+        <div class="contact-fields">
+          <div class="field"><div class="k">Телефон</div><div class="v">— укажите номер —</div></div>
+          <div class="field"><div class="k">E-mail</div><div class="v">— укажите почту —</div></div>
+          <div class="field"><div class="k">Адрес</div><div class="v">— укажите адрес, Москва —</div></div>
+          <div class="field"><div class="k">Соцсети</div><div class="v">— Telegram / Instagram / WhatsApp —</div></div>
+        </div>
+
+        <a class="cta" href="#" onclick="return false;">
+          Оставить заявку
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+
+        <div class="foot-note">Soul Event Space · Москва</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  // reveal-on-scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.18 });
+  revealEls.forEach(el => io.observe(el));
+
+  // active nav dot
+  const dots = document.querySelectorAll('.dots a');
+  const slides = document.querySelectorAll('.slide');
+  const navIo = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const id = e.target.id;
+        dots.forEach(d => d.classList.toggle('active', d.getAttribute('href') === '#' + id));
+      }
+    });
+  }, { threshold: 0.5 });
+  slides.forEach(s => navIo.observe(s));
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    revealEls.forEach(el => el.classList.add('in'));
+  }
+</script>
+</body>
+</html>
