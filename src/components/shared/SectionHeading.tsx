@@ -26,13 +26,7 @@ export function SectionHeading({
       )}
     >
       {eyebrow && (
-        <div
-          className={cn(
-            "mb-4 flex items-center gap-3",
-            align === "center" && "justify-center"
-          )}
-        >
-          <span className="h-px w-8 bg-gold/60" />
+        <div className="mb-4">
           <Eyebrow align={align}>{eyebrow}</Eyebrow>
         </div>
       )}
