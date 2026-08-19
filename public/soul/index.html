@@ -124,24 +124,27 @@
   #s1{ padding-top:0; border-bottom:none; }
   .hero-bg{
     position:absolute; inset:0; z-index:0; overflow:hidden;
+    background:#050807;
+  }
+  .hero-bg img{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+    object-position:50% 42%;
+  }
+  .hero-bg::after{
+    content:"";
+    position:absolute; inset:0;
     background:
-      radial-gradient(ellipse 70% 60% at 50% 8%, rgba(143,193,163,0.16), transparent 60%),
-      radial-gradient(ellipse 90% 70% at 50% 110%, rgba(23,52,37,0.9), transparent 60%),
-      linear-gradient(180deg,#050807 0%, #081310 45%, #050807 100%);
+      radial-gradient(ellipse 75% 55% at 50% 0%, rgba(5,8,7,0.35), transparent 60%),
+      linear-gradient(180deg, rgba(5,8,7,0.55) 0%, rgba(5,8,7,0.25) 30%, rgba(5,8,7,0.55) 68%, rgba(5,8,7,0.96) 100%);
   }
-  .hero-bg .vine{
-    position:absolute; opacity:.5;
-  }
-  .hero-bg .vine.left{ left:-40px; bottom:-20px; width:340px; }
-  .hero-bg .vine.right{ right:-40px; top:-30px; width:340px; transform:rotate(180deg); }
-  .chandelier{ position:absolute; left:50%; top:6%; transform:translateX(-50%); width:min(560px,70vw); opacity:.85; }
   .hero-content{ position:relative; z-index:2; text-align:center; }
   .hero-content h1{
     font-size:clamp(34px,6vw,72px); line-height:1.08; margin:22px auto 18px; max-width:16em;
     color:var(--bone);
+    text-shadow:0 4px 40px rgba(0,0,0,.6);
   }
   .hero-content h1 em{ font-style:italic; color:var(--gold-soft); }
-  .hero-sub{ font-size:clamp(14px,1.6vw,19px); letter-spacing:.06em; color:var(--emerald-soft); font-weight:400; }
+  .hero-sub{ font-size:clamp(14px,1.6vw,19px); letter-spacing:.06em; color:var(--emerald-soft); font-weight:400; text-shadow:0 2px 20px rgba(0,0,0,.6); }
   .hero-scroll{
     position:absolute; bottom:34px; left:50%; transform:translateX(-50%); z-index:2;
     display:flex; flex-direction:column; align-items:center; gap:10px; font-size:10px; letter-spacing:.3em; color:var(--ash); text-transform:uppercase;
@@ -165,27 +168,14 @@
   }
   .frame.wide{ aspect-ratio:16/11; }
   .frame .art{ position:absolute; inset:0; }
+  .frame img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
   .frame .cap{
     position:absolute; left:14px; bottom:12px; z-index:2;
     font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:rgba(237,234,224,.75);
   }
   .frame::before{ content:""; position:absolute; inset:0; z-index:1; background:linear-gradient(180deg, transparent 55%, rgba(0,0,0,.55) 100%); }
 
-  /* generated "photo" art variants */
-  .art-hall{ background:
-    radial-gradient(circle at 30% 20%, rgba(228,206,143,.35), transparent 40%),
-    radial-gradient(circle at 70% 15%, rgba(228,206,143,.22), transparent 35%),
-    linear-gradient(160deg, #16241b 0%, #0a130e 65%, #060a08 100%); }
-  .art-green{ background:
-    radial-gradient(circle at 20% 80%, rgba(143,193,163,.32), transparent 45%),
-    radial-gradient(circle at 80% 30%, rgba(62,132,100,.35), transparent 45%),
-    linear-gradient(160deg, #0c1c13 0%, #071008 70%); }
-  .art-bar{ background:
-    radial-gradient(ellipse at 50% 100%, rgba(201,162,39,.25), transparent 55%),
-    linear-gradient(160deg, #171410 0%, #0a0806 70%); }
-  .art-stage{ background:
-    radial-gradient(ellipse at 50% 0%, rgba(228,206,143,.3), transparent 55%),
-    linear-gradient(180deg, #0b0f0c 0%, #050706 100%); }
+  /* generated "photo" art variants — placeholders for slide 5 (no real photos supplied for these yet) */
   .art-hookah{ background:
     radial-gradient(circle at 40% 40%, rgba(143,193,163,.3), transparent 45%),
     radial-gradient(circle at 75% 70%, rgba(201,162,39,.22), transparent 45%),
@@ -197,8 +187,6 @@
   .art-food{ background:
     radial-gradient(circle at 50% 50%, rgba(228,206,143,.28), transparent 50%),
     linear-gradient(160deg, #171310 0%, #0a0806 100%); }
-
-  .leafmark{ position:absolute; inset:0; opacity:.5; }
 
   /* ================= SLIDE 3 — ХАРАКТЕРИСТИКИ ================= */
   .char-grid{ display:grid; grid-template-columns: .85fr 1.15fr; gap:clamp(32px,5vw,64px); align-items:start; }
@@ -264,7 +252,16 @@
   .opt-card p{ font-size:13.5px; color:var(--ash); line-height:1.6; }
 
   /* ================= SLIDE 6 — КОНТАКТЫ ================= */
-  #s6 .wrap{ text-align:center; }
+  #s6{ overflow:hidden; }
+  .contact-bg{ position:absolute; inset:0; z-index:0; }
+  .contact-bg img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 30%; opacity:.4; }
+  .contact-bg::after{
+    content:""; position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 40%, rgba(7,11,9,0.55), rgba(5,8,7,0.94)),
+      linear-gradient(180deg, rgba(5,8,7,0.55) 0%, rgba(5,8,7,0.85) 100%);
+  }
+  #s6 .wrap{ position:relative; z-index:2; text-align:center; }
   .contact-wrap{ max-width:720px; margin:0 auto; }
   .contact-wrap h2{ font-size:clamp(30px,4.5vw,52px); margin-bottom:16px; }
   .contact-wrap > p{ color:var(--ash); font-size:15.5px; max-width:48ch; margin:0 auto 40px; }
@@ -309,38 +306,7 @@
   <!-- ============ SLIDE 1 — HERO ============ -->
   <section class="slide" id="s1">
     <div class="hero-bg" aria-hidden="true">
-      <!-- decorative chandelier line-art over an empty green hall -->
-      <svg class="chandelier" viewBox="0 0 400 260" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <line x1="200" y1="0" x2="200" y2="46" stroke="#E4CE8F" stroke-width="1" opacity=".55"/>
-        <ellipse cx="200" cy="52" rx="10" ry="6" stroke="#E4CE8F" stroke-width="1" opacity=".6"/>
-        <path d="M60 60 C60 140 140 150 200 150 C260 150 340 140 340 60" stroke="#8FC1A3" stroke-width="1" opacity=".45"/>
-        <path d="M95 60 C95 120 150 130 200 130 C250 130 305 120 305 60" stroke="#E4CE8F" stroke-width="1" opacity=".5"/>
-        <g opacity=".8">
-          <g><line x1="60" y1="60" x2="60" y2="92" stroke="#E4CE8F" stroke-width="1"/><circle cx="60" cy="98" r="5" fill="#E4CE8F" opacity=".55"/></g>
-          <g><line x1="130" y1="45" x2="130" y2="80" stroke="#E4CE8F" stroke-width="1"/><circle cx="130" cy="86" r="5" fill="#E4CE8F" opacity=".7"/></g>
-          <g><line x1="200" y1="52" x2="200" y2="96" stroke="#E4CE8F" stroke-width="1.2"/><circle cx="200" cy="103" r="6.5" fill="#E4CE8F" opacity=".85"/></g>
-          <g><line x1="270" y1="45" x2="270" y2="80" stroke="#E4CE8F" stroke-width="1"/><circle cx="270" cy="86" r="5" fill="#E4CE8F" opacity=".7"/></g>
-          <g><line x1="340" y1="60" x2="340" y2="92" stroke="#E4CE8F" stroke-width="1"/><circle cx="340" cy="98" r="5" fill="#E4CE8F" opacity=".55"/></g>
-        </g>
-        <ellipse cx="200" cy="230" rx="180" ry="18" fill="url(#glow)" opacity=".5"/>
-        <defs>
-          <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
-            <stop offset="0%" stop-color="#E4CE8F" stop-opacity="0.35"/>
-            <stop offset="100%" stop-color="#E4CE8F" stop-opacity="0"/>
-          </radialGradient>
-        </defs>
-      </svg>
-      <svg class="vine left" viewBox="0 0 200 320" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M10 320 C40 260 10 220 40 170 C65 130 30 90 55 40" stroke="#3E8464" stroke-width="2" opacity=".6"/>
-        <ellipse cx="40" cy="170" rx="14" ry="8" fill="#3E8464" opacity=".4" transform="rotate(30 40 170)"/>
-        <ellipse cx="55" cy="90" rx="12" ry="7" fill="#8FC1A3" opacity=".4" transform="rotate(-20 55 90)"/>
-        <ellipse cx="20" cy="240" rx="12" ry="7" fill="#8FC1A3" opacity=".35" transform="rotate(50 20 240)"/>
-      </svg>
-      <svg class="vine right" viewBox="0 0 200 320" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M10 320 C40 260 10 220 40 170 C65 130 30 90 55 40" stroke="#3E8464" stroke-width="2" opacity=".6"/>
-        <ellipse cx="40" cy="170" rx="14" ry="8" fill="#3E8464" opacity=".4" transform="rotate(30 40 170)"/>
-        <ellipse cx="55" cy="90" rx="12" ry="7" fill="#8FC1A3" opacity=".4" transform="rotate(-20 55 90)"/>
-      </svg>
+      <img src="images/hero-chandelier.jpg" alt="" />
     </div>
 
     <div class="wrap hero-content reveal in">
@@ -366,11 +332,11 @@
         </div>
         <div class="photo-pair reveal d2">
           <div class="frame">
-            <div class="art art-hall" role="img" aria-label="Фото: зал Soul"></div>
+            <img src="images/hall-wide.jpg" alt="Зал Soul с люстрами и зеленью" loading="lazy" />
             <span class="cap">Зал Soul</span>
           </div>
           <div class="frame" style="margin-top:34px;">
-            <div class="art art-green" role="img" aria-label="Фото: зелёная зона Soul"></div>
+            <img src="images/chandelier-green.jpg" alt="Люстра, увитая зеленью, над барной стойкой Soul" loading="lazy" />
             <span class="cap">Зелёная зона</span>
           </div>
         </div>
@@ -385,8 +351,8 @@
       <div class="char-grid">
         <div class="reveal">
           <div class="frame wide" style="margin-bottom:26px;">
-            <div class="art art-stage" role="img" aria-label="Фото: сцена и зал Soul"></div>
-            <span class="cap">Сцена и зал</span>
+            <img src="images/hall-bar.jpg" alt="Зал и барная стойка Soul" loading="lazy" />
+            <span class="cap">Зал и барная стойка</span>
           </div>
           <h3 class="sub">Форматы мероприятий</h3>
           <div class="tags">
@@ -506,6 +472,9 @@
 
   <!-- ============ SLIDE 6 — КОНТАКТЫ ============ -->
   <section class="slide" id="s6" style="border-bottom:none;">
+    <div class="contact-bg" aria-hidden="true">
+      <img src="images/chandelier-lightfloor.jpg" alt="" loading="lazy" />
+    </div>
     <span class="slide-index">06 / 06</span>
     <div class="wrap">
       <div class="contact-wrap reveal">
