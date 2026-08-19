@@ -22,8 +22,7 @@ export function Atmosphere() {
 
       <div className="container-wide relative z-10 flex min-h-[70vh] items-center py-24">
         <div className="max-w-xl">
-          <div className="mb-5 flex items-center gap-3">
-            <span className="h-px w-10 bg-[#C4A574]/50" />
+          <div className="mb-5">
             <Eyebrow>Атмосфера</Eyebrow>
           </div>
 
