@@ -17,7 +17,7 @@ type Filter = "Все" | MenuCategory;
 
 const filters: Filter[] = ["Все", ...menuCategories];
 
-const detailSlide = { src: "/images/gallery/bar-candles.jpg", alt: "Детали подачи Smoke Dog" };
+const detailSlide = { src: "/images/gallery/bar-candles.jpg", alt: "Детали подачи Смоук Дог" };
 
 export function Menu() {
   const [active, setActive] = useState<Filter>("Все");

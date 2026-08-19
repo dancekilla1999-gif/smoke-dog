@@ -6,14 +6,14 @@ import { Carousel } from "@/components/shared/Carousel";
 
 const stats = [
   { value: "10–05", label: "ежедневно" },
-  { value: "VIP", label: "караоке · PS5" },
-  { value: "DJ", label: "пт · сб" },
+  { value: "ВИП", label: "караоке · PS5" },
+  { value: "Диджей", label: "пт · сб" },
 ];
 
 // Плейсхолдер-набор для карусели — замените на новые фото, когда пришлёте:
 // просто поменяйте src на файлы в public/images/gallery/ (см. README там же).
 const aboutSlides = [
-  { src: "/images/gallery/lounge-bright.jpg", alt: "Статуя бульдога в основном зале Smoke Dog" },
+  { src: "/images/gallery/lounge-bright.jpg", alt: "Статуя бульдога в основном зале Смоук Дог" },
   { src: "/images/gallery/mirror-arches.jpg", alt: "Овальные подсвеченные зеркала и зелень" },
   { src: "/images/gallery/bulldog-statue-main.jpg", alt: "Овальные зеркала и книжные полки в зале" },
 ];

@@ -139,7 +139,7 @@ export function Reservation() {
             <SectionHeading
               eyebrow="Бронирование"
               title="Ждём вас"
-              intro="Напишите имя и телефон — перезвоним и закрепим стол или VIP."
+              intro="Напишите имя и телефон — перезвоним и закрепим стол или ВИП."
             />
 
             <Reveal delay={0.15}>

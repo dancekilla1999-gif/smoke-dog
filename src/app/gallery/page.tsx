@@ -14,8 +14,8 @@ export default function GalleryPage() {
     <>
       <PageHero
         eyebrow="Галерея"
-        title="Фотоархив Smoke Dog"
-        subtitle="Свет, зелень, хрусталь и лица гостей — Smoke Dog в кадрах одного вечера."
+        title="Фотоархив Смоук Дог"
+        subtitle="Свет, зелень, хрусталь и лица гостей — Смоук Дог в кадрах одного вечера."
       />
       <Gallery />
     </>

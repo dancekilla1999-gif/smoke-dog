@@ -30,13 +30,13 @@ export const conceptStates = content.conceptStates;
 export const advantages = [
   {
     icon: "Sparkles",
-    title: "Lounge",
+    title: "Лаундж",
     text: "Мягкий свет, диваны, свой темп вечера.",
   },
   {
     icon: "Music4",
     title: "Музыка",
-    text: "DJ по пятницам и субботам, вокал.",
+    text: "Диджей по пятницам и субботам, вокал.",
   },
   {
     icon: "UtensilsCrossed",
@@ -50,7 +50,7 @@ export const advantages = [
   },
   {
     icon: "Crown",
-    title: "VIP",
+    title: "ВИП",
     text: "Караоке, PS5, приватные зоны.",
   },
   {
