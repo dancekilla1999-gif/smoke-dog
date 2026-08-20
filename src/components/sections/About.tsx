@@ -16,6 +16,8 @@ const aboutSlides = [
   { src: "/images/gallery/lounge-bright.jpg", alt: "Статуя бульдога в основном зале Смоук Дог" },
   { src: "/images/gallery/mirror-arches.jpg", alt: "Овальные подсвеченные зеркала и зелень" },
   { src: "/images/gallery/bulldog-statue-main.jpg", alt: "Овальные зеркала и книжные полки в зале" },
+  { src: "/images/gallery/bar-candles.jpg", alt: "Барная стойка при свечах" },
+  { src: "/images/gallery/bulldog-statue-hookah.jpg", alt: "Зал Смоук Дог со свечами и подсвеченными арками" },
 ];
 
 export function About() {

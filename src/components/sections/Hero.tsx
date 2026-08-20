@@ -1,16 +1,14 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { site } from "@/lib/data";
 import { Button } from "@/components/ui/button";
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [videoReady, setVideoReady] = useState(false);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -36,21 +34,9 @@ export function Hero() {
     >
       <motion.div style={{ y }} className="absolute inset-0 z-0">
         <div className="absolute inset-0">
-          <Image
-            src="/images/hero/hero-main.jpg"
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className={`object-cover object-center transition-opacity duration-1000 ${
-              videoReady ? "opacity-0" : "opacity-100"
-            }`}
-          />
           <video
             ref={videoRef}
-            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${
-              videoReady ? "opacity-100" : "opacity-0"
-            }`}
+            className="absolute inset-0 h-full w-full object-cover"
             src="/videos/hero-ambient.mp4"
             poster="/images/hero/hero-main.jpg"
             muted
@@ -58,8 +44,6 @@ export function Hero() {
             playsInline
             autoPlay
             preload="auto"
-            onCanPlay={() => setVideoReady(true)}
-            onPlaying={() => setVideoReady(true)}
             aria-hidden
           />
         </div>
@@ -85,7 +69,10 @@ export function Hero() {
             transition={{ duration: 0.85, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
             className="font-serif text-[clamp(2.75rem,8vw,5.5rem)] font-light leading-[0.95] tracking-[-0.03em] text-[#F3EEE6]"
           >
-            Smoke Dog
+            Смоук Дог
+            <span className="mt-2 block text-[11px] font-sans uppercase tracking-[0.4em] text-[#C4A574]/70">
+              Smoke Dog
+            </span>
           </motion.h1>
 
           <motion.p
