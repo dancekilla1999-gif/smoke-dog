@@ -33,12 +33,11 @@ export function Hero() {
       className="relative flex min-h-[100svh] items-end overflow-hidden pb-20 pt-28 sm:pb-24 sm:pt-32 lg:items-center lg:pb-0 lg:pt-0"
     >
       <motion.div style={{ y }} className="absolute inset-0 z-0">
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-[#070708]">
           <video
             ref={videoRef}
             className="absolute inset-0 h-full w-full object-cover"
             src="/videos/hero-ambient.mp4"
-            poster="/images/hero/hero-main.jpg"
             muted
             loop
             playsInline
