@@ -635,6 +635,21 @@
       "src": "/images/gallery/bulldog-statue-main.jpg",
       "alt": "Овальные зеркала и книжные полки в зале",
       "category": "Интерьер"
+    },
+    {
+      "src": "/images/menu/pasta-mushroom.jpg",
+      "alt": "Паппарделле с грибным соусом — кухня Смоук Дог",
+      "category": "Кухня"
+    },
+    {
+      "src": "/images/menu/salad-greek.jpg",
+      "alt": "Греческий салат с фетой и овощами",
+      "category": "Кухня"
+    },
+    {
+      "src": "/images/menu/dessert-fondant.jpg",
+      "alt": "Шоколадный фондан с мороженым и ягодами",
+      "category": "Кухня"
     }
   ],
   "events": [
