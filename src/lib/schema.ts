@@ -74,10 +74,9 @@ export function restaurantSchema() {
     amenityFeature: [
       { "@type": "LocationFeatureSpecification", name: "Кальянная зона", value: true },
       { "@type": "LocationFeatureSpecification", name: "Лаундж-зона", value: true },
-      { "@type": "LocationFeatureSpecification", name: "Живая музыка", value: true },
       { "@type": "LocationFeatureSpecification", name: "Диджей-сеты", value: true },
       { "@type": "LocationFeatureSpecification", name: "ВИП-зоны", value: true },
-      { "@type": "LocationFeatureSpecification", name: "Иммерсивные шоу", value: true },
+      { "@type": "LocationFeatureSpecification", name: "Караоке", value: true },
     ],
     sameAs: [site.social.instagram, site.social.telegram, site.social.whatsapp],
     hasMenu: {
