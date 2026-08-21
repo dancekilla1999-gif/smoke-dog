@@ -5,7 +5,7 @@ import { PageHero } from "@/components/shared/PageHero";
 
 export const metadata: Metadata = {
   title: "Афиша",
-  description: `Афиша ${site.name}: живая музыка, диджей-сеты и иммерсивные шоу каждую пятницу и субботу.`,
+  description: `Афиша ${site.name}: диджей-вечера по пятницам и субботам, спокойный лаундж с кальяном и караоке в будни, банкеты по запросу.`,
   alternates: { canonical: "/events" },
 };
 
