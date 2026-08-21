@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Magnetic } from "@/components/shared/MagneticButton";
+import { ConsentCheckbox } from "@/components/shared/ConsentCheckbox";
 import { reachGoal } from "@/components/providers/YandexMetrika";
 
 const guestOptions = [
@@ -259,6 +260,7 @@ export function BanquetForm() {
                 />
               </div>
               <div className="sm:col-span-2 pt-2">
+                <ConsentCheckbox name="consent" className="mb-5" />
                 <Magnetic>
                   <Button type="submit" size="lg" variant="gold" disabled={loading} className="w-full sm:w-auto">
                     {loading ? (

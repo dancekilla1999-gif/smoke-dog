@@ -35,7 +35,7 @@ export function Menu() {
           <SectionHeading
             eyebrow="Кухня"
             title="Гастрономия как часть впечатления"
-            intro="Авторские сочетания, продукты сезона и подача, в которой важна каждая деталь. Ниже — избранные позиции; полная карта ждёт вас за столом."
+            intro="Авторские сочетания, продукты сезона и подача, в которой важна каждая деталь."
           />
           <Reveal direction="left" delay={0.15}>
             <Magnetic strength={0.3}>
@@ -91,14 +91,19 @@ export function Menu() {
                     aria-hidden
                     className="mb-1 hidden h-px flex-1 bg-white/10 sm:block"
                   />
-                  <span className="shrink-0 font-sans text-sm tracking-wide2 text-gold">
+                  <span className="shrink-0 whitespace-nowrap font-sans text-sm tracking-wide2 text-gold">
+                    {item.weight && (
+                      <span className="mr-2 text-ash/60">{item.weight}</span>
+                    )}
                     {item.price}
                   </span>
                 </div>
 
-                <p className="mt-3 max-w-lg text-pretty text-sm leading-relaxed text-ash">
-                  {item.description}
-                </p>
+                {item.description && (
+                  <p className="mt-3 max-w-lg text-pretty text-sm leading-relaxed text-ash">
+                    {item.description}
+                  </p>
+                )}
 
                 {item.tag && (
                   <span className="mt-4 inline-block border border-gold/35 px-3 py-1 text-[10px] uppercase tracking-eyebrow text-gold/90">

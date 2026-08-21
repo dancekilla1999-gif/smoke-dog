@@ -12,6 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Magnetic } from "@/components/shared/MagneticButton";
+import { ConsentCheckbox } from "@/components/shared/ConsentCheckbox";
 import { reachGoal } from "@/components/providers/YandexMetrika";
 
 const guestOptions = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10+"];
@@ -274,10 +275,7 @@ export function Reservation() {
               </div>
 
               <div className="mt-10 flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:justify-between">
-                <p className="max-w-xs text-xs leading-relaxed text-ash/80">
-                  Нажимая кнопку, вы соглашаетесь с обработкой персональных
-                  данных.
-                </p>
+                <ConsentCheckbox name="consent" className="max-w-xs" />
 
                 <Magnetic strength={0.3}>
                   <Button
