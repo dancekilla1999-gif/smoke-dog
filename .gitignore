@@ -19,3 +19,6 @@ next-env.d.ts
 node_modules/
 .next/
 .env*.local
+
+# снапшот Redis, если сервер запускали из этой папки
+dump.rdb
