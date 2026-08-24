@@ -38,7 +38,7 @@ export function About() {
             />
 
             <Reveal delay={0.12}>
-              <p className="mt-6 max-w-lg text-pretty text-[15px] leading-[1.75] text-[#9A9188] sm:text-base">
+              <p className="mt-6 max-w-lg text-pretty text-[16px] leading-[1.75] text-ash sm:text-base">
                 Пространство для тихого ужина, долгих разговоров и вечеров,
                 которые не хочется заканчивать.
               </p>
@@ -48,10 +48,10 @@ export function About() {
               <div className="mt-12 grid grid-cols-3 gap-4 border-t border-white/[0.07] pt-9">
                 {stats.map((s) => (
                   <div key={s.label}>
-                    <div className="font-serif text-2xl text-[#C4A574] sm:text-3xl lg:text-4xl">
+                    <div className="font-serif text-2xl text-gold-soft sm:text-3xl lg:text-4xl">
                       {s.value}
                     </div>
-                    <div className="mt-2 text-[10px] uppercase tracking-[0.2em] text-[#7A736C]">
+                    <div className="mt-2 text-[12px] uppercase tracking-[0.2em] text-ash">
                       {s.label}
                     </div>
                   </div>

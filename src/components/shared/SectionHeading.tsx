@@ -38,7 +38,7 @@ export function SectionHeading({
       {intro && (
         <p
           className={cn(
-            "mt-5 max-w-lg text-pretty text-[14px] leading-[1.75] text-ash sm:text-[15px]",
+            "mt-5 max-w-lg text-pretty text-[15px] leading-[1.75] text-ash sm:text-[16px]",
             align === "center" && "mx-auto"
           )}
         >

@@ -79,7 +79,7 @@ export function Carousel({ slides, className, intervalMs = 5000 }: CarouselProps
             type="button"
             aria-label="Предыдущее фото"
             onClick={() => go(index - 1)}
-            className="absolute left-3 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-noir/50 text-bone/80 opacity-0 backdrop-blur-sm transition-all duration-300 hover:border-gold hover:text-gold group-hover/carousel:opacity-100 focus-visible:opacity-100"
+            className="absolute left-3 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-noir/50 text-bone opacity-0 backdrop-blur-sm transition-all duration-300 hover:border-gold hover:text-gold group-hover/carousel:opacity-100 focus-visible:opacity-100"
           >
             <ChevronLeft className="h-4 w-4" />
           </button>
@@ -87,7 +87,7 @@ export function Carousel({ slides, className, intervalMs = 5000 }: CarouselProps
             type="button"
             aria-label="Следующее фото"
             onClick={() => go(index + 1)}
-            className="absolute right-3 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-noir/50 text-bone/80 opacity-0 backdrop-blur-sm transition-all duration-300 hover:border-gold hover:text-gold group-hover/carousel:opacity-100 focus-visible:opacity-100"
+            className="absolute right-3 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-noir/50 text-bone opacity-0 backdrop-blur-sm transition-all duration-300 hover:border-gold hover:text-gold group-hover/carousel:opacity-100 focus-visible:opacity-100"
           >
             <ChevronRight className="h-4 w-4" />
           </button>

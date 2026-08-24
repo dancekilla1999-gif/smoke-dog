@@ -47,7 +47,7 @@ export function restaurantSchema() {
     priceRange: site.priceRange,
     servesCuisine: [...site.cuisine],
     currenciesAccepted: "RUB",
-    paymentAccepted: "Наличные, Банковские карты",
+    paymentAccepted: "Наличные, банковские карты",
     address: postalAddress,
     geo,
     hasMap: `https://yandex.ru/maps/?text=${encodeURIComponent(

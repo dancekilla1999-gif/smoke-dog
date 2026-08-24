@@ -33,7 +33,7 @@ export function Faq() {
                 </a>
                 <Link
                   href="/contacts#reserve"
-                  className="inline-block text-[13px] uppercase tracking-wide2 text-ash transition-colors hover:text-gold"
+                  className="inline-block text-[14px] uppercase tracking-wide2 text-ash transition-colors hover:text-gold"
                 >
                   Или забронируйте онлайн →
                 </Link>

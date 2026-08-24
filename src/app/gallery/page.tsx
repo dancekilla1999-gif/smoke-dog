@@ -5,7 +5,7 @@ import { PageHero } from "@/components/shared/PageHero";
 
 export const metadata: Metadata = {
   title: "Галерея",
-  description: `Галерея ${site.name}: свет, зелень, хрусталь и лица гостей — пространство в кадрах одного вечера.`,
+  description: `Галерея ${site.name}: свет, свечи, подсвеченные арки и лица гостей — пространство в кадрах одного вечера.`,
   alternates: { canonical: "/gallery" },
 };
 
@@ -15,7 +15,7 @@ export default function GalleryPage() {
       <PageHero
         eyebrow="Галерея"
         title="Фотоархив Смоук Дог"
-        subtitle="Свет, зелень, хрусталь и лица гостей — Смоук Дог в кадрах одного вечера."
+        subtitle="Свет, свечи, подсвеченные арки и лица гостей — Смоук Дог в кадрах одного вечера."
       />
       <Gallery />
     </>

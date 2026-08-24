@@ -57,7 +57,7 @@ export function Menu() {
                 onClick={() => setActive(f)}
                 aria-pressed={active === f}
                 className={cn(
-                  "relative pb-1 text-[13px] uppercase tracking-wide2 transition-colors duration-300",
+                  "relative pb-1 text-[14px] uppercase tracking-wide2 transition-colors duration-300",
                   active === f ? "text-gold" : "text-ash hover:text-bone"
                 )}
               >
@@ -96,7 +96,7 @@ export function Menu() {
                   />
                   <span className="shrink-0 whitespace-nowrap font-sans text-sm tracking-wide2 text-gold">
                     {item.weight && (
-                      <span className="mr-2 text-ash/60">{item.weight}</span>
+                      <span className="mr-2 text-ash">{item.weight}</span>
                     )}
                     {item.price}
                   </span>
@@ -109,7 +109,7 @@ export function Menu() {
                 )}
 
                 {item.tag && (
-                  <span className="mt-4 inline-block border border-gold/35 px-3 py-1 text-[10px] uppercase tracking-eyebrow text-gold/90">
+                  <span className="mt-4 inline-block border border-gold/35 px-3 py-1 text-[12px] uppercase tracking-eyebrow text-gold">
                     {item.tag}
                   </span>
                 )}

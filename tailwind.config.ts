@@ -21,13 +21,13 @@ const config: Config = {
           muted: "#5C554C",
         },
         gold: {
-          DEFAULT: "#A67C52",
-          soft: "#C4A574",
+          DEFAULT: "#C09268",
+          soft: "#D3B685",
           deep: "#7A5A38",
           glow: "rgba(166,124,82,0.25)",
         },
         bone: "#EDE6DC",
-        ash: "#9A9288",
+        ash: "#B5AEA3",
         glass: {
           DEFAULT: "rgba(255,255,255,0.06)",
           border: "rgba(255,255,255,0.12)",
@@ -40,6 +40,14 @@ const config: Config = {
           deep: "#2A2724",
           glow: "rgba(166,124,82,0.2)",
         },
+      },
+      fontSize: {
+        // Шкала поднята на шаг ради читаемости: базовые 12/14/16 px в тёмной
+        // теме с тонким шрифтом мелковаты для возрастного зрения.
+        xs: ["0.8125rem", { lineHeight: "1.5" }],     // 13px
+        sm: ["0.9375rem", { lineHeight: "1.65" }],    // 15px
+        base: ["1.0625rem", { lineHeight: "1.75" }],  // 17px
+        lg: ["1.1875rem", { lineHeight: "1.7" }],     // 19px
       },
       fontFamily: {
         serif: ["var(--font-cormorant)", "Cormorant Garamond", "Georgia", "serif"],

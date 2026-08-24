@@ -17,7 +17,7 @@ export default function EventsPage() {
         title="Вечера, которые идут по расписанию"
         subtitle="Каждую пятницу и субботу: особое настроение."
       />
-      <Events />
+      <Events showHeading={false} />
     </>
   );
 }

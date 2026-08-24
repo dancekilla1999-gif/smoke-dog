@@ -70,8 +70,8 @@ export function Navbar() {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "group relative text-[12px] uppercase tracking-wide2 transition-colors duration-300",
-                    active ? "text-gold" : "text-bone/80 hover:text-bone drop-shadow-sm"
+                    "group relative text-[13px] uppercase tracking-wide2 transition-colors duration-300",
+                    active ? "text-gold" : "text-bone hover:text-bone drop-shadow-sm"
                   )}
                 >
                   {item.label}
@@ -89,7 +89,7 @@ export function Navbar() {
           <div className="hidden items-center gap-6 lg:flex">
             <a
               href={`tel:${site.phoneHref}`}
-              className="flex items-center gap-2 text-[12px] tracking-wide2 text-bone/80 transition-colors duration-300 hover:text-gold"
+              className="flex items-center gap-2 text-[13px] tracking-wide2 text-bone transition-colors duration-300 hover:text-gold"
             >
               <Phone className="h-3.5 w-3.5 text-gold" strokeWidth={1.5} />
               {site.phone}
@@ -171,7 +171,7 @@ export function Navbar() {
                 >
                   <a
                     href={`tel:${site.phoneHref}`}
-                    className="flex items-center gap-2.5 text-sm tracking-wide2 text-bone/80"
+                    className="flex items-center gap-2.5 text-sm tracking-wide2 text-bone"
                   >
                     <Phone className="h-4 w-4 text-gold" strokeWidth={1.5} />
                     {site.phone}

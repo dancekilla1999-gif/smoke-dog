@@ -29,18 +29,18 @@ export function Atmosphere() {
           <TextReveal
             as="h2"
             text="Дым. Свет. Ритм."
-            className="mt-2 text-balance font-serif text-4xl leading-[1.05] text-[#F3EEE6] sm:text-5xl lg:text-[3.5rem]"
+            className="mt-2 text-balance font-serif text-4xl leading-[1.05] text-bone sm:text-5xl lg:text-[3.5rem]"
           />
 
           <Reveal delay={0.2}>
-            <p className="mt-8 max-w-md text-pretty text-[16px] leading-relaxed text-[#B8AFA3]">
+            <p className="mt-8 max-w-md text-pretty text-[16px] leading-relaxed text-ash">
               Приглушённый свет, кальян, барная стойка.
               Музыка, которая не мешает говорить — пока не приходит ночь.
             </p>
           </Reveal>
 
           <Reveal delay={0.35}>
-            <p className="mt-10 font-serif text-xl italic text-[#C4A574]/90 sm:text-2xl">
+            <p className="mt-10 font-serif text-xl italic text-gold-soft sm:text-2xl">
               До 05:00 · каждый день
             </p>
           </Reveal>

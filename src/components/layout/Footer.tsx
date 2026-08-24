@@ -36,7 +36,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/12 text-bone/70 transition-all duration-300 hover:border-gold/50 hover:text-gold"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/12 text-bone transition-all duration-300 hover:border-gold/50 hover:text-gold"
                 >
                   <s.icon className="h-4 w-4" strokeWidth={1.5} />
                 </a>
@@ -84,14 +84,14 @@ export function Footer() {
               </li>
               {site.hours.map((h) => (
                 <li key={h.day} className="leading-relaxed">
-                  <span className="text-bone/60">{h.day}:</span> {h.time}
+                  <span className="text-ash">{h.day}:</span> {h.time}
                 </li>
               ))}
             </ul>
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/[0.07] pt-7 text-xs tracking-wide2 text-ash/60 sm:mt-14 sm:flex-row">
+        <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/[0.07] pt-7 text-xs tracking-wide2 text-ash sm:mt-14 sm:flex-row">
           <p>
             © {year} {site.name} · {site.nameRu}. Все права защищены.
           </p>
@@ -105,7 +105,7 @@ export function Footer() {
           </div>
         </div>
 
-        <p className="mt-4 text-xs leading-relaxed text-ash/45">
+        <p className="mt-4 text-xs leading-relaxed text-ash">
           {site.legalName}. ОГРН: уточняется. ИНН: уточняется. Юридический адрес: {site.address.city}, {site.address.street}.
         </p>
       </div>

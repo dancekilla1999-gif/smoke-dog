@@ -19,8 +19,8 @@ export default function PrivacyPage() {
 
       <section className="relative border-t border-white/[0.07] py-16 sm:py-20 lg:py-24">
         <div className="container-wide">
-          <div className="mx-auto max-w-3xl space-y-10 text-[15px] leading-relaxed text-bone/75">
-            <p className="text-sm text-bone/50">Действует с {new Date().toLocaleDateString("ru-RU")}</p>
+          <div className="mx-auto max-w-3xl space-y-10 text-[16px] leading-relaxed text-bone">
+            <p className="text-sm text-ash">Действует с {new Date().toLocaleDateString("ru-RU")}</p>
 
             <div className="space-y-4">
               <h2 className="font-serif text-2xl text-bone">1. Общие положения</h2>

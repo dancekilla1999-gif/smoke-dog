@@ -21,7 +21,7 @@ export function ConsentCheckbox({ name = "consent", className }: ConsentCheckbox
     <label
       htmlFor={id}
       className={cn(
-        "flex cursor-pointer items-start gap-3 text-xs leading-relaxed text-bone/55",
+        "flex cursor-pointer items-start gap-3 text-xs leading-relaxed text-ash",
         className
       )}
     >

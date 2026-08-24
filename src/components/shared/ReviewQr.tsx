@@ -21,7 +21,7 @@ export function ReviewQr() {
           />
         </div>
         <div>
-          <p className="eyebrow text-gold/90">Ваше мнение важно</p>
+          <p className="eyebrow text-gold">Ваше мнение важно</p>
           <p className="mt-2 font-serif text-xl text-bone">Поделитесь впечатлениями</p>
           <p className="mt-1.5 text-sm leading-relaxed text-ash">
             Отсканируйте QR-код или{" "}

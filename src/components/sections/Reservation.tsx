@@ -34,7 +34,7 @@ const timeOptions = [
 const todayISO = () => new Date().toISOString().split("T")[0];
 
 const fieldClass =
-  "mt-2 w-full appearance-none border-0 border-b border-white/15 bg-transparent px-1 py-2 text-[15px] text-bone transition-colors focus:border-gold focus:outline-none [color-scheme:dark]";
+  "mt-2 w-full appearance-none border-0 border-b border-white/15 bg-transparent px-1 py-2 text-[16px] text-bone transition-colors focus:border-gold focus:outline-none [color-scheme:dark]";
 
 /** Российский телефон: 8… → +7…, 7… → +7…, маска +7 (xxx) xxx-xx-xx */
 function formatPhoneRu(raw: string): string {
@@ -161,7 +161,7 @@ export function Reservation() {
                   <ul className="mt-3 space-y-1.5 text-sm text-ash">
                     {site.hours.map((h) => (
                       <li key={h.day}>
-                        <span className="text-bone/75">{h.day}</span> — {h.time}
+                        <span className="text-bone">{h.day}</span> — {h.time}
                       </li>
                     ))}
                   </ul>
@@ -274,8 +274,8 @@ export function Reservation() {
                 </div>
               </div>
 
-              <div className="mt-10 flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:justify-between">
-                <ConsentCheckbox name="consent" className="max-w-xs" />
+              <div className="mt-10 flex flex-col items-start gap-5 lg:flex-row lg:items-center lg:justify-between">
+                <ConsentCheckbox name="consent" className="max-w-md" />
 
                 <Magnetic strength={0.3}>
                   <Button

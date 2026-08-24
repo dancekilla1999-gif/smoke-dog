@@ -33,11 +33,11 @@ export function ConceptStates() {
                   </div>
                 )}
                 <div className="p-8 sm:p-10">
-                  <span className="font-serif text-4xl text-[#C4A574]/25 transition-colors group-hover:text-[#C4A574]/45">
+                  <span className="font-serif text-4xl text-gold transition-colors group-hover:text-gold-soft">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="mt-6 font-serif text-2xl text-[#F3EEE6]">{state.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-[#8A8076]">{state.text}</p>
+                  <h3 className="mt-6 font-serif text-2xl text-bone">{state.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-ash">{state.text}</p>
                 </div>
               </div>
             </Reveal>

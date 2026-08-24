@@ -57,7 +57,7 @@ export function Testimonials() {
         <div className="relative z-10 mx-auto mt-12 min-h-[300px] max-w-3xl px-2 text-center sm:min-h-[280px]">
           <Quote
             aria-hidden
-            className="mx-auto h-9 w-9 text-gold/40"
+            className="mx-auto h-9 w-9 text-gold"
             strokeWidth={1}
           />
 
@@ -89,7 +89,7 @@ export function Testimonials() {
           <button
             aria-label="Предыдущий отзыв"
             onClick={() => go(-1)}
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-bone/80 transition-all hover:border-gold hover:text-gold"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-bone transition-all hover:border-gold hover:text-gold"
           >
             <ChevronLeft className="h-4 w-4" />
           </button>
@@ -112,7 +112,7 @@ export function Testimonials() {
           <button
             aria-label="Следующий отзыв"
             onClick={() => go(1)}
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-bone/80 transition-all hover:border-gold hover:text-gold"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-bone transition-all hover:border-gold hover:text-gold"
           >
             <ChevronRight className="h-4 w-4" />
           </button>

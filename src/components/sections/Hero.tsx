@@ -57,7 +57,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-6 text-[10px] uppercase tracking-[0.42em] text-[#C4A574]/90"
+            className="mb-6 text-[12px] uppercase tracking-[0.42em] text-gold-soft"
           >
             {site.address.city} · м. {site.address.metro} · {site.address.street}
           </motion.p>
@@ -66,10 +66,10 @@ export function Hero() {
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.85, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-            className="font-serif text-[clamp(2.75rem,8vw,5.5rem)] font-light leading-[0.95] tracking-[-0.03em] text-[#F3EEE6]"
+            className="font-serif text-[clamp(2.75rem,8vw,5.5rem)] font-light leading-[0.95] tracking-[-0.03em] text-bone"
           >
             Смоук Дог
-            <span className="mt-2 block text-[11px] font-sans uppercase tracking-[0.4em] text-[#C4A574]/70">
+            <span className="mt-2 block text-[12px] font-sans uppercase tracking-[0.4em] text-gold-soft">
               Smoke Dog
             </span>
           </motion.h1>
@@ -78,7 +78,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.18 }}
-            className="mt-5 max-w-md text-[15px] font-light leading-relaxed text-[#B8AFA3] sm:text-base"
+            className="mt-5 max-w-md text-[16px] font-light leading-relaxed text-ash sm:text-base"
           >
             Лаундж-бар и кальянная. Кухня, бар, музыка до утра.
           </motion.p>
@@ -97,7 +97,7 @@ export function Hero() {
             </Button>
             <a
               href={`tel:${site.phoneHref}`}
-              className="ml-1 hidden text-[12px] tracking-[0.14em] text-[#C4A574]/80 transition-colors hover:text-[#E8D5B5] sm:inline-flex"
+              className="ml-1 hidden text-[13px] tracking-[0.14em] text-gold-soft transition-colors hover:text-bone sm:inline-flex"
             >
               {site.phone}
             </a>
@@ -107,7 +107,7 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.55, duration: 0.8 }}
-            className="mt-14 flex flex-wrap gap-x-10 gap-y-3 border-t border-white/[0.08] pt-8 text-[10px] uppercase tracking-[0.24em] text-[#8A8076]"
+            className="mt-14 flex flex-wrap gap-x-10 gap-y-3 border-t border-white/[0.08] pt-8 text-[12px] uppercase tracking-[0.24em] text-ash"
           >
             <span>Ежедневно 10:00–05:00</span>
             <span>ВИП · PS5 · Караоке</span>
@@ -117,7 +117,7 @@ export function Hero() {
       </motion.div>
 
       <div className="absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 sm:flex">
-        <span className="text-[9px] uppercase tracking-[0.3em] text-white/30">вниз</span>
+        <span className="text-[11px] uppercase tracking-[0.3em] text-ash">вниз</span>
         <span className="h-8 w-px overflow-hidden bg-white/15">
           <span className="block h-2 w-px animate-scroll-dot bg-[#C4A574]" />
         </span>

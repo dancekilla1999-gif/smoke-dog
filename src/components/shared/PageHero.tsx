@@ -24,7 +24,7 @@ export function PageHero({ eyebrow, title, subtitle, className }: PageHeroProps)
       <div className="pointer-events-none absolute -top-32 left-1/2 h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-gold/[0.04] blur-3xl" />
 
       <div className="container-wide relative">
-        <p className="eyebrow text-gold/90">{eyebrow}</p>
+        <p className="eyebrow text-gold">{eyebrow}</p>
         <h1 className="mt-4 max-w-3xl font-serif text-[clamp(2.1rem,5vw,3.6rem)] font-light leading-[1.12] tracking-tight text-bone">
           {title}
         </h1>

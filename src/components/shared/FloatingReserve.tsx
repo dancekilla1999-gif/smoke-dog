@@ -32,7 +32,7 @@ export function FloatingReserve() {
         >
           <Link
             href="/contacts#reserve"
-            className="btn-smoke-fill group flex h-14 items-center gap-2.5 px-6 text-[12px] font-semibold uppercase tracking-[0.18em] text-noir transition-transform active:scale-[0.97]"
+            className="btn-smoke-fill group flex h-14 items-center gap-2.5 px-6 text-[13px] font-semibold uppercase tracking-[0.18em] text-noir transition-transform active:scale-[0.97]"
             data-cursor
           >
             <CalendarHeart className="h-4 w-4" strokeWidth={1.75} />

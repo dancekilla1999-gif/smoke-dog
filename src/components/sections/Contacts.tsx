@@ -45,7 +45,7 @@ export function Contacts() {
                       href={mapLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-3 inline-block text-[13px] uppercase tracking-wide2 text-gold transition-opacity hover:opacity-70"
+                      className="mt-3 inline-block text-[14px] uppercase tracking-wide2 text-gold transition-opacity hover:opacity-70"
                     >
                       Построить маршрут →
                     </a>
@@ -85,7 +85,7 @@ export function Contacts() {
                     <ul className="mt-2 space-y-1.5">
                       {site.hours.map((h) => (
                         <li key={h.day} className="text-sm text-ash">
-                          <span className="text-bone/80">{h.day}</span> — {h.time}
+                          <span className="text-bone">{h.day}</span> — {h.time}
                         </li>
                       ))}
                     </ul>
@@ -101,7 +101,7 @@ export function Contacts() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={s.label}
-                    className="flex h-12 w-12 items-center justify-center rounded-full border border-white/12 text-bone/80 transition-all hover:border-gold hover:text-gold"
+                    className="flex h-12 w-12 items-center justify-center rounded-full border border-white/12 text-bone transition-all hover:border-gold hover:text-gold"
                   >
                     <s.icon className="h-4 w-4" strokeWidth={1.5} />
                   </a>

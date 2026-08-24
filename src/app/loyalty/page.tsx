@@ -41,7 +41,7 @@ export default function LoyaltyPage() {
       <section className="relative border-t border-white/[0.07] py-20 sm:py-24 lg:py-32">
         <div className="container-wide">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="text-[15px] leading-relaxed text-bone/75 sm:text-base">
+            <p className="text-[16px] leading-relaxed text-bone sm:text-base">
               Карта лояльности Смоук Дог открывается после первого визита. Условия
               и уровень участия менеджер подскажет при бронировании или по
               телефону — всё просто и без лишней бюрократии.
@@ -57,7 +57,7 @@ export default function LoyaltyPage() {
                 <h3 className="font-serif text-xl font-light text-bone sm:text-2xl">
                   {p.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-bone/65">
+                <p className="mt-3 text-sm leading-relaxed text-ash">
                   {p.text}
                 </p>
               </div>

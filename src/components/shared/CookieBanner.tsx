@@ -40,7 +40,7 @@ export function CookieBanner() {
       className="fixed inset-x-0 bottom-0 z-[80] border-t border-white/10 bg-noir/97 px-5 py-5 backdrop-blur-md sm:px-8"
     >
       <div className="container-wide flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
-        <p className="max-w-2xl text-center text-xs leading-relaxed text-bone/70 sm:text-left">
+        <p className="max-w-2xl text-center text-xs leading-relaxed text-bone sm:text-left">
           Мы используем файлы cookie для корректной работы сайта и аналитики
           посещаемости. Продолжая пользоваться сайтом, вы соглашаетесь с{" "}
           <Link
