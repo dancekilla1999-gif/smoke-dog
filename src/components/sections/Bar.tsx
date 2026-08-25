@@ -36,8 +36,7 @@ export function Bar() {
           <div className="order-2 lg:order-1">
             <SectionHeading
               eyebrow="Бар"
-              title="Коктейли, продуманные до последней капли"
-              intro="Ещё один повод задержаться за столиком."
+              title="Ещё один повод задержаться за столиком"
             />
 
             <Reveal delay={0.15}>
@@ -62,7 +61,7 @@ export function Bar() {
               <motion.div style={{ y }} className="absolute inset-[-7%]">
                 <Image
                   src="/images/gallery/mirror-arches.jpg"
-                  alt="Бар Смоук Дог — приготовление авторских коктейлей"
+                  alt="Бар Смок Дог — приготовление авторских коктейлей"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover object-[center_25%]"

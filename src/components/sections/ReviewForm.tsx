@@ -96,7 +96,7 @@ export function ReviewForm() {
             <CheckCircle2 className="mx-auto h-12 w-12 text-gold" strokeWidth={1.2} />
             <h2 className="mt-6 font-serif text-3xl text-bone">Спасибо за отзыв!</h2>
             <p className="mt-3 text-[16px] leading-relaxed text-ash">
-              Мы обязательно его прочитаем. Ждём вас снова в Смоук Дог.
+              Мы обязательно его прочитаем. Ждём вас снова в Смок Дог.
             </p>
 
             {isFive && (

@@ -14,7 +14,7 @@ export function ReviewQr() {
         <div className="shrink-0 rounded-sm border border-gold/30 bg-bone p-2">
           <Image
             src="/images/brand/review-qr.png"
-            alt="QR-код: оставить отзыв о Смоук Дог"
+            alt="QR-код: оставить отзыв о Смок Дог"
             width={104}
             height={104}
             className="h-[104px] w-[104px]"

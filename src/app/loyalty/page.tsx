@@ -34,7 +34,7 @@ export default function LoyaltyPage() {
     <>
       <PageHero
         eyebrow="Лояльность"
-        title="Карта Смоук Дог"
+        title="Карта Смок Дог"
         subtitle="Привилегии для тех, кто возвращается. Бонусы, приоритет и особые вечера."
       />
 
@@ -42,7 +42,7 @@ export default function LoyaltyPage() {
         <div className="container-wide">
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-[16px] leading-relaxed text-bone sm:text-base">
-              Карта лояльности Смоук Дог открывается после первого визита. Условия
+              Карта лояльности Смок Дог открывается после первого визита. Условия
               и уровень участия менеджер подскажет при бронировании или по
               телефону — всё просто и без лишней бюрократии.
             </p>

@@ -68,7 +68,7 @@ export function Hero() {
             transition={{ duration: 0.85, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
             className="font-serif text-[clamp(2.75rem,8vw,5.5rem)] font-light leading-[0.95] tracking-[-0.03em] text-bone"
           >
-            Смоук Дог
+            Смок Дог
             <span className="mt-2 block text-[12px] font-sans uppercase tracking-[0.4em] text-gold-soft">
               Smoke Dog
             </span>

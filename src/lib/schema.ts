@@ -81,7 +81,7 @@ export function restaurantSchema() {
     sameAs: [site.social.instagram, site.social.telegram, site.social.whatsapp],
     hasMenu: {
       "@type": "Menu",
-      name: "Меню Смоук Дог",
+      name: "Меню Смок Дог",
       url: `${baseUrl}/#menu`,
       inLanguage: "ru-RU",
       hasMenuSection: Array.from(new Set(menu.map((m) => m.category))).map((category) => ({

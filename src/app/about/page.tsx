@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { About } from "@/components/sections/About";
+import { About, aboutFoodSlides } from "@/components/sections/About";
 import { ConceptStates } from "@/components/sections/ConceptStates";
 import { Atmosphere } from "@/components/sections/Atmosphere";
 import { site } from "@/lib/data";
@@ -17,9 +17,9 @@ export default function AboutPage() {
       <PageHero
         eyebrow="О пространстве"
         title="Место для вечеров со своим характером"
-        subtitle="Смоук Дог — это ресторан, бар и кальянное пространство в одном ритме. Авторская кухня, премиальные кальяны, музыка и атмосфера, в которой хочется задержаться. Тихий ужин, встреча с друзьями, вечер в ВИП или ночь под диджея — здесь каждый вечер может быть особенным."
+        subtitle="Смок Дог — это ресторан, бар и кальянное пространство в одном ритме. Авторская кухня, премиальные кальяны, музыка и атмосфера, в которой хочется задержаться. Тихий ужин, встреча с друзьями, вечер в ВИП или ночь под диджея — здесь каждый вечер может быть особенным."
       />
-      <About />
+      <About hideIntro slides={aboutFoodSlides} />
       <ConceptStates />
       <Atmosphere />
     </>

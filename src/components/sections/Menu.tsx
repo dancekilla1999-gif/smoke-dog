@@ -19,7 +19,7 @@ const filters: Filter[] = ["Все", ...menuCategories];
 
 const detailSlide = {
   src: "/images/menu/banner-pizza.jpg",
-  alt: "Пицца четыре сыра с бураттой — подача Смоук Дог",
+  alt: "Пицца четыре сыра с бураттой — подача Смок Дог",
 };
 
 export function Menu() {
