@@ -647,19 +647,59 @@
       "category": "Гости"
     },
     {
-      "src": "/images/menu/pasta-mushroom.jpg",
-      "alt": "Паппарделле с грибным соусом — кухня Смок Дог",
-      "category": "Кухня"
+      "src": "/images/gallery/guests-band-performance.jpg",
+      "alt": "Гости на живом выступлении группы",
+      "category": "Гости"
     },
     {
-      "src": "/images/menu/salad-greek.jpg",
-      "alt": "Греческий салат с фетой и овощами",
-      "category": "Кухня"
+      "src": "/images/gallery/guests-lounge-chandelier.jpg",
+      "alt": "Гости в лаундж-зоне под люстрой",
+      "category": "Гости"
     },
     {
-      "src": "/images/menu/dessert-fondant.jpg",
-      "alt": "Шоколадный фондан с мороженым и ягодами",
-      "category": "Кухня"
+      "src": "/images/gallery/guests-watching-singer.jpg",
+      "alt": "Гости снимают выступление певицы на телефон",
+      "category": "Гости"
+    },
+    {
+      "src": "/images/gallery/guests-dancing-chandelier.jpg",
+      "alt": "Гости танцуют под люстрой в основном зале",
+      "category": "Гости"
+    },
+    {
+      "src": "/images/gallery/guests-lounge-seating.jpg",
+      "alt": "Гости за столиками в лаундж-зоне",
+      "category": "Гости"
+    },
+    {
+      "src": "/images/gallery/guests-singer-phones.jpg",
+      "alt": "Гости снимают живое выступление на сцене",
+      "category": "Гости"
+    },
+    {
+      "src": "/images/gallery/guests-poker-table.jpg",
+      "alt": "Гости играют в покер за столом",
+      "category": "Гости"
+    },
+    {
+      "src": "/images/gallery/guests-entrance.jpg",
+      "alt": "Гости у входа в Смок Дог вечером",
+      "category": "Гости"
+    },
+    {
+      "src": "/images/gallery/guests-lounge-seated.jpg",
+      "alt": "Гости отдыхают в зале под люстрами",
+      "category": "Гости"
+    },
+    {
+      "src": "/images/gallery/guests-crowded-lounge.jpg",
+      "alt": "Гости за столиками в оживлённом зале",
+      "category": "Гости"
+    },
+    {
+      "src": "/images/gallery/guests-crowd-performance.jpg",
+      "alt": "Гости на живом выступлении в зале",
+      "category": "Гости"
     }
   ],
   "events": [
