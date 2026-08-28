@@ -33,7 +33,7 @@ export const aboutFoodSlides: CarouselSlide[] = [
   { src: "/images/menu/food-antipasti.jpg", alt: "Антипасти с хлебными палочками и оливками" },
   { src: "/images/menu/food-fruit-plate.jpg", alt: "Фруктовая тарелка со свежими ягодами" },
   { src: "/images/menu/food-steak.jpg", alt: "Стейк на гриле с кукурузой и соусом" },
-  { src: "/images/menu/food-asparagus.jpg", alt: "Спаржа на гриле — гарнир к основным блюдам" },
+  { src: "/images/menu/tartare-salmon-avocado.jpg", alt: "Тартар из лосося на авокадо — подача Смок Дог" },
 ];
 
 interface AboutProps {
