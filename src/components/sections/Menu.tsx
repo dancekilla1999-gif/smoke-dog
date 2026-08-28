@@ -2,10 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Expand } from "lucide-react";
 import { menu, menuCategories, type MenuCategory } from "@/lib/data";
+import { pickMenuPhoto } from "@/lib/menuPhotos";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { Reveal } from "@/components/shared/Reveal";
 import { Button } from "@/components/ui/button";
@@ -17,19 +18,21 @@ type Filter = "Все" | MenuCategory;
 
 const filters: Filter[] = ["Все", ...menuCategories];
 
-const detailSlide = {
-  src: "/images/menu/banner-pizza.jpg",
-  alt: "Пицца четыре сыра с бураттой — подача Смок Дог",
-};
-
 export function Menu() {
   const [active, setActive] = useState<Filter>("Все");
   const [lightboxOpen, setLightboxOpen] = useState(false);
+  const lastPhotoSrc = useRef<string | undefined>(undefined);
 
   const items = useMemo(
     () => (active === "Все" ? menu : menu.filter((i) => i.category === active)),
     [active]
   );
+
+  const detailSlide = useMemo(() => {
+    const next = pickMenuPhoto(active, lastPhotoSrc.current);
+    lastPhotoSrc.current = next.src;
+    return next;
+  }, [active]);
 
   return (
     <section id="menu" className="relative overflow-hidden py-20 sm:py-24 lg:py-36">
@@ -125,13 +128,24 @@ export function Menu() {
             aria-label="Открыть фото на весь экран"
             className="group relative mt-20 block aspect-[21/9] w-full overflow-hidden rounded-sm lg:aspect-[3/1]"
           >
-            <Image
-              src={detailSlide.src}
-              alt={detailSlide.alt}
-              fill
-              sizes="(max-width: 1024px) 100vw, 1400px"
-              className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
-            />
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={detailSlide.src}
+                initial={{ opacity: 0, scale: 1.04 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute inset-0"
+              >
+                <Image
+                  src={detailSlide.src}
+                  alt={detailSlide.alt}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 1400px"
+                  className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                />
+              </motion.div>
+            </AnimatePresence>
             <div className="absolute inset-0 bg-gradient-to-t from-noir/80 via-noir/20 to-transparent" />
             <p className="absolute bottom-7 left-7 max-w-md text-pretty font-serif text-xl text-bone sm:text-2xl lg:bottom-10 lg:left-10">
               Каждая деталь — часть впечатления
