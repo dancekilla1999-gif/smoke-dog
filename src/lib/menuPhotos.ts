@@ -1,11 +1,11 @@
 /**
  * Пул фото для нижнего баннера страницы «Меню» (`Menu.tsx`).
- * При переключении категории баннер показывает случайное фото из пула,
- * подобранного под смысл категории — так, чтобы «Закуски», «Бар» и
- * «Горячие блюда» визуально отличались друг от друга.
+ * При переключении категории баннер показывает случайное фото из пула
+ * этой конкретной категории — так, чтобы в «Супах» не выпадал стейк,
+ * а в «Пиццах» — не суп. Каждый пул подобран по смыслу категории.
  *
  * Все изображения — из уже существующей библиотеки сайта
- * (`public/images/menu/`, `public/images/gallery/`), новых фото не добавлено.
+ * (`public/images/menu/`, `public/images/gallery/`).
  */
 
 import type { MenuCategory } from "./data";
@@ -17,40 +17,53 @@ export interface MenuPhoto {
 
 type Filter = "Все" | MenuCategory;
 
-const starters: MenuPhoto[] = [
-  { src: "/images/menu/food-antipasti.jpg", alt: "Ассорти антипасти — подача Смок Дог" },
-  { src: "/images/menu/food-charcuterie.jpg", alt: "Мясная тарелка" },
-  { src: "/images/menu/food-asparagus.jpg", alt: "Спаржа на гриле" },
+const coldStarters: MenuPhoto[] = [
+  { src: "/images/menu/food-antipasti.jpg", alt: "Ассорти мясных закусок — подача Смок Дог" },
+  { src: "/images/menu/food-charcuterie.jpg", alt: "Мясная нарезка с соусом" },
+  { src: "/images/menu/tartare-salmon-avocado.jpg", alt: "Тартар из лосося на авокадо" },
 ];
 
 const salads: MenuPhoto[] = [
   { src: "/images/menu/salad-greek.jpg", alt: "Греческий салат" },
-  { src: "/images/menu/food-asparagus.jpg", alt: "Спаржа на гриле" },
+  { src: "/images/menu/salad-avocado.jpg", alt: "Зелёный салат с авокадо" },
+];
+
+const soups: MenuPhoto[] = [
+  { src: "/images/menu/pumpkin-soup.jpg", alt: "Тыквенный суп со страчателлой" },
+  { src: "/images/menu/borscht.jpg", alt: "Борщ со сметаной" },
 ];
 
 const mains: MenuPhoto[] = [
   { src: "/images/menu/food-steak.jpg", alt: "Стейк — подача Смок Дог" },
-  { src: "/images/menu/food-mushroom-cream.jpg", alt: "Крем-суп с грибами" },
+];
+
+const grill: MenuPhoto[] = [
+  { src: "/images/menu/food-steak.jpg", alt: "Стейк на гриле" },
+];
+
+const pasta: MenuPhoto[] = [
+  { src: "/images/menu/pasta-mushroom.jpg", alt: "Паппарделле с грибным соусом" },
+];
+
+const burgers: MenuPhoto[] = [
+  { src: "/images/menu/burger-beef.jpg", alt: "Бургер с говядиной" },
 ];
 
 const pizza: MenuPhoto[] = [
   { src: "/images/menu/banner-pizza.jpg", alt: "Пицца четыре сыра с бураттой" },
-  { src: "/images/menu/food-charcuterie.jpg", alt: "Мясная тарелка" },
-];
-
-const pasta: MenuPhoto[] = [
-  { src: "/images/menu/pasta-mushroom.jpg", alt: "Паста с грибами" },
-  { src: "/images/menu/food-mushroom-cream.jpg", alt: "Крем-суп с грибами" },
 ];
 
 const rolls: MenuPhoto[] = [
-  { src: "/images/menu/food-sushi-set.jpg", alt: "Сет роллов — подача Смок Дог" },
+  { src: "/images/menu/food-sushi-set.jpg", alt: "Сет роллов с соевым соусом" },
+];
+
+const sides: MenuPhoto[] = [
+  { src: "/images/menu/food-asparagus.jpg", alt: "Спаржа на гриле" },
 ];
 
 const desserts: MenuPhoto[] = [
+  { src: "/images/menu/food-cheesecake.jpg", alt: "Чизкейк с ягодами" },
   { src: "/images/menu/dessert-fondant.jpg", alt: "Шоколадный фондан" },
-  { src: "/images/menu/food-cheesecake.jpg", alt: "Чизкейк" },
-  { src: "/images/menu/food-fruit-plate.jpg", alt: "Фруктовая тарелка" },
 ];
 
 const bar: MenuPhoto[] = [
@@ -59,12 +72,15 @@ const bar: MenuPhoto[] = [
 ];
 
 const all: MenuPhoto[] = [
-  ...starters,
+  ...coldStarters,
   ...salads,
+  ...soups,
   ...mains,
-  ...pizza,
   ...pasta,
+  ...burgers,
+  ...pizza,
   ...rolls,
+  ...sides,
   ...desserts,
   ...bar,
 ].filter((photo, i, arr) => arr.findIndex((p) => p.src === photo.src) === i);
@@ -72,18 +88,18 @@ const all: MenuPhoto[] = [
 export const menuPhotoPools: Record<Filter, MenuPhoto[]> = {
   "Все": all,
   "Кальян": bar,
-  "Холодные закуски": starters,
+  "Холодные закуски": coldStarters,
   "Салаты": salads,
-  "Горячие закуски": starters,
-  "Супы": mains,
+  "Горячие закуски": coldStarters,
+  "Супы": soups,
   "Горячие блюда": mains,
-  "Гриль": mains,
+  "Гриль": grill,
   "Пасты": pasta,
-  "Бургеры": mains,
+  "Бургеры": burgers,
   "Пиццы": pizza,
   "Роллы / Гунканы": rolls,
-  "Гарниры": mains,
-  "Соусы": mains,
+  "Гарниры": sides,
+  "Соусы": sides,
   "Десерты": desserts,
   "Бар": bar,
 };
