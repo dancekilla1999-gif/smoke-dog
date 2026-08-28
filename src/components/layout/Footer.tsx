@@ -95,9 +95,12 @@ export function Footer() {
           <p>
             © {year} {site.name} · {site.nameRu}. Все права защищены.
           </p>
-          <div className="flex items-center gap-5">
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
             <Link href="/privacy" className="transition-colors hover:text-gold">
               Политика конфиденциальности
+            </Link>
+            <Link href="/privacy#processing" className="transition-colors hover:text-gold">
+              Обработка персональных данных
             </Link>
             <Link href="/contacts#reserve" className="transition-colors hover:text-gold">
               Бронирование
@@ -106,7 +109,7 @@ export function Footer() {
         </div>
 
         <p className="mt-4 text-xs leading-relaxed text-ash">
-          {site.legalName}. ОГРН: уточняется. ИНН: уточняется. Юридический адрес: {site.address.city}, {site.address.street}.
+          {site.legalName}. ОГРНИП: уточняется. ИНН: 610104705022. Юридический адрес: {site.address.city}, {site.address.street}.
         </p>
       </div>
     </footer>

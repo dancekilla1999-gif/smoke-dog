@@ -17,7 +17,7 @@ export default function PrivacyPage() {
         subtitle="Обработка персональных данных гостей и посетителей сайта."
       />
 
-      <section className="relative border-t border-white/[0.07] py-16 sm:py-20 lg:py-24">
+      <section id="processing" className="relative border-t border-white/[0.07] py-16 sm:py-20 lg:py-24">
         <div className="container-wide">
           <div className="mx-auto max-w-3xl space-y-10 text-[16px] leading-relaxed text-bone">
             <p className="text-sm text-ash">Действует с {new Date().toLocaleDateString("ru-RU")}</p>
@@ -33,7 +33,7 @@ export default function PrivacyPage() {
                 от 27.07.2006 № 152-ФЗ «О персональных данных».
               </p>
               <p>
-                Оператор: {site.legalName}. ИНН: <em>уточняется</em>.
+                Оператор: {site.legalName}. ИНН: 610104705022.
                 Адрес: {site.address.city}, {site.address.street}.
                 Контакты: {site.phone}, {site.email}.
               </p>
