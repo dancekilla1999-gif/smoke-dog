@@ -95,7 +95,7 @@ export const menuPhotoPools: Record<Filter, MenuPhoto[]> = {
   "Горячие блюда": mains,
   "Гриль": grill,
   "Пасты": pasta,
-  "Бургеры": burgers,
+  "Бургеры / Шаурма": burgers,
   "Пиццы": pizza,
   "Роллы / Гунканы": rolls,
   "Гарниры": sides,
