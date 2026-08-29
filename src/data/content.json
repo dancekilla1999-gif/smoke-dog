@@ -725,14 +725,15 @@
       "date": "27.09",
       "weekday": "Воскресенье",
       "time": "18:00",
-      "poster": "/images/events/belitser-27-09-card.jpg",
+      "poster": "/images/events/belitser-27-09.jpg",
       "lineup": [
         "Сольный концерт",
         "Живой вокал",
         "12+"
       ],
       "featured": true,
-      "reserveUrl": "https://soul.msk.ru/contacts#reserve"
+      "reserveUrl": "https://soul.msk.ru/contacts#reserve",
+      "posterHasInfo": true
     },
     {
       "title": "Диджей-вечер",

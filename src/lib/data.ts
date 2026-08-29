@@ -100,6 +100,9 @@ export interface EventItem {
   featured: boolean;
   /** Ссылка для брони — если событие у партнёра (например SOUL), ведёт на его сайт */
   reserveUrl?: string;
+  /** Постер уже содержит всю инфографику (дата, время, имя) — не дублировать
+   *  текстом поверх карточки, оставить только бейдж "Главное событие". */
+  posterHasInfo?: boolean;
 }
 
 export interface FaqItem {
