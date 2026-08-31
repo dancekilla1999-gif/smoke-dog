@@ -4,8 +4,13 @@
  * этой конкретной категории — так, чтобы в «Супах» не выпадал стейк,
  * а в «Пиццах» — не суп. Каждый пул подобран по смыслу категории.
  *
- * Все изображения — из уже существующей библиотеки сайта
- * (`public/images/menu/`, `public/images/gallery/`).
+ * Все фото — полноразмерные (без кадрирования, баннер их не обрезает,
+ * см. `object-contain` в Menu.tsx) и, где это было доступно у фотографа,
+ * сняты сбоку/под углом, а не строго сверху.
+ *
+ * Исключение — Пасты, Пиццы и Гарниры/Соусы: в присланной фотосессии
+ * эти блюда сфотографированы только сверху (стандартная практика для
+ * плоской подачи), кадра сбоку для них не существует.
  */
 
 import type { MenuCategory } from "./data";
@@ -18,9 +23,8 @@ export interface MenuPhoto {
 type Filter = "Все" | MenuCategory;
 
 const coldStarters: MenuPhoto[] = [
-  { src: "/images/menu/food-antipasti.jpg", alt: "Ассорти мясных закусок — подача Смок Дог" },
-  { src: "/images/menu/food-charcuterie.jpg", alt: "Мясная нарезка с соусом" },
   { src: "/images/menu/tartare-salmon-avocado.jpg", alt: "Тартар из лосося на авокадо" },
+  { src: "/images/menu/tartare-beef-moss.jpg", alt: "Тартар из говядины" },
 ];
 
 const salads: MenuPhoto[] = [
@@ -34,15 +38,15 @@ const soups: MenuPhoto[] = [
 ];
 
 const mains: MenuPhoto[] = [
-  { src: "/images/menu/food-steak.jpg", alt: "Стейк — подача Смок Дог" },
+  { src: "/images/menu/food-steak.jpg", alt: "Стриплойн — подача Смок Дог" },
 ];
 
 const grill: MenuPhoto[] = [
-  { src: "/images/menu/food-steak.jpg", alt: "Стейк на гриле" },
+  { src: "/images/menu/food-steak.jpg", alt: "Стриплойн на гриле" },
 ];
 
 const pasta: MenuPhoto[] = [
-  { src: "/images/menu/pasta-mushroom.jpg", alt: "Паппарделле с грибным соусом" },
+  { src: "/images/menu/pasta-mushroom.jpg", alt: "Паппарделле с брискетом" },
 ];
 
 const burgers: MenuPhoto[] = [
@@ -58,12 +62,12 @@ const rolls: MenuPhoto[] = [
 ];
 
 const sides: MenuPhoto[] = [
-  { src: "/images/menu/food-asparagus.jpg", alt: "Спаржа на гриле" },
+  { src: "/images/menu/side-mini-potato.jpg", alt: "Мини-картофель с белыми грибами" },
 ];
 
 const desserts: MenuPhoto[] = [
   { src: "/images/menu/food-cheesecake.jpg", alt: "Чизкейк с ягодами" },
-  { src: "/images/menu/dessert-fondant.jpg", alt: "Шоколадный фондан" },
+  { src: "/images/menu/dessert-honey-cake.jpg", alt: "Медовик" },
 ];
 
 const bar: MenuPhoto[] = [
