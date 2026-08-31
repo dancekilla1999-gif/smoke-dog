@@ -126,7 +126,7 @@ export function Menu() {
             type="button"
             onClick={() => setLightboxOpen(true)}
             aria-label="Открыть фото на весь экран"
-            className="group relative mt-20 block aspect-[21/9] w-full overflow-hidden rounded-sm lg:aspect-[3/1]"
+            className="group relative mt-20 block h-[320px] w-full overflow-hidden rounded-sm bg-noir sm:h-[420px] lg:h-[520px]"
           >
             <AnimatePresence mode="wait">
               <motion.div
@@ -142,7 +142,7 @@ export function Menu() {
                   alt={detailSlide.alt}
                   fill
                   sizes="(max-width: 1024px) 100vw, 1400px"
-                  className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                  className="object-contain transition-transform duration-1000 ease-out group-hover:scale-105"
                 />
               </motion.div>
             </AnimatePresence>
