@@ -4,12 +4,14 @@ import {
   sendTelegramMessage,
   telegramConfigured,
 } from "@/lib/telegram";
+import { addReview, reviewsStoreConfigured } from "@/lib/admin/reviews";
 
 /**
- * Форма отзыва (QR на столах) → валидация → уведомление в Telegram-группу.
- * Если 5 звёзд и гость разрешил публикацию — помечаем сообщение отдельно,
- * чтобы владелец мог быстро добавить отзыв на сайт через /admin.
- * Env: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
+ * Форма отзыва (QR на столах) → валидация → очередь модерации в /admin
+ * (вкладка «Отзывы») + уведомление в Telegram-группу.
+ * Если 5 звёзд и гость разрешил публикацию — владелец одной кнопкой
+ * публикует отзыв в раздел «Отзывы гостей» на сайте.
+ * Env: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, GITHUB_TOKEN
  */
 
 export const runtime = "nodejs";
@@ -57,6 +59,17 @@ export async function POST(request: Request) {
   };
 
   console.info("[Smoke Dog] Новый отзыв:", review);
+
+  if (reviewsStoreConfigured()) {
+    try {
+      await addReview(review);
+    } catch (e) {
+      // очередь недоступна — отзыв всё равно уйдёт в Telegram, гостю не мешаем
+      console.error("[Smoke Dog] Не удалось сохранить отзыв в очередь:", e);
+    }
+  } else {
+    console.warn("[Smoke Dog] GITHUB_TOKEN не настроен — отзыв не попадёт в /admin");
+  }
 
   if (telegramConfigured()) {
     const tg = await sendTelegramMessage(formatReviewMessage(review));

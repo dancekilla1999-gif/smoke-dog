@@ -2,6 +2,11 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "nextjs",
   "regions": ["fra1"],
+  "git": {
+    "deploymentEnabled": {
+      "reviews-inbox": false
+    }
+  },
   "redirects": [
     {
       "source": "/:path*",
