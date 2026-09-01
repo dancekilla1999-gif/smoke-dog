@@ -1,8 +1,5 @@
 "use client";
 
-import Image from "next/image";
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { Reveal } from "@/components/shared/Reveal";
 
@@ -22,18 +19,11 @@ const notes = [
 ];
 
 export function Bar() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-  const y = useTransform(scrollYProgress, [0, 1], ["-7%", "7%"]);
-
   return (
     <section className="relative border-t border-white/[0.07] bg-graphite/40 py-20 sm:py-24 lg:py-36">
       <div className="container-wide">
-        <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
-          <div className="order-2 lg:order-1">
+        <div className="max-w-2xl">
+          <div>
             <SectionHeading
               eyebrow="Бар"
               title="Ещё один повод задержаться за столиком"
@@ -54,21 +44,6 @@ export function Bar() {
                 ))}
               </ul>
             </Reveal>
-          </div>
-
-          <div ref={ref} className="order-1 lg:order-2">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
-              <motion.div style={{ y }} className="absolute inset-[-7%]">
-                <Image
-                  src="/images/gallery/mirror-arches.jpg"
-                  alt="Бар Смок Дог — приготовление авторских коктейлей"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover object-[center_25%]"
-                />
-              </motion.div>
-              <div className="absolute inset-0 bg-gradient-to-t from-noir/60 via-transparent to-transparent" />
-            </div>
           </div>
         </div>
       </div>

@@ -1,8 +1,8 @@
 /**
- * Пул фото для нижнего баннера страницы «Меню» (`Menu.tsx`).
- * При переключении категории баннер показывает случайное фото из пула
- * этой конкретной категории — так, чтобы в «Супах» не выпадал стейк,
- * а в «Пиццах» — не суп. Каждый пул подобран по смыслу категории.
+ * Фото блюд и коктейлей для страницы «Меню» (`Menu.tsx`).
+ * Под списком блюд — карусель `menuCarouselPhotos`: все блюда и коктейли,
+ * листается сама каждые несколько секунд и стрелками вручную.
+ * Пулы по категориям (`menuPhotoPools`) сохранены для подбора фото по смыслу.
  *
  * Все фото — полноразмерные (без кадрирования, баннер их не обрезает,
  * см. `object-contain` в Menu.tsx) и, где это было доступно у фотографа,
@@ -71,8 +71,9 @@ const desserts: MenuPhoto[] = [
 ];
 
 const bar: MenuPhoto[] = [
-  { src: "/images/gallery/mirror-arches.jpg", alt: "Барная зона Смок Дог" },
-  { src: "/images/gallery/bar-candles.jpg", alt: "Лаундж-зона со статуей бульдога" },
+  { src: "/images/menu/cocktail-spritz-pour.jpg", alt: "Бармен готовит авторские коктейли" },
+  { src: "/images/menu/cocktail-spritz-trio.jpg", alt: "Три коктейля на барной стойке" },
+  { src: "/images/menu/cocktail-toast.jpg", alt: "Коктейли за столом — тост гостей" },
 ];
 
 const all: MenuPhoto[] = [
@@ -88,6 +89,9 @@ const all: MenuPhoto[] = [
   ...desserts,
   ...bar,
 ].filter((photo, i, arr) => arr.findIndex((p) => p.src === photo.src) === i);
+
+/** Карусель под меню: все блюда и коктейли (интерьерные кадры не включаем). */
+export const menuCarouselPhotos: MenuPhoto[] = all.filter((p) => p.src.startsWith("/images/menu/"));
 
 export const menuPhotoPools: Record<Filter, MenuPhoto[]> = {
   "Все": all,
