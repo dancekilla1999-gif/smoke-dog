@@ -210,3 +210,37 @@
     rgba(255, 255, 255, 0.04) 100%
   );
 }
+
+/* ——— Премиальный блик: золотая полоса света, пробегающая по кнопке при наведении ——— */
+.btn-smoke-fill {
+  position: relative;
+  overflow: hidden;
+}
+.btn-smoke-fill::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  bottom: -20%;
+  left: -60%;
+  width: 45%;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(255, 248, 230, 0.5) 50%,
+    transparent 100%
+  );
+  transform: skewX(-18deg);
+  pointer-events: none;
+  opacity: 0;
+}
+.btn-smoke-fill:hover::before {
+  animation: sheen-sweep 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes sheen-sweep {
+  0% { left: -60%; opacity: 0; }
+  15% { opacity: 1; }
+  100% { left: 135%; opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-smoke-fill:hover::before { animation: none; }
+}

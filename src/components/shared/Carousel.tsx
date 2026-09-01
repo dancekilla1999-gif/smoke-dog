@@ -54,10 +54,13 @@ export function Carousel({ slides, className, intervalMs = 5000 }: CarouselProps
       <AnimatePresence>
         <motion.div
           key={index}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          initial={{ opacity: 0, scale: 1 }}
+          animate={{ opacity: 1, scale: 1.06 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          transition={{
+            opacity: { duration: 0.9, ease: [0.22, 1, 0.36, 1] },
+            scale: { duration: 12, ease: "linear" },
+          }}
           className="absolute inset-0"
         >
           <Image

@@ -131,10 +131,13 @@ export function Menu() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={detailSlide.src}
-                initial={{ opacity: 0, scale: 1.04 }}
-                animate={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, scale: 1 }}
+                animate={{ opacity: 1, scale: 1.06 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                transition={{
+                  opacity: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+                  scale: { duration: 14, ease: "linear" },
+                }}
                 className="absolute inset-0"
               >
                 <Image

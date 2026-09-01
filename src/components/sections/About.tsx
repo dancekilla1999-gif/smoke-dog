@@ -25,7 +25,7 @@ export const aboutFoodSlides: CarouselSlide[] = [
   { src: "/images/menu/banner-pizza.jpg", alt: "Пицца четыре сыра с бураттой — кухня Смок Дог" },
   { src: "/images/menu/pasta-mushroom.jpg", alt: "Паппарделле с грибным соусом — кухня Смок Дог" },
   { src: "/images/menu/salad-greek.jpg", alt: "Греческий салат с фетой и овощами" },
-  { src: "/images/menu/dessert-fondant.jpg", alt: "Шоколадный фондан с мороженым и ягодами" },
+  { src: "/images/menu/dessert-fondant.jpg", alt: "Шоколадный флан с мороженым и ягодами" },
   { src: "/images/menu/food-charcuterie.jpg", alt: "Мясная нарезка с соусом на подаче Смок Дог" },
   { src: "/images/menu/food-mushroom-cream.jpg", alt: "Грибной салат со сливочной заправкой" },
   { src: "/images/menu/food-cheesecake.jpg", alt: "Чизкейк с ягодами — десерт Смок Дог" },
