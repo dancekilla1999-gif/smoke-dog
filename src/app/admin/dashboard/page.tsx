@@ -391,6 +391,9 @@ function ContactsSection({ site, onChange, onSave, saving }: { site: Record<stri
       <Input label="Telegram" value={site.social?.telegram || ""} onChange={(v) => set("social.telegram", v)} />
       <Input label="WhatsApp" value={site.social?.whatsapp || ""} onChange={(v) => set("social.whatsapp", v)} />
       <Input label="Часы" value={site.hours?.[0]?.time || ""} onChange={(v) => set("hours0", v)} />
+      <h3 className="text-sm text-white/40 pt-2">Яндекс Карты</h3>
+      <Input label="ID организации (цифры из адреса карточки yandex.ru/maps/org/…/ID/)" value={site.yandexOrgId || ""} onChange={(v) => set("yandexOrgId", v)} placeholder="76863719030" />
+      <Input label="Ссылка на форму отзыва на Картах" value={site.yandexReviewUrl || ""} onChange={(v) => set("yandexReviewUrl", v)} placeholder="https://yandex.ru/maps/org/…/reviews/?add-review=true" />
       <SaveButton onClick={onSave} saving={saving} />
     </div>
   );

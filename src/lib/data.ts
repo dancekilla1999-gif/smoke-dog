@@ -7,14 +7,6 @@ import content from "@/data/content.json";
 
 export const site = content.site;
 
-/**
- * Прямая ссылка на форму отзыва организации в Яндекс Картах (Яндекс Бизнес).
- * Используется для review-gating: 5-звёздочные отзывы на /review предлагаем
- * гостю продублировать на Яндекс Картах — это поднимает публичный рейтинг.
- * ID организации: yandex.ru/maps/org/smoke_dog/76863719030/
- */
-export const yandexReviewUrl =
-  "https://yandex.ru/maps/org/smoke_dog/76863719030/reviews/?add-review=true";
 
 export const nav = [
   { label: "О нас", href: "/about" },

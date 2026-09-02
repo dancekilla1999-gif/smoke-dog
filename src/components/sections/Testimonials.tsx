@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { testimonials } from "@/lib/data";
 import { Eyebrow } from "@/components/shared/Eyebrow";
+import { YandexReviews } from "@/components/shared/YandexReviews";
 import { cn } from "@/lib/utils";
 
 const AUTOPLAY_MS = 7000;
@@ -117,6 +118,8 @@ export function Testimonials() {
             <ChevronRight className="h-4 w-4" />
           </button>
         </div>
+
+        <YandexReviews />
       </div>
     </section>
   );

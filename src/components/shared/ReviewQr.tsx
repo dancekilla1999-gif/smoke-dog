@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/shared/Reveal";
+import { yandexReviewUrl } from "@/lib/yandex";
 
 /**
  * Компактная карточка с QR на страницу /review — «оставьте отзыв».
@@ -31,6 +32,26 @@ export function ReviewQr() {
             .
           </p>
         </div>
+        {yandexReviewUrl && (
+          <a
+            href={yandexReviewUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex shrink-0 flex-col items-center gap-2 sm:ml-auto"
+            aria-label="Оставить отзыв на Яндекс Картах"
+          >
+            <span className="rounded-sm border border-gold/30 bg-bone p-2">
+              <Image
+                src="/images/brand/yandex-review-qr.png"
+                alt="QR-код: отзыв на Яндекс Картах"
+                width={88}
+                height={88}
+                className="h-[88px] w-[88px]"
+              />
+            </span>
+            <span className="text-[11px] uppercase tracking-wide2 text-ash">Яндекс Карты</span>
+          </a>
+        )}
       </div>
     </Reveal>
   );

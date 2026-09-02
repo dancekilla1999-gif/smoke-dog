@@ -11,7 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Magnetic } from "@/components/shared/MagneticButton";
 import { ConsentCheckbox } from "@/components/shared/ConsentCheckbox";
 import { cn } from "@/lib/utils";
-import { yandexReviewUrl } from "@/lib/data";
+import { yandexReviewUrl } from "@/lib/yandex";
 import { reachGoal } from "@/components/providers/YandexMetrika";
 
 const fieldClass =
@@ -40,6 +40,7 @@ export function ReviewForm() {
   const [hoverRating, setHoverRating] = useState(0);
   const [canPublish, setCanPublish] = useState<boolean | null>(null);
   const [phone, setPhone] = useState("");
+  const [submittedText, setSubmittedText] = useState("");
 
   const onPhoneChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPhone(formatPhoneRu(e.target.value));
@@ -80,11 +81,28 @@ export function ReviewForm() {
         return;
       }
       setSent(true);
+      setSubmittedText(payload.text.trim());
       if (isFive) reachGoal("review_five_stars");
     } catch {
       toast.error("Ошибка сети. Попробуйте ещё раз.");
     } finally {
       setLoading(false);
+    }
+  }
+
+  /**
+   * Переход в форму отзыва на Яндекс Картах: копируем текст отзыва гостя
+   * в буфер обмена, чтобы не писать заново (главный барьер), ссылка
+   * открывается штатно в новой вкладке.
+   */
+  async function goToYandex() {
+    reachGoal("review_yandex_redirect");
+    if (!submittedText) return;
+    try {
+      await navigator.clipboard.writeText(submittedText);
+      toast.success("Текст отзыва скопирован — вставьте его в форму Яндекса.");
+    } catch {
+      // буфер недоступен (старый браузер / без https) — просто открываем форму
     }
   }
 
@@ -99,25 +117,23 @@ export function ReviewForm() {
               Мы обязательно его прочитаем. Ждём вас снова в Смок Дог.
             </p>
 
-            {isFive && (
+            {isFive && yandexReviewUrl && (
               <Reveal delay={0.15} className="mt-10 border-t border-white/[0.07] pt-8">
                 <p className="text-[16px] text-bone">
                   Вы поставили нам высшую оценку — было бы здорово, если вы продублируете
                   этот же отзыв на Яндекс Картах. Это займёт минуту и очень нам поможет.
                 </p>
                 <Magnetic className="mt-5 inline-flex">
-                  <Button
-                    asChild
-                    size="lg"
-                    variant="gold"
-                    onClick={() => reachGoal("review_yandex_redirect")}
-                  >
+                  <Button asChild size="lg" variant="gold" onClick={goToYandex}>
                     <a href={yandexReviewUrl} target="_blank" rel="noopener noreferrer">
                       Оставить отзыв на Яндекс Картах
                       <ExternalLink className="h-4 w-4" />
                     </a>
                   </Button>
                 </Magnetic>
+                <p className="mt-3 text-xs text-ash">
+                  Текст вашего отзыва скопируется автоматически — останется вставить его в форму.
+                </p>
               </Reveal>
             )}
           </Reveal>
