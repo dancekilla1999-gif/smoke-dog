@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Magnetic } from "@/components/shared/MagneticButton";
-import { ConsentCheckbox } from "@/components/shared/ConsentCheckbox";
+import { ConsentCheckbox, MarketingConsentCheckbox } from "@/components/shared/ConsentCheckbox";
 import { reachGoal } from "@/components/providers/YandexMetrika";
 
 const guestOptions = [
@@ -83,6 +83,7 @@ export function BanquetForm() {
       eventType: String(fd.get("eventType") ?? ""),
       budget: String(fd.get("budget") ?? ""),
       message: String(fd.get("message") ?? ""),
+      marketing: fd.get("marketing") === "on",
     };
 
     setLoading(true);
@@ -268,7 +269,8 @@ export function BanquetForm() {
                 />
               </div>
               <div className="sm:col-span-2 pt-2">
-                <ConsentCheckbox name="consent" className="mb-5" />
+                <ConsentCheckbox name="consent" className="mb-3" />
+                <MarketingConsentCheckbox name="marketing" className="mb-5" />
                 <Magnetic>
                   <Button type="submit" size="lg" variant="gold" disabled={loading} className="w-full sm:w-auto">
                     {loading ? (

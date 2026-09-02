@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Instagram, Send, MessageCircle } from "lucide-react";
 import { nav, site } from "@/lib/data";
+import { legalDocs } from "@/lib/legal";
 
 const socials = [
   { icon: Instagram, href: site.social.instagram, label: "Instagram" },
@@ -96,12 +97,11 @@ export function Footer() {
             © {year} {site.name} · {site.nameRu}. Все права защищены.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
-            <Link href="/privacy" className="transition-colors hover:text-gold">
-              Политика конфиденциальности
-            </Link>
-            <Link href="/privacy#processing" className="transition-colors hover:text-gold">
-              Обработка персональных данных
-            </Link>
+            {legalDocs.map((d) => (
+              <Link key={d.href} href={d.href} className="transition-colors hover:text-gold">
+                {d.label}
+              </Link>
+            ))}
             <Link href="/contacts#reserve" className="transition-colors hover:text-gold">
               Бронирование
             </Link>

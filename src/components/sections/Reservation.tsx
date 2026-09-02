@@ -12,7 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Magnetic } from "@/components/shared/MagneticButton";
-import { ConsentCheckbox } from "@/components/shared/ConsentCheckbox";
+import { ConsentCheckbox, MarketingConsentCheckbox } from "@/components/shared/ConsentCheckbox";
 import { reachGoal } from "@/components/providers/YandexMetrika";
 
 const guestOptions = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10+"];
@@ -85,6 +85,7 @@ export function Reservation() {
       date: String(fd.get("date") ?? ""),
       time: String(fd.get("time") ?? ""),
       message: String(fd.get("message") ?? ""),
+      marketing: fd.get("marketing") === "on",
     };
 
     setLoading(true);
@@ -275,7 +276,10 @@ export function Reservation() {
               </div>
 
               <div className="mt-10 flex flex-col items-start gap-5 lg:flex-row lg:items-center lg:justify-between">
-                <ConsentCheckbox name="consent" className="max-w-md" />
+                <div className="max-w-md space-y-3">
+                  <ConsentCheckbox name="consent" />
+                  <MarketingConsentCheckbox name="marketing" />
+                </div>
 
                 <Magnetic strength={0.3}>
                   <Button

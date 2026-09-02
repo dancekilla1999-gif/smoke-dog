@@ -20,6 +20,8 @@ interface ReservationPayload {
   date?: string;
   time?: string;
   message?: string;
+  /** Отдельное согласие на рекламную рассылку (необязательное) */
+  marketing?: boolean;
 }
 
 const isEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
@@ -43,6 +45,7 @@ export async function POST(request: Request) {
   const date = (data.date ?? "").toString().trim();
   const time = (data.time ?? "").toString().trim();
   const message = (data.message ?? "").toString().trim();
+  const marketing = Boolean(data.marketing);
 
   const errors: string[] = [];
   if (name.length < 2) errors.push("Укажите имя.");
@@ -67,6 +70,7 @@ export async function POST(request: Request) {
     date,
     time,
     message,
+    marketing,
     at: new Date().toISOString(),
   };
 
