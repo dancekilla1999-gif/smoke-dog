@@ -1,6 +1,6 @@
 /**
  * Фото блюд и коктейлей для страницы «Меню» (`Menu.tsx`).
- * Под списком блюд — карусель `menuCarouselPhotos`: все блюда и коктейли,
+ * Под списком блюд — карусель `menuCarouselPhotos`: только блюда (без бара),
  * листается сама каждые несколько секунд и стрелками вручную.
  * Пулы по категориям (`menuPhotoPools`) сохранены для подбора фото по смыслу.
  *
@@ -90,8 +90,19 @@ const all: MenuPhoto[] = [
   ...bar,
 ].filter((photo, i, arr) => arr.findIndex((p) => p.src === photo.src) === i);
 
-/** Карусель под меню: все блюда и коктейли (интерьерные кадры не включаем). */
-export const menuCarouselPhotos: MenuPhoto[] = all.filter((p) => p.src.startsWith("/images/menu/"));
+/** Карусель под меню: только еда — без коктейлей, бара и интерьера. */
+export const menuCarouselPhotos: MenuPhoto[] = [
+  ...coldStarters,
+  ...salads,
+  ...soups,
+  ...mains,
+  ...pasta,
+  ...burgers,
+  ...pizza,
+  ...rolls,
+  ...sides,
+  ...desserts,
+].filter((photo, i, arr) => arr.findIndex((p) => p.src === photo.src) === i);
 
 export const menuPhotoPools: Record<Filter, MenuPhoto[]> = {
   "Все": all,
