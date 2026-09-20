@@ -752,6 +752,34 @@
   ],
   "events": [
     {
+      "title": "Vocal Show — HELLEN",
+      "subtitle": "Живой вокал на первом этаже",
+      "date": "18.09",
+      "weekday": "Пятница",
+      "time": "21:00",
+      "poster": "/images/events/vocal-show-hellen-18-09.jpg",
+      "video": "/videos/events/vocal-show-hellen-18-09.mp4",
+      "lineup": [
+        "Живой вокал",
+        "Первый этаж"
+      ],
+      "featured": false
+    },
+    {
+      "title": "Vocal Show — MANIKA",
+      "subtitle": "Живой вокал на первом этаже",
+      "date": "19.09",
+      "weekday": "Суббота",
+      "time": "21:00",
+      "poster": "/images/events/vocal-show-manika-19-09.jpg",
+      "video": "/videos/events/vocal-show-manika-19-09.mp4",
+      "lineup": [
+        "Живой вокал",
+        "Первый этаж"
+      ],
+      "featured": false
+    },
+    {
       "title": "Дарья Белицер",
       "subtitle": "Сольный концерт в Соул — по соседству, в том же дворе",
       "date": "27.09",

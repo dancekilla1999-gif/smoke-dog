@@ -88,6 +88,8 @@ export interface EventItem {
   poster: string;
   /** Необязательное видео вместо статичной картинки (poster — fallback/постер видео) */
   video?: string;
+  /** Видео с водяным знаком соцсети сверху — закрыть его затемнением */
+  topWatermark?: boolean;
   lineup: string[];
   featured: boolean;
   /** Ссылка для брони — если событие у партнёра (например SOUL), ведёт на его сайт */

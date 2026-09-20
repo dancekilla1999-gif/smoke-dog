@@ -35,7 +35,7 @@ export function Events({ showHeading = true }: { showHeading?: boolean } = {}) {
         >
           {events.map((event) => (
             <motion.li
-              key={event.title}
+              key={`${event.date}-${event.title}`}
               variants={staggerItem}
               className={cn(
                 "group relative overflow-hidden rounded-sm border border-white/[0.07] bg-graphite/50",
@@ -53,7 +53,11 @@ export function Events({ showHeading = true }: { showHeading?: boolean } = {}) {
                     autoPlay
                     preload="metadata"
                     aria-label={`${event.title} — ${event.subtitle}`}
-                    className="absolute inset-0 h-full w-full object-cover object-[center_20%] transition-transform duration-1000 ease-out group-hover:scale-[1.04]"
+                    // Афиши приходят вертикальными (9:16), а карточка — 3:4,
+                    // поэтому низ всё равно обрезается. Равняем по верху:
+                    // там дата и название вечера, а внизу у афиши только
+                    // адрес с телефоном, которые на сайте и так есть.
+                    className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-1000 ease-out group-hover:scale-[1.04]"
                   />
                 ) : (
                   <Image
@@ -68,7 +72,10 @@ export function Events({ showHeading = true }: { showHeading?: boolean } = {}) {
                   <div className="absolute inset-0 bg-gradient-to-t from-noir from-0% via-noir/85 via-55% to-transparent" />
                 )}
 
-                {event.video && (
+                {/* Полоса сверху закрывает водяной знак соцсети, вшитый в
+                    некоторые присланные видео. Ставится только там, где он
+                    есть: на чистой афише она съедает шапку с датой. */}
+                {event.topWatermark && (
                   <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-noir from-0% via-noir via-50% to-transparent" />
                 )}
 
