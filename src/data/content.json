@@ -752,13 +752,13 @@
   ],
   "events": [
     {
-      "title": "Vocal Show — HELLEN",
+      "title": "Vocal Show — CATALL",
       "subtitle": "Живой вокал на первом этаже",
-      "date": "18.09",
-      "weekday": "Пятница",
+      "date": "26.09",
+      "weekday": "Суббота",
       "time": "21:00",
-      "poster": "/images/events/vocal-show-hellen-18-09.jpg",
-      "video": "/videos/events/vocal-show-hellen-18-09.mp4",
+      "poster": "/images/events/vocal-show-catall-26-09.jpg",
+      "video": "/videos/events/vocal-show-catall-26-09.mp4",
       "lineup": [
         "Живой вокал",
         "Первый этаж"
@@ -766,13 +766,13 @@
       "featured": false
     },
     {
-      "title": "Vocal Show — MANIKA",
+      "title": "Vocal Show — Александрова Татьяна",
       "subtitle": "Живой вокал на первом этаже",
-      "date": "19.09",
+      "date": "26.09",
       "weekday": "Суббота",
       "time": "21:00",
-      "poster": "/images/events/vocal-show-manika-19-09.jpg",
-      "video": "/videos/events/vocal-show-manika-19-09.mp4",
+      "poster": "/images/events/vocal-show-aleksandrova-26-09.jpg",
+      "video": "/videos/events/vocal-show-aleksandrova-26-09.mp4",
       "lineup": [
         "Живой вокал",
         "Первый этаж"
