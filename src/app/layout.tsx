@@ -388,7 +388,7 @@ const seoKeywords: string[] = [
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || site.url),
   title: {
-    default: `${site.name} · ${site.nameRu} — лаундж-бар и кальянная, самый большой в России`,
+    default: `${site.name} · ${site.nameRu} — лаундж-бар у м. Тульская: кухня, караоке, VIP, до 05:00`,
     template: `%s · ${site.name}`,
   },
   description: site.descriptionShort,
