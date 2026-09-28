@@ -6,7 +6,18 @@ const REPO = process.env.GITHUB_REPO || "dancekilla1999-gif/smoke-dog";
 const TOKEN = process.env.GITHUB_TOKEN || "";
 const FILE_PATH = "src/data/content.json";
 
+/** Понятная причина вместо «GitHub read failed: 401» в панели. */
+export function contentStoreConfigured(): boolean {
+  return Boolean(TOKEN);
+}
+
 async function gh(path: string, init?: RequestInit) {
+  if (!TOKEN) {
+    throw new Error(
+      "Панель не может читать и сохранять содержимое сайта: в настройках " +
+        "проекта на Vercel не задан GITHUB_TOKEN."
+    );
+  }
   const res = await fetch(`https://api.github.com/repos/${REPO}${path}`, {
     ...init,
     headers: {

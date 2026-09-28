@@ -60,9 +60,11 @@ export async function POST(request: Request) {
 
   console.info("[Smoke Dog] Новый отзыв:", review);
 
+  let queued = false;
   if (reviewsStoreConfigured()) {
     try {
       await addReview(review);
+      queued = true;
     } catch (e) {
       // очередь недоступна — отзыв всё равно уйдёт в Telegram, гостю не мешаем
       console.error("[Smoke Dog] Не удалось сохранить отзыв в очередь:", e);
@@ -72,7 +74,9 @@ export async function POST(request: Request) {
   }
 
   if (telegramConfigured()) {
-    const tg = await sendTelegramMessage(formatReviewMessage(review));
+    const tg = await sendTelegramMessage(
+      formatReviewMessage({ ...review, queued })
+    );
     if (!tg.ok) {
       console.error("[Smoke Dog] Telegram error:", tg.error);
       // отзыв всё равно считаем принятым — не ломаем UX гостя

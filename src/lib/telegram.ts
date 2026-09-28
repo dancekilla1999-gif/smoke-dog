@@ -110,6 +110,9 @@ export function formatReviewMessage(r: {
   text?: string;
   canPublish: boolean;
   at?: string;
+  /** Отзыв лёг в очередь модерации. False — очередь не настроена, и
+   *  звать владельца в панель бессмысленно: там его не будет. */
+  queued?: boolean;
 }): string {
   const stars = "⭐".repeat(Math.max(1, Math.min(5, r.rating)));
   const lines = [
@@ -123,11 +126,21 @@ export function formatReviewMessage(r: {
   if (r.text) lines.push(``, `💬 «${escapeHtml(r.text)}»`);
   lines.push(``);
   if (r.rating === 5) {
-    lines.push(
-      r.canPublish
-        ? `✅ Гость согласен опубликовать отзыв на сайте.\n🛠 Подтвердить публикацию: https://sd.msk.ru/admin/dashboard?tab=reviews`
-        : `🔒 Гость НЕ разрешил публиковать отзыв на сайте — используйте только для внутренней статистики.`
-    );
+    if (!r.canPublish) {
+      lines.push(
+        `🔒 Гость НЕ разрешил публиковать отзыв на сайте — используйте только для внутренней статистики.`
+      );
+    } else if (r.queued === false) {
+      lines.push(
+        `✅ Гость согласен опубликовать отзыв на сайте.`,
+        `⚠️ Очередь модерации не настроена (нет GITHUB_TOKEN) — в панели этого отзыва не будет. Сохраните текст из этого сообщения.`
+      );
+    } else {
+      lines.push(
+        `✅ Гость согласен опубликовать отзыв на сайте.`,
+        `🛠 Подтвердить публикацию: https://sd.msk.ru/admin/dashboard?tab=reviews`
+      );
+    }
   }
   lines.push(``, `🌐 sd.msk.ru/review`);
   if (r.at) lines.push(`⏱ ${escapeHtml(r.at)}`);

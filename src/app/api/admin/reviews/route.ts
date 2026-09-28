@@ -28,7 +28,11 @@ export async function GET(req: NextRequest) {
   }
   if (!reviewsStoreConfigured()) {
     return NextResponse.json(
-      { error: "GITHUB_TOKEN не настроен — очередь отзывов недоступна" },
+      {
+        error:
+          "Очередь отзывов недоступна: в настройках проекта на Vercel не " +
+          "задан GITHUB_TOKEN. Отзывы гостей сейчас приходят только в Telegram.",
+      },
       { status: 500 }
     );
   }
