@@ -16,6 +16,7 @@ import { Footer } from "@/components/layout/Footer";
 import { ScrollProgress } from "@/components/shared/ScrollProgress";
 import { FloatingReserve } from "@/components/shared/FloatingReserve";
 import { CookieBanner } from "@/components/shared/CookieBanner";
+import { AfishaPopup } from "@/components/shared/AfishaPopup";
 import { PageTransition, TransitionCurtain } from "@/components/providers/PageTransition";
 import { YandexMetrika } from "@/components/providers/YandexMetrika";
 
@@ -480,6 +481,7 @@ export default function RootLayout({
         <Cursor />
         <Toaster />
         <CookieBanner />
+        <AfishaPopup />
         <YandexMetrika />
       </body>
     </html>
