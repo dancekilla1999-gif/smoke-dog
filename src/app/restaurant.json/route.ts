@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { menu, site } from "@/lib/data";
+import { faq, menu, site } from "@/lib/data";
 
 /**
  * Данные заведения для голосового администратора Софи.
@@ -32,6 +32,9 @@ export function GET() {
       lng: site.address.lng,
     },
     hours: site.hoursSchema,
+    // Вопросы и ответы с сайта: по ним Софи отвечает про парковку,
+    // карту лояльности, ВИП-зоны — теми же словами, что на сайте.
+    faq: faq.filter((item) => item.q && item.a),
     menu: menu.map((item) => ({
       name: item.name,
       category: item.category,
