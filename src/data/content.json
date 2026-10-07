@@ -752,13 +752,12 @@
   ],
   "events": [
     {
-      "title": "Vocal Show — Франгиз Файзиева",
+      "title": "Vocal Show — ANASTASIIA",
       "subtitle": "Живой вокал на первом этаже",
       "date": "09.10",
       "weekday": "Пятница",
       "time": "21:00",
-      "poster": "/images/events/vocal-show-frangiz-09-10.jpg",
-      "video": "/videos/events/vocal-show-frangiz-09-10.mp4",
+      "poster": "/images/events/vocal-show-anastasiia-09-10.jpg",
       "lineup": [
         "Живой вокал",
         "Первый этаж"
@@ -771,8 +770,7 @@
       "date": "10.10",
       "weekday": "Суббота",
       "time": "21:00",
-      "poster": "/images/events/vocal-show-blayze-10-10.jpg",
-      "video": "/videos/events/vocal-show-blayze-10-10.mp4",
+      "poster": "/images/events/vocal-show-blayze-10-10-afisha.jpg",
       "lineup": [
         "Живой вокал",
         "Первый этаж"

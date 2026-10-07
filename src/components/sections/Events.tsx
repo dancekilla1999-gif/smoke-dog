@@ -65,7 +65,15 @@ export function Events({ showHeading = true }: { showHeading?: boolean } = {}) {
                     alt={`${event.title} — ${event.subtitle}`}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover object-[center_40%] transition-transform duration-1000 ease-out group-hover:scale-[1.04]"
+                    // Афиша с датой — вертикальная, и наверху у неё день и
+                    // число: равняем по верху, как видео. Фото зала у
+                    // постоянных карточек смотрится лучше чуть выше центра.
+                    className={cn(
+                      "object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.04]",
+                      /^\d{1,2}\.\d{1,2}$/.test(event.date.trim())
+                        ? "object-top"
+                        : "object-[center_40%]"
+                    )}
                   />
                 )}
                 {!event.posterHasInfo && (

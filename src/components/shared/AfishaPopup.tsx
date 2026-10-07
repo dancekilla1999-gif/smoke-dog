@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
@@ -27,12 +28,18 @@ const OPEN_DELAY_MS = 900;
 /** Страницы, где окно только мешает. */
 const SILENT_PATHS = ["/admin", "/review"];
 
+/** Сколько дней вперёд дата без года может означать следующий год. */
+const NEXT_YEAR_WINDOW_DAYS = 60;
+
 /**
- * Дата «ДД.ММ» без года → ближайшая такая дата, не раньше сегодняшнего дня.
+ * Дата «ДД.ММ» без года → дата вечера, если он ещё впереди, иначе null.
  *
- * Афиши живут неделями, поэтому год подставляем так: сначала текущий, а
- * если он уже прошёл больше чем на неделю — следующий. Недельный запас
- * нужен, чтобы вечер не исчезал из окна в тот же день, когда он идёт.
+ * Сегодняшний вечер ещё впереди: окно показывает его до конца дня.
+ * Прошедшая дата — прошедший вечер. Исключение — начало следующего года:
+ * «05.01», увиденное в декабре, — это январь, а не прошлое. Поэтому
+ * прошедшую дату переносим на следующий год, только если до неё оттуда
+ * недалеко. Раньше перенос был безусловным, и вечер «02.10» после
+ * 2 октября считался вечером 2 октября следующего года и не пропадал.
  */
 function upcomingDate(date: string, now: Date): Date | null {
   const match = /^(\d{1,2})\.(\d{1,2})$/.exec(date.trim());
@@ -40,16 +47,26 @@ function upcomingDate(date: string, now: Date): Date | null {
   const [, day, month] = match;
   const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
   const candidate = new Date(now.getFullYear(), Number(month) - 1, Number(day));
-  if (candidate.getTime() < today.getTime()) {
-    const nextYear = new Date(now.getFullYear() + 1, Number(month) - 1, Number(day));
-    return nextYear;
-  }
-  return candidate;
+  if (candidate.getTime() >= today.getTime()) return candidate;
+
+  const nextYear = new Date(now.getFullYear() + 1, Number(month) - 1, Number(day));
+  const daysAhead = (nextYear.getTime() - today.getTime()) / 86_400_000;
+  return daysAhead <= NEXT_YEAR_WINDOW_DAYS ? nextYear : null;
 }
 
+/** Ключ афиши: видео, а если его нет — картинка. */
+function afishaKey(event: EventItem): string {
+  return event.video || event.poster;
+}
+
+/**
+ * Афиши — вечера с конкретной датой. Карточки вроде «Пт–Сб» или «По
+ * запросу» — постоянные, в окно не попадают. Афиша может быть и видео, и
+ * картинкой.
+ */
 function upcomingAfishas(now: Date): EventItem[] {
   return events
-    .filter((event) => Boolean(event.video))
+    .filter((event) => Boolean(event.video || event.poster))
     .map((event) => ({ event, when: upcomingDate(event.date, now) }))
     .filter((item): item is { event: EventItem; when: Date } => item.when !== null)
     .sort((a, b) => a.when.getTime() - b.when.getTime())
@@ -70,7 +87,7 @@ export function AfishaPopup() {
     const upcoming = upcomingAfishas(new Date());
     if (!upcoming.length) return;
 
-    const key = STORAGE_PREFIX + upcoming.map((e) => e.video).join("|");
+    const key = STORAGE_PREFIX + upcoming.map(afishaKey).join("|");
     try {
       if (localStorage.getItem(key)) return;
     } catch {
@@ -166,21 +183,31 @@ export function AfishaPopup() {
             <div className="mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 sm:mt-7 sm:justify-center sm:overflow-visible">
               {afishas.map((afisha) => (
                 <figure
-                  key={afisha.video}
+                  key={afishaKey(afisha)}
                   className="w-[58vw] max-w-[240px] shrink-0 snap-center sm:w-[min(30vw,240px)]"
                 >
                   <div className="relative aspect-[9/16] overflow-hidden border border-white/10 bg-noir">
-                    <video
-                      src={afisha.video}
-                      poster={afisha.poster}
-                      muted
-                      loop
-                      playsInline
-                      autoPlay
-                      preload="metadata"
-                      aria-label={`${afisha.title} — ${afisha.subtitle}`}
-                      className="absolute inset-0 h-full w-full object-cover"
-                    />
+                    {afisha.video ? (
+                      <video
+                        src={afisha.video}
+                        poster={afisha.poster}
+                        muted
+                        loop
+                        playsInline
+                        autoPlay
+                        preload="metadata"
+                        aria-label={`${afisha.title} — ${afisha.subtitle}`}
+                        className="absolute inset-0 h-full w-full object-cover"
+                      />
+                    ) : (
+                      <Image
+                        src={afisha.poster}
+                        alt={`${afisha.title} — ${afisha.subtitle}`}
+                        fill
+                        sizes="(max-width: 640px) 58vw, 240px"
+                        className="object-cover object-top"
+                      />
+                    )}
                   </div>
                   <figcaption className="mt-3 text-center">
                     <span className="font-serif text-xl text-gold-soft">
