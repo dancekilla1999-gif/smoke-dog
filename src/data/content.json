@@ -752,12 +752,13 @@
   ],
   "events": [
     {
-      "title": "Vocal Show — ANASTASIIA",
+      "title": "Vocal Show — Амина Бегоева",
       "subtitle": "Живой вокал на первом этаже",
-      "date": "09.10",
+      "date": "16.10",
       "weekday": "Пятница",
       "time": "21:00",
-      "poster": "/images/events/vocal-show-anastasiia-09-10.jpg",
+      "poster": "/images/events/vocal-show-amina-16-10.jpg",
+      "video": "/videos/events/vocal-show-amina-16-10.mp4",
       "lineup": [
         "Живой вокал",
         "Первый этаж"
@@ -765,12 +766,12 @@
       "featured": false
     },
     {
-      "title": "Vocal Show — BLAYZE",
+      "title": "Vocal Show — Нина Гордон",
       "subtitle": "Живой вокал на первом этаже",
-      "date": "10.10",
+      "date": "17.10",
       "weekday": "Суббота",
       "time": "21:00",
-      "poster": "/images/events/vocal-show-blayze-10-10-afisha.jpg",
+      "poster": "/images/events/vocal-show-nina-gordon-17-10.jpg",
       "lineup": [
         "Живой вокал",
         "Первый этаж"
