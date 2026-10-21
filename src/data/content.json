@@ -752,12 +752,13 @@
   ],
   "events": [
     {
-      "title": "Vocal Show — Амина Бегоева",
+      "title": "Vocal Show — Михаил FEELME",
       "subtitle": "Живой вокал на первом этаже",
-      "date": "16.10",
+      "date": "23.10",
       "weekday": "Пятница",
       "time": "21:00",
-      "poster": "/images/events/vocal-show-amina-begoeva-16-10.jpg",
+      "poster": "/images/events/vocal-show-mikhail-feelme-23-10.jpg",
+      "video": "/videos/events/vocal-show-mikhail-feelme-23-10.mp4",
       "lineup": [
         "Живой вокал",
         "Первый этаж"
@@ -765,12 +766,13 @@
       "featured": false
     },
     {
-      "title": "Vocal Show — Нина Гордон",
+      "title": "Vocal Show — Надя Точилкина",
       "subtitle": "Живой вокал на первом этаже",
-      "date": "17.10",
+      "date": "24.10",
       "weekday": "Суббота",
       "time": "21:00",
-      "poster": "/images/events/vocal-show-nina-gordon-17-10.jpg",
+      "poster": "/images/events/vocal-show-nadya-tochilkina-24-10.jpg",
+      "video": "/videos/events/vocal-show-nadya-tochilkina-24-10.mp4",
       "lineup": [
         "Живой вокал",
         "Первый этаж"
