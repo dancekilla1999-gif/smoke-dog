@@ -752,13 +752,12 @@
   ],
   "events": [
     {
-      "title": "Vocal Show — Маргарита Середа",
+      "title": "Vocal Show — Michael Blayze",
       "subtitle": "Живой вокал на первом этаже",
-      "date": "30.10",
+      "date": "06.11",
       "weekday": "Пятница",
       "time": "21:00",
-      "poster": "/images/events/vocal-show-margarita-sereda-30-10.jpg",
-      "video": "/videos/events/vocal-show-margarita-sereda-30-10.mp4",
+      "poster": "/images/events/vocal-show-michael-blayze-06-11.png",
       "lineup": [
         "Живой вокал",
         "Первый этаж"
@@ -766,13 +765,12 @@
       "featured": false
     },
     {
-      "title": "Vocal Show — Александра FEELME",
+      "title": "Vocal Show — Амина Бегоева",
       "subtitle": "Живой вокал на первом этаже",
-      "date": "31.10",
+      "date": "07.11",
       "weekday": "Суббота",
       "time": "21:00",
-      "poster": "/images/events/vocal-show-aleksandra-feelme-31-10.jpg",
-      "video": "/videos/events/vocal-show-aleksandra-feelme-31-10.mp4",
+      "poster": "/images/events/vocal-show-amina-begoeva-07-11.png",
       "lineup": [
         "Живой вокал",
         "Первый этаж"
