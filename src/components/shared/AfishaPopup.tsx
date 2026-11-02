@@ -186,7 +186,10 @@ export function AfishaPopup() {
                   key={afishaKey(afisha)}
                   className="w-[58vw] max-w-[240px] shrink-0 snap-center sm:w-[min(30vw,240px)]"
                 >
-                  <div className="relative aspect-[9/16] overflow-hidden border border-white/10 bg-noir">
+                  {/* Текущие афиши — 4:5. Сохраняем пропорции постера и
+                      вписываем изображение целиком, чтобы не обрезать
+                      имена артистов, лица и контактную информацию. */}
+                  <div className="relative aspect-[4/5] overflow-hidden border border-white/10 bg-noir">
                     {afisha.video ? (
                       <video
                         src={afisha.video}
@@ -197,7 +200,7 @@ export function AfishaPopup() {
                         autoPlay
                         preload="metadata"
                         aria-label={`${afisha.title} — ${afisha.subtitle}`}
-                        className="absolute inset-0 h-full w-full object-cover"
+                        className="absolute inset-0 h-full w-full object-contain"
                       />
                     ) : (
                       <Image
@@ -205,7 +208,7 @@ export function AfishaPopup() {
                         alt={`${afisha.title} — ${afisha.subtitle}`}
                         fill
                         sizes="(max-width: 640px) 58vw, 240px"
-                        className="object-cover object-top"
+                        className="object-contain"
                       />
                     )}
                   </div>
