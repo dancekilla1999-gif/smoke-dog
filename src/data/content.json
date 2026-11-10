@@ -752,12 +752,13 @@
   ],
   "events": [
     {
-      "title": "Vocal Show — Michael Blayze",
+      "title": "Vocal Show — Алёна Зотова",
       "subtitle": "Живой вокал на первом этаже",
-      "date": "06.11",
+      "date": "13.11",
       "weekday": "Пятница",
       "time": "21:00",
-      "poster": "/images/events/vocal-show-michael-blayze-06-11.png",
+      "poster": "/images/events/vocal-show-alena-zotova-13-11.jpg",
+      "posterHasInfo": true,
       "lineup": [
         "Живой вокал",
         "Первый этаж"
@@ -765,12 +766,13 @@
       "featured": false
     },
     {
-      "title": "Vocal Show — Амина Бегоева",
+      "title": "Vocal Show — Michael Blayze",
       "subtitle": "Живой вокал на первом этаже",
-      "date": "07.11",
+      "date": "14.11",
       "weekday": "Суббота",
       "time": "21:00",
-      "poster": "/images/events/vocal-show-amina-begoeva-07-11.png",
+      "poster": "/images/events/vocal-show-michael-blayze-14-11.jpg",
+      "posterHasInfo": true,
       "lineup": [
         "Живой вокал",
         "Первый этаж"
