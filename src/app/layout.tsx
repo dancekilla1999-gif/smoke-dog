@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Montserrat } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { site } from "@/lib/data";
 import {
@@ -20,16 +20,18 @@ import { AfishaPopup } from "@/components/shared/AfishaPopup";
 import { PageTransition, TransitionCurtain } from "@/components/providers/PageTransition";
 import { YandexMetrika } from "@/components/providers/YandexMetrika";
 
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin", "cyrillic"],
-  weight: ["300", "400", "500", "600"],
+const cormorant = localFont({
+  src: "./fonts/CormorantGaramond.ttf",
+  weight: "300 700",
+  preload: false,
   variable: "--font-cormorant",
   display: "swap",
 });
 
-const montserrat = Montserrat({
-  subsets: ["latin", "cyrillic"],
-  weight: ["300", "400", "500", "600"],
+const montserrat = localFont({
+  src: "./fonts/Montserrat.ttf",
+  weight: "100 900",
+  preload: false,
   variable: "--font-montserrat",
   display: "swap",
 });
