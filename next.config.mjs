@@ -3,6 +3,9 @@ const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   compress: true,
+  async rewrites() {
+    return [{ source: '/qr-menu', destination: '/qr-menu/index.html' }];
+  },
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
@@ -14,6 +17,10 @@ const nextConfig = {
   },
   async headers() {
     return [
+      {
+        source: '/qr-menu/:path*',
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
+      },
       {
         source: '/:path*',
         headers: [
