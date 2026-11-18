@@ -752,12 +752,12 @@
   ],
   "events": [
     {
-      "title": "Vocal Show — Алёна Зотова",
+      "title": "Vocal Show — Ксения Логинова",
       "subtitle": "Живой вокал на первом этаже",
-      "date": "13.11",
+      "date": "20.11",
       "weekday": "Пятница",
       "time": "21:00",
-      "poster": "/images/events/vocal-show-alena-zotova-13-11.jpg",
+      "poster": "/images/events/vocal-show-ksenia-loginova-20-11.jpg",
       "posterHasInfo": true,
       "lineup": [
         "Живой вокал",
@@ -766,12 +766,12 @@
       "featured": false
     },
     {
-      "title": "Vocal Show — Michael Blayze",
+      "title": "Vocal Show — Михаил Филатов",
       "subtitle": "Живой вокал на первом этаже",
-      "date": "14.11",
+      "date": "21.11",
       "weekday": "Суббота",
       "time": "21:00",
-      "poster": "/images/events/vocal-show-michael-blayze-14-11.jpg",
+      "poster": "/images/events/vocal-show-mikhail-filatov-21-11.jpg",
       "posterHasInfo": true,
       "lineup": [
         "Живой вокал",
