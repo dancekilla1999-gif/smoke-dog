@@ -70,8 +70,8 @@ export function Events({ showHeading = true }: { showHeading?: boolean } = {}) {
                     // постоянных карточек смотрится лучше чуть выше центра.
                     className={cn(
                       "object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.04]",
-                      /^\d{1,2}\.\d{1,2}$/.test(event.date.trim())
-                        ? "object-top"
+                      event.posterHasInfo || /^\d{1,2}\.\d{1,2}$/.test(event.date.trim())
+                        ? "object-center"
                         : "object-[center_40%]"
                     )}
                   />
@@ -87,9 +87,9 @@ export function Events({ showHeading = true }: { showHeading?: boolean } = {}) {
                   <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-noir from-0% via-noir via-50% to-transparent" />
                 )}
 
-                {event.featured && (
+                {event.featured && !event.posterHasInfo && (
                   <span className="absolute left-5 top-5 border border-gold/50 bg-noir/60 px-3 py-1 text-[12px] uppercase tracking-eyebrow text-gold backdrop-blur-sm">
-                    {event.reserveUrl ? "Событие у партнёра" : "Главное событие"}
+                    {event.standing ? "Акция" : event.reserveUrl ? "Событие у партнёра" : "Главное событие"}
                   </span>
                 )}
 
@@ -115,7 +115,7 @@ export function Events({ showHeading = true }: { showHeading?: boolean } = {}) {
                       {event.time && (
                         <p className="flex items-center gap-2 text-xs tracking-wide2 text-bone">
                           <Clock className="h-3.5 w-3.5 text-gold" />
-                          Начало в {event.time}
+                          {event.standing ? `С ${event.time}` : `Начало в ${event.time}`}
                         </p>
                       )}
                       {event.lineup.map((line) => (

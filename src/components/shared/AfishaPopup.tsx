@@ -65,12 +65,14 @@ function afishaKey(event: EventItem): string {
  * картинкой.
  */
 function upcomingAfishas(now: Date): EventItem[] {
-  return events
-    .filter((event) => Boolean(event.video || event.poster))
+  const standing = events.filter((event) => event.standing && (event.video || event.poster));
+  const dated = events
+    .filter((event) => !event.standing && (event.video || event.poster))
     .map((event) => ({ event, when: upcomingDate(event.date, now) }))
     .filter((item): item is { event: EventItem; when: Date } => item.when !== null)
     .sort((a, b) => a.when.getTime() - b.when.getTime())
     .map((item) => item.event);
+  return [...standing, ...dated];
 }
 
 export function AfishaPopup() {
@@ -168,7 +170,11 @@ export function AfishaPopup() {
               id="afisha-popup-title"
               className="mt-3 text-center font-serif text-2xl text-bone sm:text-3xl"
             >
-              {afishas.length > 1 ? "Ближайшие вечера" : "Ближайший вечер"}
+              {afishas.some((item) => item.standing)
+                ? "Акция и ближайшие вечера"
+                : afishas.length > 1
+                  ? "Ближайшие вечера"
+                  : "Ближайший вечер"}
             </h2>
 
             {/* На телефоне афиши листаются пальцем, на широком экране
@@ -221,7 +227,7 @@ export function AfishaPopup() {
                     </span>
                     <p className="mt-1 text-sm text-bone">{afisha.title}</p>
                     <p className="mt-0.5 text-xs text-ash">
-                      Начало в {afisha.time}
+                      {afisha.standing ? `С ${afisha.time}` : `Начало в ${afisha.time}`}
                     </p>
                   </figcaption>
                 </figure>
