@@ -92,6 +92,8 @@ export interface EventItem {
   topWatermark?: boolean;
   lineup: string[];
   featured: boolean;
+  /** Постоянная акция без одной даты: остаётся в афише и во всплывающем окне. */
+  standing?: boolean;
   /** Ссылка для брони — если событие у партнёра (например SOUL), ведёт на его сайт */
   reserveUrl?: string;
   /** Постер уже содержит всю инфографику (дата, время, имя) — не дублировать
