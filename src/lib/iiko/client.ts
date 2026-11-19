@@ -2,7 +2,9 @@ import "server-only";
 
 const BASE_URL = "https://api-ru.iiko.services";
 const READ_PATHS = ["/api/1/organizations", "/api/1/terminal_groups", "/api/1/reserve/available_restaurant_sections", "/api/1/stop_lists", "/api/2/menu", "/api/menu/v3/by_id"] as const;
+const WRITE_PATHS = ["/api/1/order/create", "/api/1/commands/status"] as const;
 type ReadPath = typeof READ_PATHS[number];
+type WritePath = typeof WRITE_PATHS[number];
 
 export class IikoError extends Error {
   constructor(public readonly code: "not_configured" | "upstream_error" | "invalid_response" | "timeout", public readonly upstreamStatus?: number) {
@@ -40,8 +42,23 @@ export async function createIikoReader() {
   if (typeof auth.token !== "string" || !auth.token) throw new IikoError("invalid_response");
   const token = auth.token;
   return async (path: ReadPath, body: unknown = {}) => {
-    // Runtime guard as well as type guard; no write method is available in this adapter.
+    // Runtime guard as well as type guard; orders use createIikoWriter.
     if (!READ_PATHS.includes(path)) throw new IikoError("invalid_response");
+    return request(path, body, token);
+  };
+}
+
+/** Explicit write session. Only table-order create and its status check. */
+export async function createIikoWriter() {
+  const appId = process.env.IIKO_APP_ID?.trim();
+  const clientSecret = process.env.IIKO_CLIENT_SECRET?.trim();
+  const apiKey = process.env.IIKO_API_KEY?.trim();
+  if (!appId || !clientSecret || !apiKey) throw new IikoError("not_configured");
+  const auth = await request("/api/v2/access_token", { appId, clientSecret, apiKey });
+  if (typeof auth.token !== "string" || !auth.token) throw new IikoError("invalid_response");
+  const token = auth.token;
+  return async (path: WritePath, body: unknown) => {
+    if (!WRITE_PATHS.includes(path)) throw new IikoError("invalid_response");
     return request(path, body, token);
   };
 }

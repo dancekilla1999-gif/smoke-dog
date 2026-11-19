@@ -57,9 +57,40 @@ test('adapter permits only read paths and does not expose provider error bodies'
   assert.equal(calls[1].options.headers.Authorization, 'Bearer private-token');
   assert.equal(calls[1].options.redirect, 'error');
 });
-test('orders always refuse even without request body', async () => {
-  const route = load('src/app/api/qr-menu/orders/route.ts', { '@/lib/iiko/http': { json: (body, status) => ({ body, status }) } });
-  const result = await route.POST();
+test('orders stay closed until the launch switch and dish map exist', async () => {
+  const orderLib = load('src/lib/iiko/order.ts', { './config': config });
+  const route = load('src/app/api/qr-menu/orders/route.ts', {
+    '@/lib/iiko/http': { json: (body, status) => ({ body, status }) },
+    '@/lib/iiko/client': { createIikoWriter: async () => { throw new Error('must not call iiko'); }, IikoError: class IikoError extends Error {} },
+    '@/lib/iiko/config': config,
+    '@/lib/iiko/order': orderLib,
+    fs: { readFileSync: () => 'window.MENU_DATA = {"items":[]};' },
+    path: require('path'),
+  });
+  const result = await route.POST({ json: async () => ({ items: [{ id: 'dish-001', amount: 1 }], idempotencyKey: 'a'.repeat(16) }), nextUrl: { searchParams: new URLSearchParams() } });
   assert.equal(result.status, 503);
   assert.equal(result.body.accepted, false);
+});
+test('table order uses the server dish id and ignores a browser price', () => {
+  const order = load('src/lib/iiko/order.ts', { './config': config });
+  const token = 'c'.repeat(43);
+  const built = order.buildTableOrder({
+    token,
+    items: [{ id: 'dish-001', amount: 2 }],
+    catalog: [{ id: 'dish-001', name: 'Классический', priceValue: 3500 }],
+    tables: [{ tokenHash: crypto.createHash('sha256').update(token).digest('hex'), label: 'Стол 1', tableId: '12345678-1234-4123-8123-123456789abc' }],
+    products: [{ menuItemId: 'dish-001', productId: '12345678-1234-4123-8123-123456789abd' }],
+    organizationId: '12345678-1234-4123-8123-123456789abe',
+    terminalGroupId: '12345678-1234-4123-8123-123456789abf',
+    idempotencyKey: 'order-key-123456',
+  });
+  assert.equal(built.ok, true);
+  assert.equal(built.body.order.items[0].productId, '12345678-1234-4123-8123-123456789abd');
+  assert.equal(built.body.order.items[0].amount, 2);
+  assert.equal(JSON.stringify(built.body).includes('3500'), false);
+  const missing = order.buildTableOrder({
+    token, items: [{ id: 'nope', amount: 1 }], catalog: [], tables: [{ tokenHash: crypto.createHash('sha256').update(token).digest('hex'), label: 'Стол 1', tableId: '12345678-1234-4123-8123-123456789abc' }],
+    products: [], organizationId: '12345678-1234-4123-8123-123456789abe', terminalGroupId: '12345678-1234-4123-8123-123456789abf', idempotencyKey: 'order-key-123456',
+  });
+  assert.equal(missing.ok, false);
 });
