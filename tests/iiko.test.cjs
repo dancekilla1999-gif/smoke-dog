@@ -33,6 +33,10 @@ test('public config is never ready and exposes neither IDs nor token hashes', ()
   assert.ok(!JSON.stringify(result).includes(row.tokenHash));
   assert.ok(!JSON.stringify(result).includes('secret'));
 });
+test('iiko terminal groups accept GUIDs without RFC version and variant bits', () => {
+  const configWithGroup = config.inspectConfiguration({ IIKO_TERMINAL_GROUP_ID: '12345678-1234-e123-0123-123456789abc' });
+  assert.ok(!configWithGroup.missing.includes('IIKO_TERMINAL_GROUP_ID'));
+});
 test('adapter refuses to connect without credentials', async () => {
   let calls = 0;
   const client = load('src/lib/iiko/client.ts', {}, { fetch: async () => { calls++; } });

@@ -1,7 +1,8 @@
 import "server-only";
 import { createHash, timingSafeEqual } from "crypto";
 
-const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+// iiko uses GUIDs whose version and variant bits are not always RFC UUID values.
+const UUID = /^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$/i;
 type Env = Record<string, string | undefined>;
 export type TableBinding = { tokenHash: string; label: string; tableId: string };
 

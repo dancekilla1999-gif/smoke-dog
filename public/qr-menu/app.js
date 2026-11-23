@@ -26,3 +26,24 @@ document.addEventListener('click',event=>{const button=event.target.closest('but
 $('search').addEventListener('input',event=>{query=event.target.value.trim();render();});
 document.querySelectorAll('dialog').forEach(dialog=>{dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();}});});
 render();
+
+async function showVerifiedTable() {
+  const token = new URLSearchParams(location.search).get('table');
+  if (!token || !/^[A-Za-z0-9_-]{32,128}$/.test(token)) return;
+
+  const search = new URLSearchParams({ table: token });
+  try {
+    const response = await fetch(`/api/qr-menu/config?${search}`, { cache: 'no-store', referrerPolicy: 'no-referrer' });
+    if (!response.ok) return;
+    const config = await response.json();
+    const label = config.table?.label;
+    if (typeof label !== 'string' || !label) return;
+
+    document.querySelector('.menu-heading .eyebrow').textContent = label;
+    document.querySelector('#selection-dialog .eyebrow').textContent = label;
+  } catch {
+    // The guest can still browse the menu and show their selection to a waiter.
+  }
+}
+
+showVerifiedTable();
