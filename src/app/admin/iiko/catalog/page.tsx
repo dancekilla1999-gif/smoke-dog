@@ -29,9 +29,11 @@ async function readCatalog() {
     read("/api/2/menu", { organizationIds: [organizationId] }),
   ]);
   if (terminals.status === "rejected") throw terminals.reason;
-  const groups = rows(terminals.value.terminalGroups)
-    .filter(entry => entry.organizationId === organizationId)
-    .flatMap(entry => rows(entry.items))
+  const terminalRows = rows(terminals.value.terminalGroups);
+  const groups = terminalRows
+    .filter(entry => entry.organizationId === undefined
+      || label(entry.organizationId).toLowerCase() === organizationId.toLowerCase())
+    .flatMap(entry => Array.isArray(entry.items) ? rows(entry.items) : [entry])
     .filter(group => uuid(group.id));
   if (groups.length > 30) throw new Error("iiko вернула слишком много кассовых групп для автоматической сверки.");
   const sectionResult = groups.length
@@ -52,6 +54,12 @@ async function readCatalog() {
           name: label(menu.name), id: typeof menu.id === "number" && Number.isSafeInteger(menu.id) ? menu.id : label(menu.id),
         }))
       : null,
+    sourceCounts: {
+      reportedTerminalRows: terminalRows.length,
+      reportedTerminalItems: terminalRows.reduce((count, row) => count + rows(row.items).length, 0),
+      reportedSleepingTerminalRows: rows(terminals.value.terminalGroupsInSleep).length,
+      reportedExternalMenus: menus.status === "fulfilled" ? rows(menus.value.externalMenus).length : null,
+    },
   };
 }
 
