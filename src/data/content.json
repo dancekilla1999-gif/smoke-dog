@@ -752,12 +752,12 @@
   ],
   "events": [
     {
-      "title": "Vocal Show — Ксения Логинова",
+      "title": "Vocal Show — Амина Бегоева",
       "subtitle": "Живой вокал на первом этаже",
-      "date": "20.11",
+      "date": "27.11",
       "weekday": "Пятница",
       "time": "21:00",
-      "poster": "/images/events/vocal-show-ksenia-loginova-20-11.jpg",
+      "poster": "/images/events/vocal-show-amina-begoeva-27-11.jpg",
       "posterHasInfo": true,
       "lineup": [
         "Живой вокал",
@@ -766,12 +766,12 @@
       "featured": false
     },
     {
-      "title": "Vocal Show — Михаил Филатов",
+      "title": "Vocal Show — LARIONA",
       "subtitle": "Живой вокал на первом этаже",
-      "date": "21.11",
+      "date": "28.11",
       "weekday": "Суббота",
       "time": "21:00",
-      "poster": "/images/events/vocal-show-mikhail-filatov-21-11.jpg",
+      "poster": "/images/events/vocal-show-lariona-28-11.jpg",
       "posterHasInfo": true,
       "lineup": [
         "Живой вокал",
