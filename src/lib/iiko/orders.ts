@@ -155,11 +155,28 @@ export async function readOrderCatalog(iiko: Iiko, context: Context) {
   const items = parseCatalog(menu, stop, context);
   if (!items.length) {
     const allowedSkus = new Set(context.allowlist.values());
-    console.warn("iiko QR catalog empty", {
-      products: records(menu.products).length,
-      groups: records(menu.itemsGroups).length,
-      skuMatches: records(menu.products).filter(product => allowedSkus.has(String(product.sku))).length,
-    });
+    const products = records(menu.products).filter(product => allowedSkus.has(String(product.sku)));
+    const groups = records(menu.itemsGroups);
+    const list = groups.flatMap(group => records(group.items));
+    const sizes = list.flatMap(item => records(item.sizePrices));
+    const words = (values: unknown[]) => [...new Set(values.map(value =>
+      typeof value === "string" && /^[a-z]+$/i.test(value) ? value : typeof value))];
+    console.warn("iiko QR catalog empty", JSON.stringify({
+      skuMatches: products.length,
+      productTypes: words(products.map(product => product.type)),
+      orderTypes: words(products.map(product => product.orderItemType)),
+      openPrices: products.filter(product => product.canSetOpenPrice === true).length,
+      marked: products.filter(product => product.isMarked === true).length,
+      groups: groups.length,
+      hiddenGroups: groups.filter(group => group.isHidden === true).length,
+      scheduledGroups: groups.filter(group => !!group.scheduleId).length,
+      items: list.length,
+      hiddenItems: list.filter(item => item.isHidden === true).length,
+      modifierItems: list.filter(item => records(item.modifierGroups).length > 0).length,
+      sizes: sizes.length,
+      priceTypes: words(sizes.map(size => typeof size.price)),
+      positivePrices: sizes.filter(size => kopecks(size.price) !== null).length,
+    }));
   }
   return items;
 }
