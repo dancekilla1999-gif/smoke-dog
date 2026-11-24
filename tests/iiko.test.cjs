@@ -95,8 +95,8 @@ function orderFixture(values = env) {
       return { orderInfo: { ...info, creationStatus: 'InProgress' } };
     },
   };
-  const client = { createIikoClient: async () => iiko };
-  const runtime = { process: { env: values } };
+  const client = { createIikoClient: async () => iiko, IikoError: class extends Error {} };
+  const runtime = { process: { env: values }, console };
   const orders = load('src/lib/iiko/orders.ts', { './config': config, './client': client }, runtime);
   const mocks = {
     '@/lib/iiko/http': { json: (body, status = 200) => ({ body, status }) },

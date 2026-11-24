@@ -1,7 +1,7 @@
 import { NextRequest } from "next/server";
 import { publicConfiguration } from "@/lib/iiko/config";
 import { json } from "@/lib/iiko/http";
-import { createIikoClient } from "@/lib/iiko/client";
+import { createIikoClient, IikoError } from "@/lib/iiko/client";
 import { getOrderContext, readOrderCatalog } from "@/lib/iiko/orders";
 
 export const runtime = "nodejs";
@@ -27,7 +27,8 @@ export async function GET(req: NextRequest) {
       items,
       message: context.enabled ? "Заказ можно отправить на кассу." : fallback.message,
     });
-  } catch {
+  } catch (error) {
+    console.warn("iiko QR checkout catalog unavailable", error instanceof IikoError ? error.code : "invalid_catalog", error instanceof IikoError ? error.upstreamStatus : undefined);
     return json(fallback);
   }
 }

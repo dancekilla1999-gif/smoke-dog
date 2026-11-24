@@ -1,6 +1,6 @@
 import "server-only";
 import { createHash } from "node:crypto";
-import { createIikoClient } from "./client";
+import { createIikoClient, IikoError } from "./client";
 import { inspectConfiguration, resolveTable } from "./config";
 
 const GUID = /^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$/i;
@@ -22,7 +22,8 @@ export function getOrderContext(token: string | null, env = process.env) {
   const enabled = env.IIKO_ORDERING_ENABLED === "true";
   const allowlist = parseAllowlist(env.IIKO_ORDER_ITEMS_JSON);
   if (!table || !config.organizationId || !config.terminalGroupId || config.missing.length
-    || !menuId || !/^\d{1,18}$/.test(menuId) || !allowlist.size) return undefined;
+    || !menuId || !/^\d{1,18}$/.test(menuId) || !Number.isSafeInteger(Number(menuId))
+    || Number(menuId) <= 0 || !allowlist.size) return undefined;
   return { table, terminalGroupId: config.terminalGroupId, organizationId: config.organizationId, menuId, allowlist, enabled };
 }
 
@@ -74,7 +75,15 @@ export function parseCart(value: unknown): CartItem[] | undefined {
 
 export function parseCatalog(menu: Row, stop: Row, context: Context): CatalogItem[] {
   if (String(menu.id) !== context.menuId || !Array.isArray(menu.products) || !Array.isArray(menu.itemsGroups)
-    || !Array.isArray(stop.terminalGroupStopLists)) throw new Error("Invalid iiko catalog");
+    || !Array.isArray(stop.terminalGroupStopLists)) {
+    console.warn("iiko QR catalog schema mismatch", {
+      menuIdMatches: String(menu.id) === context.menuId,
+      hasProducts: Array.isArray(menu.products),
+      hasGroups: Array.isArray(menu.itemsGroups),
+      hasStopLists: Array.isArray(stop.terminalGroupStopLists),
+    });
+    throw new Error("Invalid iiko catalog");
+  }
   const organization = records(stop.terminalGroupStopLists).find(row => guid(row.organizationId) === guid(context.organizationId));
   const terminal = records(organization?.items).find(row => guid(row.terminalGroupId) === guid(context.terminalGroupId));
   const stockRows = records(terminal?.items);
@@ -131,11 +140,28 @@ export function parseCatalog(menu: Row, stop: Row, context: Context): CatalogIte
 }
 
 export async function readOrderCatalog(iiko: Iiko, context: Context) {
+  async function readCatalogPart(path: "/api/menu/v3/by_id" | "/api/1/stop_lists", body: unknown) {
+    try {
+      return await iiko.read(path, body);
+    } catch (error) {
+      console.warn("iiko QR catalog read failed", path, error instanceof IikoError ? error.code : "unknown", error instanceof IikoError ? error.upstreamStatus : undefined);
+      throw error;
+    }
+  }
   const [menu, stop] = await Promise.all([
-    iiko.read("/api/menu/v3/by_id", { organizationId: context.organizationId, externalMenuId: context.menuId }),
-    iiko.read("/api/1/stop_lists", { organizationIds: [context.organizationId], terminalGroupsIds: [context.terminalGroupId], returnSize: true }),
+    readCatalogPart("/api/menu/v3/by_id", { organizationId: context.organizationId, externalMenuId: Number(context.menuId) }),
+    readCatalogPart("/api/1/stop_lists", { organizationIds: [context.organizationId], terminalGroupsIds: [context.terminalGroupId], returnSize: true }),
   ]);
-  return parseCatalog(menu, stop, context);
+  const items = parseCatalog(menu, stop, context);
+  if (!items.length) {
+    const allowedSkus = new Set(context.allowlist.values());
+    console.warn("iiko QR catalog empty", {
+      products: records(menu.products).length,
+      groups: records(menu.itemsGroups).length,
+      skuMatches: records(menu.products).filter(product => allowedSkus.has(String(product.sku))).length,
+    });
+  }
+  return items;
 }
 
 export function getOrderId(context: Context, requestId: unknown) {
