@@ -13,7 +13,7 @@ const categoryOf = item => item.subcategory || item.category;
 const typeOf = item => item.category==='Кальян'?'hookah':item.category==='Бар'?'bar':'food';
 function persist(){try{localStorage.setItem('smokedog-choice-v1',JSON.stringify(selected));}catch{}}
 function toast(message){$('toast').textContent=message;$('toast').classList.add('visible');clearTimeout(toast.timer);toast.timer=setTimeout(()=>$('toast').classList.remove('visible'),1600);}
-function change(id,delta){if(!byId.has(id))return;selected[id]=Math.max(0,Math.min(99,(selected[id]||0)+delta));if(!selected[id])delete selected[id];persist();updateSelection();if($('selection-dialog').open)renderSelection();if($('dish-dialog').open&&dishId===id)updateDishButton();if(delta>0)toast('Добавлено в ваш выбор');}
+function change(id,delta){if(!byId.has(id)||pendingOrder)return;selected[id]=Math.max(0,Math.min(99,(selected[id]||0)+delta));if(!selected[id])delete selected[id];persist();updateSelection();if($('selection-dialog').open)renderSelection();if($('dish-dialog').open&&dishId===id)updateDishButton();if(delta>0)toast('Добавлено в ваш выбор');}
 function updateSelection(){let count=0,total=0;for(const[id,n]of Object.entries(selected)){count+=n;total+=byId.get(id).priceValue*n;}document.querySelectorAll('.count').forEach(node=>node.textContent=count);$('selection-total').textContent=money(total);$('selection-bar').hidden=!count;document.querySelectorAll('[data-add]').forEach(button=>{const n=selected[button.dataset.add]||0;button.textContent=n||'+';button.classList.toggle('selected',!!n);button.setAttribute('aria-label',`Добавить ${byId.get(button.dataset.add).name}${n?`, выбрано ${n}`:''}`);});}
 function renderCategories(){const categories=['Все',...new Set(items.filter(item=>typeOf(item)===activeTab).map(item=>categoryOf(item)))];$('categories').innerHTML=categories.map(category=>`<button data-category="${esc(category)}" class="${activeCategory===category?'active':''}" aria-pressed="${activeCategory===category}">${esc(category==='Все'?(activeTab==='food'?'Все блюда':activeTab==='bar'?'Все напитки':'Все варианты'):category)}</button>`).join('');$('categories').hidden=activeTab==='hookah';}
 function render(){renderCategories();$('menu-grid').classList.toggle('drinks',activeTab==='bar'&&!query);const found=items.filter(item=>query?norm(item.name+' '+categoryOf(item)+' '+item.description).includes(norm(query)):typeOf(item)===activeTab&&(activeCategory==='Все'||categoryOf(item)===activeCategory));$('section-title').textContent=query?'Результаты поиска':activeCategory!=='Все'?activeCategory:activeTab==='food'?'Все блюда':activeTab==='bar'?'Бар':'Кальян';$('results-count').textContent=`${found.length} ${found.length%10===1&&found.length%100!==11?'позиция':found.length%10>=2&&found.length%10<=4&&(found.length%100<12||found.length%100>14)?'позиции':'позиций'}`;$('clear-search').hidden=!query;$('menu-grid').innerHTML=found.length?found.map(item=>`<article class="card ${item.image?'has-photo':''}"><button class="card-photo" data-dish="${esc(item.id)}" aria-label="Подробнее: ${esc(item.name)}">${item.image?`<img src="${esc(item.image)}" alt="${esc(item.name)}" loading="lazy" decoding="async">`:'<span class="no-photo" aria-hidden="true">SD</span>'}<span class="category-badge">${esc(categoryOf(item))}</span></button><div class="card-body"><button class="card-title" data-dish="${esc(item.id)}">${esc(item.name)}</button><span class="card-weight">${esc(item.weight||'')}</span><div class="card-bottom"><span class="price">${esc(item.price)}</span><button class="add" data-add="${esc(item.id)}" aria-label="Добавить ${esc(item.name)}">+</button></div></div></article>`).join(''):'<div class="empty"><h3>Пока ничего не нашлось</h3><p>Попробуйте другое название или откройте всё меню.</p><button id="reset-filter">Показать всё меню</button></div>';
@@ -27,11 +27,102 @@ $('search').addEventListener('input',event=>{query=event.target.value.trim();ren
 document.querySelectorAll('dialog').forEach(dialog=>{dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();}});});
 render();
 
-async function showVerifiedTable() {
-  const token = new URLSearchParams(location.search).get('table');
-  if (!token || !/^[A-Za-z0-9_-]{32,128}$/.test(token)) return;
+const qrTable = new URLSearchParams(location.search).get('table');
+const checkoutKey = 'smokedog-qr-pending-v1';
+const orderPrices = new Map();
+let onlineOrdering = false;
+let pendingOrder = null;
+let checkoutBusy = false;
+try {
+  const savedOrder = JSON.parse(sessionStorage.getItem(checkoutKey) || 'null');
+  if (savedOrder?.table === qrTable && /^[0-9a-f-]{36}$/i.test(savedOrder.requestId)) {
+    pendingOrder = savedOrder.requestId;
+  }
+} catch {}
 
-  const search = new URLSearchParams({ table: token });
+function savePendingOrder(id) {
+  pendingOrder = id;
+  try {
+    if (id) sessionStorage.setItem(checkoutKey, JSON.stringify({ table: qrTable, requestId: id }));
+    else sessionStorage.removeItem(checkoutKey);
+  } catch {}
+}
+
+function updateCheckout() {
+  const ids = Object.keys(selected);
+  const unavailable = ids.some(id => !orderPrices.has(id));
+  const button = $('send-order');
+  $('checkout').hidden = !onlineOrdering && !pendingOrder && !$('checkout-status').textContent;
+  if (onlineOrdering) {
+    $('selection-instructions').textContent = unavailable
+      ? 'Некоторые выбранные позиции можно заказать у официанта. Уберите их из списка, чтобы отправить остальные на кухню.'
+      : 'Проверьте ваш выбор и отправьте заказ на кухню.';
+    const note = $('selection-summary').querySelector('.summary-note');
+    if (note) note.textContent = unavailable ? 'Позиции вне онлайн-меню уточнит официант.' : 'Заказ поступит на кассу вашего стола.';
+  }
+  button.textContent = checkoutBusy ? 'Проверяем заказ…' : pendingOrder ? 'Проверить статус заказа' : 'Отправить заказ';
+  button.hidden = !pendingOrder && (!onlineOrdering || !ids.length);
+  button.disabled = checkoutBusy || (!pendingOrder && unavailable);
+  $('selection-items').querySelectorAll('.quantity button').forEach(control => { control.disabled = !!pendingOrder; });
+}
+
+async function checkoutOrder() {
+  if (checkoutBusy || (!pendingOrder && !onlineOrdering)) return;
+  const items = Object.entries(selected).map(([id, quantity]) => ({ id, quantity, unitPrice: orderPrices.get(id) }));
+  const status = $('checkout-status');
+  const checking = !!pendingOrder;
+  if (!checking) {
+    if (!items.length || items.some(item => item.unitPrice === undefined)) return;
+    savePendingOrder(crypto.randomUUID());
+  }
+  checkoutBusy = true;
+  status.textContent = checking ? 'Проверяем, поступил ли заказ на кассу.' : 'Отправляем заказ на кассу.';
+  updateCheckout();
+  try {
+    const query = new URLSearchParams({ table: qrTable, requestId: pendingOrder });
+    const response = await fetch(checking ? `/api/qr-menu/orders?${query}` : '/api/qr-menu/orders', {
+      method: checking ? 'GET' : 'POST',
+      ...(!checking && {
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ table: qrTable, requestId: pendingOrder, items }),
+      }),
+      cache: 'no-store',
+      referrerPolicy: 'no-referrer',
+    });
+    const result = await response.json();
+    if (response.ok && result.accepted === true && result.status === 'accepted') {
+      selected = {};
+      persist();
+      updateSelection();
+      savePendingOrder(null);
+      status.textContent = 'Заказ принят кассой.' + (result.orderNumber ? ` Номер ${result.orderNumber}.` : '');
+    } else if (result.status === 'failed' || (!checking && (
+      result.code === 'ORDERING_NOT_CONNECTED' ||
+      (response.status >= 400 && response.status < 500 && response.status !== 408)
+    ))) {
+      savePendingOrder(null);
+      status.textContent = result.message || 'Заказ не отправлен. Проверьте выбор.';
+    } else {
+      status.textContent = 'Касса пока не подтвердила заказ. Проверьте статус или обратитесь к официанту.';
+    }
+  } catch {
+    status.textContent = 'Связь прервалась. Проверьте статус заказа перед повторной отправкой.';
+  } finally {
+    checkoutBusy = false;
+    renderSelection();
+    updateCheckout();
+  }
+}
+
+$('send-order').addEventListener('click', checkoutOrder);
+document.addEventListener('click', event => {
+  if ($('selection-dialog').open && event.target.closest('button')) updateCheckout();
+});
+
+async function showVerifiedTable() {
+  if (!qrTable || !/^[A-Za-z0-9_-]{32,128}$/.test(qrTable)) return;
+
+  const search = new URLSearchParams({ table: qrTable });
   try {
     const response = await fetch(`/api/qr-menu/config?${search}`, { cache: 'no-store', referrerPolicy: 'no-referrer' });
     if (!response.ok) return;
@@ -41,6 +132,19 @@ async function showVerifiedTable() {
 
     document.querySelector('.menu-heading .eyebrow').textContent = label;
     document.querySelector('#selection-dialog .eyebrow').textContent = label;
+    onlineOrdering = config.orderingAvailable === true;
+    if (onlineOrdering && Array.isArray(config.items)) {
+      for (const { id, price } of config.items) {
+        if (!byId.has(id) || !Number.isFinite(price) || price <= 0) continue;
+        orderPrices.set(id, price);
+        const item = byId.get(id);
+        item.priceValue = price;
+        item.price = money(price);
+      }
+      render();
+      if ($('selection-dialog').open) renderSelection();
+    }
+    updateCheckout();
   } catch {
     // The guest can still browse the menu and show their selection to a waiter.
   }

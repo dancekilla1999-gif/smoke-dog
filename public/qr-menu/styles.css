@@ -10,3 +10,5 @@
 @media(max-width:650px){.hero{grid-template-columns:minmax(0,1fr) 38%}.hero h1{font-size:28px}.menu-grid.drinks{grid-template-columns:1fr}.drinks .card-body{padding:16px}.drinks .card-title{font-size:13px}.drinks .card-bottom{gap:12px}.drinks .card-bottom .price{font-size:14px}.summary{font-size:15px}}
 .add{min-width:44px;min-height:44px}.categories button{min-height:44px}.quantity button{width:44px;height:44px}.dialog-close{width:44px;height:44px}.tabs button{min-height:44px}.selection-trigger{min-height:44px}.card-title{min-height:44px}
 @media(max-width:650px){.card-title{font-size:13px}.card-body{padding:12px 10px}.card-bottom{flex-wrap:wrap;row-gap:8px}.card-bottom .price{font-size:13px}.add{width:40px;height:40px;min-width:40px;min-height:44px;border-radius:8px}.tabs button{font-size:12px}.categories button{font-size:11px}.search{height:44px}}
+
+.checkout{padding:0 30px 25px}.checkout .dish-add{width:100%}.checkout .dish-add:disabled{opacity:.55}.checkout p{margin:10px 0 0;color:#e7d5af;font-size:13px;line-height:1.5}.checkout p:empty{display:none}@media(max-width:650px){.checkout{padding:0 22px 20px}}

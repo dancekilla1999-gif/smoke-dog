@@ -1,7 +1,7 @@
 import "server-only";
 
 const BASE_URL = "https://api-ru.iiko.services";
-const READ_PATHS = ["/api/1/organizations", "/api/1/terminal_groups", "/api/1/reserve/available_restaurant_sections", "/api/1/stop_lists", "/api/2/menu", "/api/menu/v3/by_id"] as const;
+const READ_PATHS = ["/api/1/organizations", "/api/1/terminal_groups", "/api/1/reserve/available_restaurant_sections", "/api/1/stop_lists", "/api/2/menu", "/api/menu/v3/by_id", "/api/1/order/by_id", "/api/1/commands/status"] as const;
 type ReadPath = typeof READ_PATHS[number];
 
 export class IikoError extends Error {
@@ -30,8 +30,7 @@ async function request(path: string, body: unknown, token?: string): Promise<Rec
   } finally { clearTimeout(timeout); }
 }
 
-/** Token remains within one server request; neither returned to the browser nor logged. */
-export async function createIikoReader() {
+export async function createIikoClient() {
   const appId = process.env.IIKO_APP_ID?.trim();
   const clientSecret = process.env.IIKO_CLIENT_SECRET?.trim();
   const apiKey = process.env.IIKO_API_KEY?.trim();
@@ -39,9 +38,20 @@ export async function createIikoReader() {
   const auth = await request("/api/v2/access_token", { appId, clientSecret, apiKey });
   if (typeof auth.token !== "string" || !auth.token) throw new IikoError("invalid_response");
   const token = auth.token;
-  return async (path: ReadPath, body: unknown = {}) => {
-    // Runtime guard as well as type guard; no write method is available in this adapter.
+  const read = async (path: ReadPath, body: unknown = {}) => {
     if (!READ_PATHS.includes(path)) throw new IikoError("invalid_response");
     return request(path, body, token);
   };
+  return {
+    read,
+    createTableOrder(body: unknown) {
+      if (process.env.IIKO_ORDERING_ENABLED !== "true") throw new IikoError("not_configured");
+      return request("/api/1/order/create", body, token);
+    },
+  };
+}
+
+/** Token remains within one server request. Existing administrative readers stay read-only. */
+export async function createIikoReader() {
+  return (await createIikoClient()).read;
 }
