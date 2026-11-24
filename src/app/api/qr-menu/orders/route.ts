@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import { createIikoClient } from "@/lib/iiko/client";
+import { createIikoClient, IikoError } from "@/lib/iiko/client";
 import { json } from "@/lib/iiko/http";
 import { getOrderContext, getOrderId, orderStatus, parseCart, readOrder, submitOrder } from "@/lib/iiko/orders";
 
@@ -53,7 +53,8 @@ export async function GET(req: NextRequest) {
   if (!context || !id) return invalid();
   try {
     return reply(orderStatus(await readOrder(await createIikoClient(), context, id), context));
-  } catch {
+  } catch (error) {
+    console.warn("iiko QR checkout lookup unavailable", error instanceof IikoError ? error.code : "invalid_response", error instanceof IikoError ? error.upstreamStatus : undefined);
     return reply(orderStatus(undefined, context));
   }
 }

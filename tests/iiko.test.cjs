@@ -83,7 +83,7 @@ function orderFixture(values = env) {
       if (path === '/api/1/stop_lists') return { terminalGroupStopLists: [] };
       if (path === '/api/menu/v3/by_id') return {
         id: '42',
-        products: [{ sku: 'SKU-1', id: productId, orderItemType: 'Product', type: 'DISH' }],
+        products: [{ sku: 'SKU-1', id: productId, orderItemType: 'Product' }],
         itemsGroups: [{ items: [{ productId, sizePrices: [{ price: 490 }] }] }],
       };
       throw new Error(path);

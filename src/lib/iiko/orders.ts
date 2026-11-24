@@ -116,7 +116,8 @@ export function parseCatalog(menu: Row, stop: Row, context: Context): CatalogIte
     const product = matching[0];
     const productId = guid(product.id);
     if (!productId || productId === NIL_GUID || product.canSetOpenPrice === true || product.isMarked === true
-      || product.orderItemType !== "Product" || !["DISH", "GOODS"].includes(String(product.type))) continue;
+      || product.orderItemType !== "Product"
+      || (product.type != null && !["DISH", "GOODS"].includes(String(product.type).toUpperCase()))) continue;
     const items = byProduct.get(productId);
     // No guest option picker for multiple portions or modifier groups.
     if (!items || items.length !== 1 || (items[0].modifierGroups != null && (!Array.isArray(items[0].modifierGroups) || items[0].modifierGroups.length > 0))) continue;
