@@ -13,32 +13,22 @@
 
 .checkout{padding:0 30px 25px}.checkout .dish-add{width:100%}.checkout .dish-add:disabled{opacity:.55}.checkout p{margin:10px 0 0;color:#e7d5af;font-size:13px;line-height:1.5}.checkout p:empty{display:none}@media(max-width:650px){.checkout{padding:0 22px 20px}}
 .bar-sections {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px;
-  margin: 16px 0 0;
+  margin-top: 0;
+  scrollbar-width: thin;
+  scrollbar-color: #ffffff40 transparent;
+}
+.bar-sections::-webkit-scrollbar {
+  display: block;
+  height: 4px;
+}
+.bar-sections::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: #ffffff40;
 }
 .bar-sections button {
-  min-height: 44px;
-  padding: 8px 10px;
-  border: 1px solid #ffffff26;
-  border-radius: 8px;
-  background: #242421;
-  color: #e8e4d8;
-  font: inherit;
   font-size: 12px;
-  line-height: 1.25;
-  cursor: pointer;
 }
 .bar-sections button:hover,
-.bar-sections button:focus-visible,
-.bar-sections button.active {
-  border-color: #f0c878;
+.bar-sections button:focus-visible {
   color: #f0c878;
-}
-.bar-sections button.active {
-  background: #30281a;
-}
-@media (min-width: 760px) {
-  .bar-sections { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
